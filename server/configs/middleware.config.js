@@ -5,6 +5,7 @@ const hbs = require('hbs');
 const logger = require('morgan');
 const path = require('path');
 const express = require('express')
+const cors = require('cors')
 
 
 module.exports = app => {
@@ -27,6 +28,15 @@ module.exports = app => {
         dest: path.join(__dirname, '..', 'public'),
         sourceMap: true
     }));
+
+    const whitelist = ['http://localhost:3000']
+    const corsOptions = {
+        origin: (origin, cb) => {
+            const originWhitelisted = whitelist.includes(origin)
+            cb(null, originWhitelisted)
+        }
+    }
+    app.use(cors(corsOptions))
 
 
     app.set('views', path.join(__dirname, '..', 'views'));

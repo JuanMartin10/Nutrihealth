@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { Switch, Route } from 'react-router-dom'
+
+import Signup from './components/pages/auth/signup/Signup'
+import Login from './components/pages/auth/login/Login'
+
+import NavBar from './components/ui/NavBar'
+
+import AuthServices from './services/auth.services'
+
+class App extends Component {
+
+  constructor() {
+    super()
+    this.state = { loggedInUser: false }
+    this.services = new AuthServices()
+  }
+
+
+  componentDidUpdate = (prevProps, prevState) => console.log("El estado de App se ha actualizado:", this.state)
+  componentDidMount = () => this.fetchUser()
+
+
+  setTheUser = userObj => this.setState({ loggedInUser: userObj })
+  fetchUser = () => {
+    this.services.loggedin()
+      .then(theUser => this.setState({ loggedInUser: theUser }))
+      .catch(() => this.setState({ loggedInUser: false }))
+  }
+
+
+  render() {
+    return (
+      <>
+        <h1>Bienvenidos a nutrihealth</h1>
+        <NavBar />
+        <Switch>
+
+          <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
+          <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
+        </Switch>
+      </>
+    );
+  }
 }
 
 export default App;
