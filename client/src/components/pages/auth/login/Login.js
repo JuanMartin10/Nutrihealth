@@ -25,9 +25,10 @@ class Login extends Component {
 
     postUser = () => {
         this.services.login(this.state)
-            .then(response => {
+            .then(theLoggedUser => {
                 this.setState({ username: '', password: '' })
-                console.log('USUARIO SESIÓN INCIIADA', response)
+                this.props.setTheUser(theLoggedUser)
+                this.props.history.push('/')
             })
             .catch(err => console.log({ err }))
     }

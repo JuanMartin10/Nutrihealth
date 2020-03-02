@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
+
+import Index from './components/pages/index/Index'
 
 import Signup from './components/pages/auth/signup/Signup'
 import Login from './components/pages/auth/login/Login'
 
 import NavBar from './components/ui/NavBar'
+import Profile from './components/pages/profile/Profile'
 
 import AuthServices from './services/auth.services'
 
@@ -35,12 +38,14 @@ class App extends Component {
   render() {
     return (
       <>
-        <h1>Bienvenidos a nutrihealth</h1>
-        <NavBar />
+        <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
+
         <Switch>
+          <Route exact path="/" render={() => <Index />} />
 
           <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
+          <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
         </Switch>
       </>
     );

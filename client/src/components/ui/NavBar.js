@@ -16,27 +16,45 @@ class Navigation extends Component {
     logout = () => {
         this.services.logout()
             .then(response => {
-                console.log(response)
-                alert("SESION CERRADA")
+                this.props.setTheUser(false)
             })
             .catch(err => console.log(err))
     }
 
 
     render() {
+        const greeting = this.props.loggedInUser ? <>Hola, {this.props.loggedInUser.username}</> : <>Hola, invitad@</>
         return (
-            <Navbar bg="dark" expand="lg" variant="dark">
-                <Navbar.Brand href="#home">CoastersApp!</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link as="div"> <Link to="/">Inicio</Link></Nav.Link>
-                        <Nav.Link as="div"> <Link to="/signup">Registro</Link></Nav.Link>
-                        <Nav.Link as="div"> <Link to="/login">Inicio sesión</Link></Nav.Link>
-                        <Nav.Link onClick={this.logout}>Cerrar sesión</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
+            this.props.loggedInUser ?
+                (
+                    <Navbar bg="dark" expand="lg" variant="dark">
+                        <Navbar.Brand href="/">NutriHealth</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="ml-auto">
+                                <Nav.Link as="div"> <Link to="/">Inicio</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/profile">Perfil</Link></Nav.Link>
+                                <Nav.Link onClick={this.logout}>Cerrar sesión</Nav.Link>
+                                <Nav.Link as="small">{greeting}</Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Navbar>
+                )
+                :
+                (
+                    <Navbar bg="dark" expand="lg" variant="dark">
+                        <Navbar.Brand href="/">NutriHealth</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="ml-auto">
+                                <Nav.Link as="div"> <Link to="/">Inicio</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/signup">Registro</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/login">Inicio sesión</Link></Nav.Link>
+                                <Nav.Link as="small">{greeting}</Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Navbar>
+                )
         )
     }
 }
