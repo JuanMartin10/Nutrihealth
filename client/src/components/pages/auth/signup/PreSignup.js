@@ -6,7 +6,9 @@ import Form from 'react-bootstrap/Form'
 
 import AuthServices from '../../../../services/auth.services'
 
-class Signup extends Component {
+import { Link } from 'react-router-dom'
+
+class PreSignup extends Component {
     constructor() {
         super()
         this.state = {
@@ -43,16 +45,11 @@ class Signup extends Component {
                 <h1>Registro de usuarios</h1>
 
                 <Form onSubmit={this.handleSubmit}>
-                    <Form.Group>
-                        <Form.Label>Usuario</Form.Label>
-                        <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Contraseña</Form.Label>
-                        <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    </Form.Group>
 
-                    <Button variant="dark" type="submit">Registrarse</Button>
+                    <Button variant="dark" type="submit"><Link to="/signup">Register as Nutricionist</Link></Button>
+                    <br></br><br></br>
+                    <Button variant="dark" type="submit"><Link to="/signup">Register as User</Link></Button>
+
                 </Form>
             </Container>
         )
@@ -61,4 +58,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup
+export default PreSignup

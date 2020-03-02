@@ -6,6 +6,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Index from './components/pages/index/Index'
 
+import PreSignup from './components/pages/auth/signup/PreSignup'
 import Signup from './components/pages/auth/signup/Signup'
 import Login from './components/pages/auth/login/Login'
 
@@ -53,6 +54,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={() => <Index />} />
 
+          <Route path="/presignup" render={() => <PreSignup setTheUser={this.setTheUser} />} />
           <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
           <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />

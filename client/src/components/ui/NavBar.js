@@ -49,7 +49,7 @@ class Navigation extends Component {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
                                 <Nav.Link as="div"> <Link to="/">Inicio</Link></Nav.Link>
-                                <Nav.Link as="div"> <Link to="/signup">Registro</Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/presignup">Registro</Link></Nav.Link>
                                 <Nav.Link as="div"> <Link to="/login">Inicio sesión</Link></Nav.Link>
                                 <Nav.Link as="small">{greeting}</Nav.Link>
                             </Nav>
