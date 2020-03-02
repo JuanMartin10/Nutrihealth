@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import NavBar from './NavBar.css'
 
 import AuthServices from '../../services/auth.services'
 import { Link } from 'react-router-dom'
@@ -27,7 +28,7 @@ class Navigation extends Component {
         return (
             this.props.loggedInUser ?
                 (
-                    <Navbar bg="dark" expand="lg" variant="dark">
+                    <Navbar className="navigation" bg="light" expand="lg" variant="light">
                         <Navbar.Brand href="/">NutriHealth</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
@@ -42,7 +43,7 @@ class Navigation extends Component {
                 )
                 :
                 (
-                    <Navbar bg="dark" expand="lg" variant="dark">
+                    <Navbar className="navigation" bg="light" expand="lg" variant="light">
                         <Navbar.Brand href="/">NutriHealth</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">

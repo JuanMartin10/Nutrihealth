@@ -40,7 +40,7 @@ const userSchema = new Schema({
   password: String,
   email: String,
   photo: String,
-  userRecipe: [{ type: Schema.Types.ObjectId, ref: "Recipe" }]
+  recipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }]
   role: String,
 }, {
   timestamps: {
@@ -55,7 +55,7 @@ const userSchema = new Schema({
 ```
 const recipeSchema = new Schema({
     recipe: String,
-    ingredients: [String],
+    ingredients: Array,
 }, {
   timestamps: {
     createdAt: 'created_at',

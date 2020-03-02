@@ -14,28 +14,38 @@ import Profile from './components/pages/profile/Profile'
 
 import AuthServices from './services/auth.services'
 
+
+
 class App extends Component {
 
   constructor() {
     super()
-    this.state = { loggedInUser: false }
+    this.state = { loggedInUser: null }
     this.services = new AuthServices()
   }
 
 
   componentDidUpdate = (prevProps, prevState) => console.log("El estado de App se ha actualizado:", this.state)
-  componentDidMount = () => this.fetchUser()
+  componentDidMount = () => {
+    console.log("este es el component did mount....")
+    console.log(this.state.loggedInUser)
+    this.fetchUser()
+  }
 
 
   setTheUser = userObj => this.setState({ loggedInUser: userObj })
   fetchUser = () => {
     this.services.loggedin()
-      .then(theUser => this.setState({ loggedInUser: theUser }))
+      .then(theUser => {
+        console.log(theUser)
+        this.setState({ loggedInUser: theUser })
+      })
       .catch(() => this.setState({ loggedInUser: false }))
   }
 
 
   render() {
+    console.log(this.state.loggedInUser)
     return (
       <>
         <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />

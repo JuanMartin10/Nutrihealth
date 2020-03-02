@@ -1,0 +1,19 @@
+a {
+    color: black;
+    padding: 10px 10px 5px 10px
+}
+
+div a:hover{
+    /* background-color: rgb(195, 197, 196); */
+    transition-timing-function: linear;
+    transition-duration: 0.2s;
+    /* color:white; */
+    color: grey;
+    border-radius: 5px;
+
+}    
+
+.navigation {
+    border-bottom: 1px solid black;
+    margin-bottom: 20px
+}
