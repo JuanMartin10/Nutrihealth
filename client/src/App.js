@@ -54,7 +54,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={() => <Index />} />
 
-          <Route path="/presignup" render={() => <PreSignup setTheUser={this.setTheUser} />} />
+          {/* <Route path="/presignup" render={() => <PreSignup setTheUser={this.setTheUser} />} /> */}
           <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
           <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
