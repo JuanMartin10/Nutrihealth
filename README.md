@@ -2,6 +2,7 @@
 
 ## Endpoints del projecto (base)
 
+### Servidor
 id | Method | Path  | Description
 -- | ------ | ------ | ----------
 1 | get | / | Pagina principal 
@@ -11,7 +12,10 @@ id | Method | Path  | Description
 5 | post | /logout | Te hacer log-out de la pagina
 6 | get | /loggedin | Estás logueado?
 
-Cliente:
+
+### Cliente
+id | Method | Path  | Description
+-- | ------ | ------ | ----------
 1 | get | /signup	| Te muestra el form de sing-up
 2 | get | /login | Te muestra el log-in de la pagina
 3 | get | /choose-plan | Te muestra free o premium
@@ -37,12 +41,14 @@ const userSchema = new Schema({
   email: String,
   photo: String,
   userRecipe: [{ type: Schema.Types.ObjectId, ref: "Recipe" }]
+  role: String,
 }, {
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at'
   }
 });
+```
 
 ### Modelo de recetas
 
