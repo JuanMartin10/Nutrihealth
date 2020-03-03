@@ -12,7 +12,7 @@ const User = require("../models/User.model");
 
 router.post("/signup", (req, res, next) => {
 
-  // console.log("------ PAYLOAD EN DESTINO -----", req.body)
+  console.log("------ PAYLOAD EN DESTINO -----", req.body)
 
   const username = req.body.user.username;
   const password = req.body.user.password;
@@ -30,17 +30,6 @@ router.post("/signup", (req, res, next) => {
     res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' });
     return;
   }
-
-  // if (role) {
-  //   role = 'admin'
-  //   res.status(200).json({ message: 'The role is admin' })
-  //   console.log('que pasa')
-  // } else {
-  //   role = 'user'
-  //   res.status(200).json({ message: 'The role is user' })
-
-  // }
-
 
   User.findOne({ username }, (err, foundUser) => {
     if (err) {
@@ -72,7 +61,7 @@ router.post("/signup", (req, res, next) => {
       // Automatically log in user after sign up
       // .login() here is actually predefined passport method
       req.login(aNewUser, (err) => {
-
+        console.log(aNewUser)
         if (err) {
           res.status(500).json({ message: 'Login after signup went bad.' });
           return;
@@ -128,7 +117,6 @@ router.post('/logout', (req, res, next) => {
 
 router.get('/loggedin', (req, res, next) => {
   // req.isAuthenticated() is defined by passport
-  console.log("si entraaaaaa")
   console.log(req.isAuthenticated())
   if (req.isAuthenticated()) {
     console.log(req.user)

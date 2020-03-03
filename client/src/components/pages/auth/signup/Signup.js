@@ -23,7 +23,7 @@ class Signup extends Component {
 
     handleChange = e => {
         let { name, value } = e.target
-        console.log(e.target.checked)
+        // console.log(e.target.checked)
 
         // if (name === 'role') value = checked
         // console.log(e.target.checked)
@@ -41,7 +41,6 @@ class Signup extends Component {
 
         this.services.signup(this.state)
             .then(response => {
-                // this.setState({ username: '', password: '', email: '', role: '' })
                 this.setState({
                     user: {
                         username: '',
@@ -49,7 +48,8 @@ class Signup extends Component {
                         email: '',
                     },
                     role: false
-                })
+
+                }, this.props.setTheUser(response))
                 console.log('USUARIO CREADO', response)
             })
             .catch(err => console.log({ err }))
