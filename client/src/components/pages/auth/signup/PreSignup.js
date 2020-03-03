@@ -50,23 +50,19 @@ class PreSignup extends Component {
         this.postUser()
     }
 
-    roleAdmin = () => {
+
+
+    submitRole = (rolsubmited) => {
         this.setState({
-            role: 'admin'
-        })
-        console.log(`Este es el rol:`, this.state)
+            role: rolsubmited
+        }, () => this.finishAction())
     }
 
-    roleUser = () => {
-        this.setState({
-            role: 'user'
-        })
-        console.log(`Este es el rol:`, this.state)
-    }
 
-    componentDidMount = () => {
-        this.state.role === 'admin' ? this.roleAdmin() : this.roleUser()
-    }
+
+    // componentDidMount = () => {
+    //     this.state.role === 'admin' ? this.roleAdmin() : this.roleUser()
+    // }
 
     compon
     render() {
@@ -81,7 +77,7 @@ class PreSignup extends Component {
                                 <Card.Img variant="top" src="holder.js/100px180" />
                                 <Card.Body>
                                     <Card.Text>Dietistas, nutricionistas, centros dietéticos</Card.Text>
-                                    <Button onClick={() => (this.roleAdmin(), this.finishAction())} variant="light" type="submit"><Link to="/signup">Register as Nutricionist</Link></Button>
+                                    <Button onClick={() => this.submitRole("admin")} variant="light" type="submit"><Link to="/signup">Register as Nutricionist</Link></Button>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -92,7 +88,7 @@ class PreSignup extends Component {
                                 <Card.Img variant="top" src="holder.js/100px180" />
                                 <Card.Body>
                                     <Card.Text>Usuarios </Card.Text>
-                                    <Button onClick={() => (this.roleUser(), this.finishAction())} variant="light" type="submit"><Link to="/signup">Register as User</Link></Button>
+                                    <Button onClick={() => this.submitRole("user")} variant="light" type="submit"><Link to="/signup">Register as User</Link></Button>
                                 </Card.Body>
                             </Card>
                         </Col>

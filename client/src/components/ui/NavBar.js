@@ -27,27 +27,27 @@ class Navigation extends Component {
             .catch(err => console.log(err))
     }
 
-    openModal = () => {
-        this.setState({
-            showmodal: true
-        })
-    }
-    closeModal = () => {
-        this.setState({
-            showmodal: false
-        })
-    }
+    // openModal = () => {
+    //     this.setState({
+    //         showmodal: true
+    //     })
+    // }
+    // closeModal = () => {
+    //     this.setState({
+    //         showmodal: false
+    //     })
+    // }
 
     render() {
         const greeting = this.props.loggedInUser ? <>Hola, {this.props.loggedInUser.username}</> : <>Hola, invitad@</>
 
         return (
             <div>
-                <Modal size="lg" show={this.state.showmodal} onHide={this.closeModal} >
+                {/* <Modal size="lg" show={this.state.showmodal} onHide={this.closeModal} >
                     <Modal.Body>
                         <PreSignup closeModal={this.closeModal} />
                     </Modal.Body>
-                </Modal>
+                </Modal> */}
 
                 {this.props.loggedInUser ?
                     (
@@ -72,7 +72,8 @@ class Navigation extends Component {
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="ml-auto">
                                     <Nav.Link as="div"> <Link to="/">Inicio</Link></Nav.Link>
-                                    <Nav.Link as="div"><Link as="a" onClick={this.openModal} > Registro</Link></Nav.Link>
+                                    <Nav.Link as="div"> <Link to="/signup">Registro</Link></Nav.Link>
+                                    {/* <Nav.Link as="div"><Link as="a" onClick={this.openModal} > Registro</Link></Nav.Link> */}
                                     <Nav.Link as="div"> <Link to="/login">Inicio sesión</Link></Nav.Link>
                                     <Nav.Link as="small">{greeting}</Nav.Link>
                                 </Nav>

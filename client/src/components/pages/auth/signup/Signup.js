@@ -10,23 +10,38 @@ class Signup extends Component {
     constructor() {
         super()
         this.state = {
-            username: '',
-            password: '',
-            email: '',
-            role: '',
+            user: {
+                username: '',
+                password: '',
+                email: '',
+
+            },
+            role: false,
         }
         this.services = new AuthServices()
     }
 
     handleChange = e => {
         let { name, value } = e.target
-        this.setState({ [name]: value })
+        console.log(e.target.checked)
+
+        // if (name === 'role') value = checked
+        // console.log(e.target.checked)
+        this.setState({
+            ...this.state,
+            user: {
+                ...this.state.user,
+                [name]: value,
+            },
+            role: e.target.checked
+        })
     }
 
     postUser = () => {
+
         this.services.signup(this.state)
             .then(response => {
-                this.setState({ username: '', password: '' })
+                this.setState({ username: '', password: '', email: '', role: '' })
                 console.log('USUARIO CREADO', response)
             })
             .catch(err => console.log({ err }))
@@ -38,6 +53,7 @@ class Signup extends Component {
     }
 
     render() {
+
         return (
             <Container>
                 <h1>Registro de usuarios</h1>
@@ -45,11 +61,18 @@ class Signup extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group>
                         <Form.Label>Usuario</Form.Label>
-                        <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+                        <Form.Control type="text" name="username" value={this.state.user.username} onChange={this.handleChange} />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Contraseña</Form.Label>
-                        <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                        <Form.Control type="password" name="password" value={this.state.user.password} onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Correo Electrónico</Form.Label>
+                        <Form.Control type="email" name="email" value={this.state.user.email} onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Soy nutricionista" onChange={this.handleChange} />
                     </Form.Group>
 
                     <Button variant="dark" type="submit">Registrarse</Button>

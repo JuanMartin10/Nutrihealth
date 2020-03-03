@@ -12,12 +12,14 @@ const User = require("../models/User.model");
 
 router.post("/signup", (req, res, next) => {
 
-  console.log("------ PAYLOAD EN DESTINO -----", req.body)
+  // console.log("------ PAYLOAD EN DESTINO -----", req.body)
 
-  const username = req.body.username;
-  const password = req.body.password;
-  const email = req.body.email;
-  const role = req.body.role;
+  const username = req.body.user.username;
+  const password = req.body.user.password;
+  const email = req.body.user.email;
+  let role = req.body.role;
+
+  // console.log(req.body)
 
   if (!username || !password) {
     res.status(400).json({ message: "Provide username and password" });
@@ -28,6 +30,17 @@ router.post("/signup", (req, res, next) => {
     res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' });
     return;
   }
+
+  // if (role) {
+  //   role = 'admin'
+  //   res.status(200).json({ message: 'The role is admin' })
+  //   console.log('que pasa')
+  // } else {
+  //   role = 'user'
+  //   res.status(200).json({ message: 'The role is user' })
+
+  // }
+
 
   User.findOne({ username }, (err, foundUser) => {
     if (err) {
@@ -47,7 +60,7 @@ router.post("/signup", (req, res, next) => {
       username: username,
       password: hashPass,
       email: email,
-      role: role,
+      role: role ? "admin" : "user",
     });
 
     aNewUser.save(err => {
