@@ -41,7 +41,15 @@ class Signup extends Component {
 
         this.services.signup(this.state)
             .then(response => {
-                this.setState({ username: '', password: '', email: '', role: '' })
+                // this.setState({ username: '', password: '', email: '', role: '' })
+                this.setState({
+                    user: {
+                        username: '',
+                        password: '',
+                        email: '',
+                    },
+                    role: false
+                })
                 console.log('USUARIO CREADO', response)
             })
             .catch(err => console.log({ err }))
