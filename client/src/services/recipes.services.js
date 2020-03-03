@@ -9,6 +9,6 @@ export default class Services {
         this.api_key = process.env.REACT_APP_RECIPE_API_KEY
     }
 
-    getRecipesWithIngredients = id => this.service.get(`search?app_id=${process.env.REACT_APP_RECIPE_API_ID}&app_key=${process.env.REACT_APP_RECIPE_API_KEY}&q=${id}`).then(response => response.data)
+    getIngredients = id => this.service.get(`search?app_id=${process.env.REACT_APP_RECIPE_API_ID}&app_key=${process.env.REACT_APP_RECIPE_API_KEY}&q=${id}`).then(response => response.data)
 
 }
