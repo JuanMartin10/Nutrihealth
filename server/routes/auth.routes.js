@@ -12,7 +12,7 @@ const User = require("../models/User.model");
 
 router.post("/signup", (req, res, next) => {
 
-  console.log("------ PAYLOAD EN DESTINO -----", req.body)
+  // console.log("------ PAYLOAD EN DESTINO -----", req.body)
 
   const username = req.body.user.username;
   const password = req.body.user.password;
@@ -61,7 +61,7 @@ router.post("/signup", (req, res, next) => {
       // Automatically log in user after sign up
       // .login() here is actually predefined passport method
       req.login(aNewUser, (err) => {
-        console.log(aNewUser)
+        // console.log(aNewUser)
         if (err) {
           res.status(500).json({ message: 'Login after signup went bad.' });
           return;
@@ -117,9 +117,9 @@ router.post('/logout', (req, res, next) => {
 
 router.get('/loggedin', (req, res, next) => {
   // req.isAuthenticated() is defined by passport
-  console.log(req.isAuthenticated())
+  // console.log(req.isAuthenticated())
   if (req.isAuthenticated()) {
-    console.log(req.user)
+    // console.log(req.user)
     res.status(200).json(req.user);
     return;
   }

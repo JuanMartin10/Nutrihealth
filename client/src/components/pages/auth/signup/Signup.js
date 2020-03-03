@@ -52,6 +52,7 @@ class Signup extends Component {
                 }, this.props.setTheUser(response))
                 console.log('USUARIO CREADO', response)
             })
+            .then(alert("Usuario creado"))
             .catch(err => console.log({ err }))
     }
 
