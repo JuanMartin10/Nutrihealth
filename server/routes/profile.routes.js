@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const UserFile = require('../models/UserFile.model')
 const User = require('../models/User.model')
-
+const Recipes = require('../models/Recipes.model')
 
 
 router.post('/', (req, res, next) => {
@@ -22,4 +22,10 @@ router.post('/', (req, res, next) => {
     })
     .catch(err => console.log(err))
 })
-module.exports = router;
+
+router.post('/fav', (req, res, next) => {
+  Recipes.create(req.body)
+    .then((allRecipes => console.log(allRecipes)))
+    .catch(err => console.log(err))
+})
+module.exports = router
