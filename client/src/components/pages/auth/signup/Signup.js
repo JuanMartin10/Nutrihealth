@@ -47,7 +47,7 @@ class Signup extends Component {
                         password: '',
                         email: '',
                     },
-                    role: false
+                    role: false,
 
                 }, this.props.setTheUser(response))
                 console.log('USUARIO CREADO', response)

@@ -5,13 +5,14 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
+  photo: String,
   role: {
     type: String,
     enum: ['admin', 'user'],
     default: 'user'
   },
-  recipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
-  photo: String,
+  recipes: [{ type: Schema.Types.ObjectId, ref: "Recipes" }],
+  userfile: { type: Schema.Types.ObjectId, ref: "UserFile" },
 }, {
   timestamps: {
     createdAt: 'created_at',

@@ -12,11 +12,11 @@ const User = require("../models/User.model");
 
 router.post("/signup", (req, res, next) => {
 
-  // console.log("------ PAYLOAD EN DESTINO -----", req.body)
+  console.log("------ PAYLOAD EN DESTINO -----", req.body)
 
-  const username = req.body.user.username;
-  const password = req.body.user.password;
-  const email = req.body.user.email;
+  const username = req.body.username;
+  const password = req.body.password;
+  const email = req.body.email;
   let role = req.body.role;
 
   // console.log(req.body)
@@ -26,10 +26,10 @@ router.post("/signup", (req, res, next) => {
     return;
   }
 
-  if (password.length < 7) {
-    res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' });
-    return;
-  }
+  // if (password.length < 7) {
+  //   res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' });
+  //   return;
+  // }
 
   User.findOne({ username }, (err, foundUser) => {
     if (err) {
@@ -41,6 +41,7 @@ router.post("/signup", (req, res, next) => {
       res.status(400).json({ message: 'Username taken. Choose another one.' });
       return;
     }
+
 
     const salt = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);

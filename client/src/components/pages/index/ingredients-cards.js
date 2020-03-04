@@ -4,9 +4,8 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
-import { Switch, Route, Redirect } from 'react-router-dom'
 
-import { Link } from 'react-router-dom'
+
 import './ingredients-cards.css';
 
 
