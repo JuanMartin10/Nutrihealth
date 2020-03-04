@@ -54,6 +54,11 @@ class Navigation extends Component {
                         <Navbar className="navigation" bg="light" expand="lg" variant="light">
                             <Navbar.Brand href="/">NutriHealth</Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                            <Nav className="justify-content-center" activeKey="/recipes">
+                                <Nav.Item>
+                                    <Nav.Link href="/recipes">Buscador de recetas</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="ml-auto">
                                     <Nav.Link as="div"> <Link to="/profile">Perfil</Link></Nav.Link>
@@ -68,6 +73,11 @@ class Navigation extends Component {
                         <Navbar className="navigation" bg="light" expand="lg" variant="light">
                             <Navbar.Brand href="/">NutriHealth</Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                            <Nav className="justify-content-center" activeKey="/recipes">
+                                <Nav.Item>
+                                    <Nav.Link href="/recipes">Buscador de recetas</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="ml-auto">
                                     <Nav.Link as="div"> <Link to="/login">Inicio sesión</Link></Nav.Link>

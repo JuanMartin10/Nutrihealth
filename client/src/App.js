@@ -4,7 +4,9 @@ import './App.css';
 
 import { Switch, Route, Redirect } from 'react-router-dom'
 
+import Recipes from './components/pages/index/Recipes'
 import Index from './components/pages/index/Index'
+
 
 import PreSignup from './components/pages/auth/signup/PreSignup'
 import Signup from './components/pages/auth/signup/Signup'
@@ -52,6 +54,8 @@ class App extends Component {
         <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
 
         <Switch>
+          <Route exact path="/recipes" render={() => <Recipes />} />
+
           <Route exact path="/" render={() => <Index />} />
           {/* <Route path="/presignup" render={() => <PreSignup setTheUser={this.setTheUser} />} /> */}
           <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
