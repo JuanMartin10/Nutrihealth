@@ -55,7 +55,6 @@ class Recipes extends Component {
 
 
     render() {
-        console.log(this.state.recipes)
         return (
             <Container>
                 <h1>NutriHealth</h1>

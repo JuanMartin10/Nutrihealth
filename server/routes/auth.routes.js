@@ -18,6 +18,8 @@ router.post("/signup", (req, res, next) => {
 
   // const username = req.body.username;
   // const password = req.body.password;
+  // const email = req.body.email;
+
 
   // CONECTADO CON FRONT
   const username = req.body.user.username;
