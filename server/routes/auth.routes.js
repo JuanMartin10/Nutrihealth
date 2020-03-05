@@ -14,9 +14,15 @@ router.post("/signup", (req, res, next) => {
 
   console.log("------ PAYLOAD EN DESTINO -----", req.body)
 
-  const username = req.body.username;
-  const password = req.body.password;
-  const email = req.body.email;
+  // // PRUEBAS EN POSTMAN BACK
+
+  // const username = req.body.username;
+  // const password = req.body.password;
+
+  // CONECTADO CON FRONT
+  const username = req.body.user.username;
+  const password = req.body.user.password;
+  const email = req.body.user.email;
   let role = req.body.role;
 
 
