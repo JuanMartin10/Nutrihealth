@@ -9,8 +9,6 @@ export default class Services {
         })
     }
 
-    sendRecipes = ([recipes]) => this.service.post('/fav', { recipes }).then(response => response.data)
-    // login = ({ username, password }) => this.service.post('/login', { username, password }).then(response => response.data)
-    // logout = () => this.service.post('/logout').then(response => response.data)
-    // loggedin = () => this.service.get('/loggedin').then(response => response.data)
+    sendRecipes = (recipe) => this.service.post('/fav', recipe).then(response => response.data)
+
 }

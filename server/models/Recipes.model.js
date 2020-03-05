@@ -4,9 +4,9 @@ const Schema = mongoose.Schema
 const RecipesSchema = new Schema({
     label: String,
     image: String,
-    ingredients: [String],
+    ingredients: Array,
     url: String,
-    dietLabels: String,
+    dietLabels: Array,
 }, {
     timestamps: {
         createdAt: 'created_at',

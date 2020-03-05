@@ -25,9 +25,16 @@ router.post('/', (req, res, next) => {
     .catch(err => console.log(err))
 })
 
+
+
 router.post('/fav', (req, res, next) => {
-  Recipes.create(req.body)
-    .then((allRecipes => console.log(allRecipes)))
+
+  const { label, image, ingredients, url, dietLabels } = req.body
+
+  const newRecipe = { label, image, ingredients, url, dietLabels }
+
+  Recipes.create(newRecipe)
+    .then((newRecipe => res.json(newRecipe)))
     .catch(err => console.log(err))
 })
 module.exports = router
