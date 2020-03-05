@@ -18,5 +18,9 @@ app.use(flash());
 app.use('/api/profile', require('./routes/profile.routes'));
 app.use('/api/auth', require('./routes/auth.routes'));
 
+app.use((req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
+
+});
 
 module.exports = app;
