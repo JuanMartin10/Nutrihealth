@@ -29,9 +29,8 @@ class App extends Component {
 
 
   componentDidUpdate = (prevProps, prevState) => console.log("El estado de App se ha actualizado:", this.state)
+
   componentDidMount = () => {
-    // console.log("este es el component did mount....")
-    // console.log(this.state.loggedInUser)
     this.fetchUser()
   }
 
@@ -40,7 +39,6 @@ class App extends Component {
   fetchUser = () => {
     this.services.loggedin()
       .then(theUser => {
-        // console.log(theUser)
         this.setState({ loggedInUser: theUser })
       })
       .catch(() => this.setState({ loggedInUser: false }))
@@ -48,7 +46,6 @@ class App extends Component {
 
 
   render() {
-    // console.log(this.state.loggedInUser)
     return (
       <>
         <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />

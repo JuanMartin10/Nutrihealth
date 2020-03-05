@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const UserFile = require('../models/UserFile.model')
+
 const User = require('../models/User.model')
+const UserFile = require('../models/UserFile.model')
 const Recipes = require('../models/Recipes.model')
 
 
 router.post('/', (req, res, next) => {
+
   const { height, weight, age, activitylevel, goal, intolerances } = req.body
 
   const newUserFile = {

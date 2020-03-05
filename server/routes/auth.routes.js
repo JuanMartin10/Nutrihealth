@@ -19,7 +19,6 @@ router.post("/signup", (req, res, next) => {
   const email = req.body.email;
   let role = req.body.role;
 
-  // console.log(req.body)
 
   if (!username || !password) {
     res.status(400).json({ message: "Provide username and password" });
@@ -62,14 +61,12 @@ router.post("/signup", (req, res, next) => {
       // Automatically log in user after sign up
       // .login() here is actually predefined passport method
       req.login(aNewUser, (err) => {
-        // console.log(aNewUser)
         if (err) {
           res.status(500).json({ message: 'Login after signup went bad.' });
           return;
         }
 
         // Send the user's information to the frontend
-        // We can use also: res.status(200).json(req.user);
         res.status(200).json(aNewUser);
       });
     });
@@ -118,9 +115,7 @@ router.post('/logout', (req, res, next) => {
 
 router.get('/loggedin', (req, res, next) => {
   // req.isAuthenticated() is defined by passport
-  // console.log(req.isAuthenticated())
   if (req.isAuthenticated()) {
-    // console.log(req.user)
     res.status(200).json(req.user);
     return;
   }
