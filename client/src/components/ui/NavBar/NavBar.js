@@ -6,9 +6,9 @@ import Modal from 'react-bootstrap/Modal'
 
 import NavBar from './NavBar.css'
 
-import AuthServices from '../../services/auth.services'
+import AuthServices from '../../../services/auth.services'
 import { Link } from 'react-router-dom'
-import PreSignup from '../pages/auth/signup/PreSignup'
+import PreSignup from '../../pages/auth/signup/PreSignup'
 
 class Navigation extends Component {
     constructor(props) {

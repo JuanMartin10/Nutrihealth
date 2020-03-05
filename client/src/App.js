@@ -4,7 +4,7 @@ import './App.css';
 
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import Recipes from './components/pages/index/Recipes'
+import Recipes from './components/pages/recipes/Recipes'
 import Index from './components/pages/index/Index'
 
 
@@ -12,7 +12,7 @@ import PreSignup from './components/pages/auth/signup/PreSignup'
 import Signup from './components/pages/auth/signup/Signup'
 import Login from './components/pages/auth/login/Login'
 
-import NavBar from './components/ui/NavBar'
+import NavBar from './components/ui/NavBar/NavBar'
 import Profile from './components/pages/profile/Profile'
 
 import AuthServices from './services/auth.services'
