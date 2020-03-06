@@ -5,9 +5,8 @@ import Container from 'react-bootstrap/Container'
 
 import ProfileModal from './Modal/ProfileModal'
 import ProfileForm from './Modal/ProfileForm'
+import SendToBack from '../../../services/sendtoback.services'
 
-
-import RecipeServices from '../../../services/sendrecipes.services'
 
 
 class Profile extends Component {
@@ -23,7 +22,7 @@ class Profile extends Component {
             intolerances: '',
             preferences: '',
         }
-        this.recipeservices = new RecipeServices()
+        this.recipeservices = new SendToBack()
 
     }
 

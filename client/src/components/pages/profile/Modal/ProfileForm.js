@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 
-import RecipeServices from '../../../../services/sendrecipes.services'
+import SendToBack from '../../../../services/sendtoback.services'
 
 
 class ProfileForm extends Component {
@@ -19,7 +19,7 @@ class ProfileForm extends Component {
             intolerances: '',
             preferences: '',
         }
-        this.recipeservices = new RecipeServices()
+        this.recipeservices = new SendToBack()
 
     }
 

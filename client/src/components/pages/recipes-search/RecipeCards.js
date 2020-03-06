@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
-import SendRecipes from '../../../services/sendrecipes.services'
+import SendToBack from '../../../services/sendtoback.services'
 import './RecipeCards.css';
 
 
@@ -12,7 +12,7 @@ class IngredientsCards extends Component {
     constructor(props) {
         super(props)
         this.state = { recipe: this.props.recipe }
-        this.sendservices = new SendRecipes()
+        this.sendservices = new SendToBack()
     }
 
     sendRecipes = () => {

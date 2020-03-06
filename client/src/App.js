@@ -3,7 +3,7 @@ import './App.css';
 
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import Recipes from './components/pages/recipes/Recipes'
+import Recipes from './components/pages/recipes-search/Recipes'
 import Index from './components/pages/index/Index'
 
 
