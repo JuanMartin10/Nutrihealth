@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 
-import RecipeServices from '../../../services/sendrecipes.services'
+import RecipeServices from '../../../../services/sendrecipes.services'
 
 
 class ProfileForm extends Component {
@@ -50,7 +50,7 @@ class ProfileForm extends Component {
         return (
             <>
                 <Container>
-                    <h1>Soy el perfil de: {this.props.loggedInUser.username}</h1>
+                    {/* <h1>Soy el perfil de: {this.props.loggedInUser.username}</h1> */}
                     <Form.Row>
                         <Form onSubmit={this.handleSubmit} >
                             <Form.Group>

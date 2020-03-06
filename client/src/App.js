@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import { Switch, Route, Redirect } from 'react-router-dom'
@@ -11,9 +10,11 @@ import Index from './components/pages/index/Index'
 // import PreSignup from './components/pages/auth/signup/PreSignup'
 import Signup from './components/pages/auth/signup/Signup'
 import Login from './components/pages/auth/login/Login'
+import Profile from './components/pages/profile/Profile'
+
 
 import NavBar from './components/ui/NavBar/NavBar'
-import ProfileForm from './components/pages/profile/ProfileForm'
+import ProfileForm from './components/pages/profile/Modal/ProfileForm'
 
 import AuthServices from './services/auth.services'
 
@@ -28,7 +29,7 @@ class App extends Component {
   }
 
 
-  componentDidUpdate = (prevProps, prevState) => console.log("El estado de App se ha actualizado:", this.state)
+  // componentDidUpdate = (prevProps, prevState) => console.log("El estado de App se ha actualizado:", this.state)
 
   componentDidMount = () => this.fetchUser()
 
@@ -53,7 +54,7 @@ class App extends Component {
           {/* <Route path="/presignup" render={() => <PreSignup setTheUser={this.setTheUser} />} /> */}
           <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
-          <Route path="/profile" render={() => this.state.loggedInUser ? <ProfileForm loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
+          <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
         </Switch>
       </>
     );
