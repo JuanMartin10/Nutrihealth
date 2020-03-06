@@ -22,14 +22,14 @@ class Profile extends Component {
             intolerances: '',
             preferences: '',
         }
-        this.recipeservices = new SendToBack()
+        this.sendtobackservices = new SendToBack()
 
     }
 
     // preferencesUser = (preferences) => {
     //     console.log(preferences)
-    //     console.log(this.recipeservices)
-    //     this.recipeservices.preferencesUser(preferences)
+    //     console.log(this.sendtobackservices)
+    //     this.sendtobackservices.preferencesUser(preferences)
     //         .then(allPreferences => {
     //             console.log(allPreferences)
     //             this.setState({ allPreferences })
@@ -54,7 +54,7 @@ class Profile extends Component {
             <>
                 <Container>
                     <h1>Hola este es tu perfil {this.props.loggedInUser.username}</h1>
-                    <ProfileForm />
+                    <ProfileModal />
                 </Container>
             </>
         )

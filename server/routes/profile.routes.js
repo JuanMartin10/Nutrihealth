@@ -8,7 +8,7 @@ const Recipes = require('../models/Recipes.model')
 
 router.post('/', (req, res, next) => {
 
-  const { height, weight, age, activitylevel, goal, intolerances } = req.body
+  const { height, weight, age, activitylevel, goal, city, intolerances, foodPreferences } = req.body
 
   const newUserFile = {
     height,
@@ -16,7 +16,9 @@ router.post('/', (req, res, next) => {
     age,
     activitylevel,
     goal,
+    city,
     intolerances,
+    foodPreferences,
     user: req.user._id
   }
 

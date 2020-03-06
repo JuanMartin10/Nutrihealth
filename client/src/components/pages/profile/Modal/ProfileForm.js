@@ -17,16 +17,21 @@ class ProfileForm extends Component {
             goal: '',
             city: '',
             intolerances: '',
-            preferences: '',
+            foodPreferences: '',
         }
-        this.recipeservices = new SendToBack()
+        this.sendtobackservices = new SendToBack()
 
+    }
+
+    finishAction = () => {
+        this.props.closeModal()
+        // this.props.refreshList()
     }
 
     preferencesUser = (preferences) => {
         console.log(preferences)
-        console.log(this.recipeservices)
-        this.recipeservices.preferencesUser(preferences)
+        // console.log(this.sendtobackservices)
+        this.sendtobackservices.preferencesUser(preferences)
             .then(allPreferences => {
                 console.log(allPreferences)
                 this.setState({ allPreferences })
@@ -37,6 +42,7 @@ class ProfileForm extends Component {
     handleSubmit = e => {
         e.preventDefault()
         this.preferencesUser(this.state)
+        this.finishAction()
     }
 
     handleChange = e => {
@@ -95,7 +101,7 @@ class ProfileForm extends Component {
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Preferencias alimentarias</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="preferences" placeholder="Tus preferencias alimentarias, separadas por comas" value={this.state.preferences} onChange={this.handleChange} />
+                                <Form.Control as="textarea" rows="3" name="foodPreferences" placeholder="Tus preferencias alimentarias, separadas por comas" value={this.state.foodPreferences} onChange={this.handleChange} />
                             </Form.Group>
 
                             <Button variant="dark" type="submit">Guardar preferencias</Button>

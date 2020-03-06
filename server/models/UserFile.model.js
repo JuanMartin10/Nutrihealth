@@ -9,7 +9,7 @@ const UserFileSchema = new Schema({
   goal: String,
   city: String,
   intolerances: [String],
-  foodpreferences: [String],
+  foodPreferences: [String],
   user: { type: Schema.Types.ObjectId, ref: "User" },
 }, {
   timestamps: {
