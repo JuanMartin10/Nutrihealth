@@ -1,11 +1,13 @@
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
+const flash = require("connect-flash");
 const hbs = require('hbs');
 const logger = require('morgan');
 const path = require('path');
 const express = require('express')
 const cors = require('cors')
+
 
 
 
@@ -21,6 +23,8 @@ module.exports = app => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(cookieParser());
+    app.use(flash());
+
 
     // Express View engine setup
 

@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import Modal from 'react-bootstrap/Modal'
+// import Modal from 'react-bootstrap/Modal'
 
 import NavBar from './NavBar.css'
 
 import AuthServices from '../../../services/auth.services'
 import { Link } from 'react-router-dom'
-import PreSignup from '../../pages/auth/signup/PreSignup'
+// import PreSignup from '../../pages/auth/signup/PreSignup'
 
 class Navigation extends Component {
     constructor(props) {
@@ -16,7 +16,7 @@ class Navigation extends Component {
         this.state = {
             showmodal: false,
         }
-        this.services = new AuthServices()
+        this.authservices = new AuthServices()
     }
 
     logout = () => {
@@ -52,11 +52,11 @@ class Navigation extends Component {
                 {this.props.loggedInUser ?
                     (
                         <Navbar className="navigation" bg="light" expand="lg" variant="light">
-                            <Navbar.Brand href="/">NutriHealth</Navbar.Brand>
+                            <Navbar.Brand as="div"> <Link to="/">NutriHealth</Link></Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Nav className="justify-content-center" activeKey="/recipes">
                                 <Nav.Item>
-                                    <Nav.Link href="/recipes">Buscador de recetas</Nav.Link>
+                                    <Nav.Link as="div"><Link to="/recipes">Buscador de recetas</Link></Nav.Link>
                                 </Nav.Item>
                             </Nav>
                             <Navbar.Collapse id="basic-navbar-nav">
@@ -71,11 +71,11 @@ class Navigation extends Component {
                     :
                     (
                         <Navbar className="navigation" bg="light" expand="lg" variant="light">
-                            <Navbar.Brand href="/">NutriHealth</Navbar.Brand>
+                            <Navbar.Brand as="div"> <Link to="/">NutriHealth</Link></Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Nav className="justify-content-center" activeKey="/recipes">
                                 <Nav.Item>
-                                    <Nav.Link href="/recipes">Buscador de recetas</Nav.Link>
+                                    <Nav.Link as="div"><Link to="/recipes">Buscador de recetas</Link></Nav.Link>
                                 </Nav.Item>
                             </Nav>
                             <Navbar.Collapse id="basic-navbar-nav">

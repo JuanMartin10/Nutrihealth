@@ -8,7 +8,7 @@ import Recipes from './components/pages/recipes/Recipes'
 import Index from './components/pages/index/Index'
 
 
-import PreSignup from './components/pages/auth/signup/PreSignup'
+// import PreSignup from './components/pages/auth/signup/PreSignup'
 import Signup from './components/pages/auth/signup/Signup'
 import Login from './components/pages/auth/login/Login'
 
@@ -24,23 +24,19 @@ class App extends Component {
   constructor() {
     super()
     this.state = { loggedInUser: null }
-    this.services = new AuthServices()
+    this.authservices = new AuthServices()
   }
 
 
   componentDidUpdate = (prevProps, prevState) => console.log("El estado de App se ha actualizado:", this.state)
 
-  componentDidMount = () => {
-    this.fetchUser()
-  }
-
+  componentDidMount = () => this.fetchUser()
 
   setTheUser = userObj => this.setState({ loggedInUser: userObj })
+
   fetchUser = () => {
-    this.services.loggedin()
-      .then(theUser => {
-        this.setState({ loggedInUser: theUser })
-      })
+    this.authservices.loggedin()
+      .then(theUser => this.setState({ loggedInUser: theUser }))
       .catch(() => this.setState({ loggedInUser: false }))
   }
 

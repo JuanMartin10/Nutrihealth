@@ -12,11 +12,11 @@ class IngredientsCards extends Component {
     constructor(props) {
         super(props)
         this.state = { recipe: this.props.recipe }
-        this.services = new SendRecipes()
+        this.sendservices = new SendRecipes()
     }
 
     sendRecipes = () => {
-        this.services.sendRecipes(this.state.recipe)
+        this.sendservices.sendRecipes(this.state.recipe)
             .then(theRecipe => console.log(theRecipe))
             .catch(err => console.log(err))
     }

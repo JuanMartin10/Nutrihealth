@@ -15,11 +15,11 @@ class Recipes extends Component {
             recipes: [],
             showIng: false
         }
-        this.services = new RecipeServices()
+        this.recipeservices = new RecipeServices()
     }
 
     getIngredients = (id) => {
-        this.services.getIngredients(id)
+        this.recipeservices.getIngredients(id)
             .then(allIngredients => {
                 console.log(allIngredients)
                 this.setState({ recipes: allIngredients.hits })
