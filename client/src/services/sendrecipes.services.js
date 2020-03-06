@@ -8,6 +8,7 @@ export default class Services {
             withCredentials: true
         })
     }
+    preferencesUser = (userPref) => this.service.post('/', userPref).then(response => response.data)
 
     sendRecipes = (recipe) => this.service.post('/fav', recipe).then(response => response.data)
 

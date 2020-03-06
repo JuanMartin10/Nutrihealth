@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 
-const Profile = props => {
-    console.log(props)
-    return <h1>Soy el perfil de: {props.loggedInUser.username}</h1>
-}
+import RecipeServices from '../../../services/sendrecipes.services'
 
 
 export default Profile

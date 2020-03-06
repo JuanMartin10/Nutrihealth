@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
 import SendRecipes from '../../../services/sendrecipes.services'
-import './ingredients-cards.css';
+import './RecipeCards.css';
 
 
 class IngredientsCards extends Component {

@@ -54,15 +54,11 @@ router.post('/fav', (req, res, next) => {
           .then(theUser => {
 
             if (theUser.recipes.includes(foundRecipeId)) {
-              console.log("tiene la rece")
               res.status(400).json({ message: "Your already have this recipe as favorites" })
 
             } else {
-              console.log("no la tiene: larece:", foundRecipeId)
-              User.findByIdAndUpdate(req.user._id, { $push: { recipes: foundRecipeId } }, { new: true })
-                .then(userUpdated => {
-                  res.json(userUpdated)
-                })
+              theUser.update({ $push: { recipes: foundRecipeId } }, { new: true })
+                .then(userUpdated => res.json(userUpdated))
                 .catch(err => console.log(err))
             }
           })
@@ -71,11 +67,8 @@ router.post('/fav', (req, res, next) => {
       } else {
 
         Recipes.create(newRecipe)
-          .then(newRecipe => {
-            User.findByIdAndUpdate(req.user._id, { $push: { recipes: newRecipe._id } }, { new: true })
-              .then(userUpdated => res.json(userUpdated))
-              .catch(err => console.log(err))
-          })
+          .then(newRecipe => User.findByIdAndUpdate(req.user._id, { $push: { recipes: newRecipe._id } }, { new: true }))
+          .then(userUpdated => res.json(userUpdated))
           .catch(err => res.json(err))
       }
     })

@@ -13,7 +13,7 @@ import Signup from './components/pages/auth/signup/Signup'
 import Login from './components/pages/auth/login/Login'
 
 import NavBar from './components/ui/NavBar/NavBar'
-import Profile from './components/pages/profile/Profile'
+import ProfileForm from './components/pages/profile/ProfileForm'
 
 import AuthServices from './services/auth.services'
 
@@ -53,7 +53,7 @@ class App extends Component {
           {/* <Route path="/presignup" render={() => <PreSignup setTheUser={this.setTheUser} />} /> */}
           <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
-          <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
+          <Route path="/profile" render={() => this.state.loggedInUser ? <ProfileForm loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
         </Switch>
       </>
     );
