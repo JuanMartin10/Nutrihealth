@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Col from 'react-bootstrap/Col'
+// import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
@@ -35,7 +35,7 @@ class IngredientsCards extends Component {
                                     {this.props.recipe.ingredientLines.map(elm => <li>{elm}</li>)}
                                 </ul>
                             </Card.Text>
-                            <Button as="div" variant="dark"><a target="_blank" href={this.props.recipe.url}>Más detalles</a></Button>
+                            <Button as="div" variant="dark"><a target="_blank" rel="noopener noreferrer" href={this.props.recipe.url}>Más detalles</a></Button>
                             <Button variant="dark" type="submit" onClick={this.sendRecipes}>Guarda en favoritos</Button>
 
                         </Card.Body>

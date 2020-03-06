@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 // import Modal from 'react-bootstrap/Modal'
 
-import NavBar from './NavBar.css'
+import './NavBar.css'
 
 import AuthServices from '../../../services/auth.services'
 import { Link } from 'react-router-dom'

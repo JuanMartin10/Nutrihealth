@@ -24,25 +24,18 @@ class Recipes extends Component {
                 console.log(allIngredients)
                 this.setState({ recipes: allIngredients.hits })
             })
-            // .then(() => {
-            //     console.log(this.state.recipes)
-            //     this.services.sendRecipes(this.state.recipes)
-            // })
             .catch(err => console.log(err))
     }
 
     componentDidUpdate = (prevState) => {
         if (this.state !== prevState) {
-
         }
     }
 
     handleChange = e => {
         let { value } = e.target
-        // console.log(value)
         this.setState(
             { ingredients: value },
-            // console.log(this.state)
         )
     }
 

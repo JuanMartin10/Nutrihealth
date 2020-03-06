@@ -42,36 +42,25 @@ router.post('/fav', (req, res, next) => {
 
   const newRecipe = { label, image, ingredients, url, dietLabels }
 
-  // console.log("-------", newRecipe)
-
-  // console.log(label)
-
 
   Recipes.findOne({ label: label })
     .then(foundRecipe => {
-      console.log('esta es la newRecipe._id:', newRecipe._id)
-      // console.log("esta es la foundrecipe...", foundRecipe)
+
       if (foundRecipe) {
 
-        const larece = foundRecipe._id
-        console.log('esta es el ID de la rece:', larece)
-        console.log('-------------------------------')
+        const foundRecipeId = foundRecipe._id
 
-        // Tiene que buscar en el usuario si ese usuario tiene esa receta, si la tiene, no la crea
         User.findOne({ _id: req.user._id })
-          // .then(User.findOne({ recipes: { $in: larece } }))
           .then(theUser => {
-            console.log(theUser)
-            if (theUser.recipes.includes(larece)) {
+
+            if (theUser.recipes.includes(foundRecipeId)) {
               console.log("tiene la rece")
               res.status(400).json({ message: "Your already have this recipe as favorites" })
 
             } else {
-              console.log("no la tiene: larece:", larece)
-              User.findByIdAndUpdate(req.user._id, { $push: { recipes: larece } }, { new: true })
+              console.log("no la tiene: larece:", foundRecipeId)
+              User.findByIdAndUpdate(req.user._id, { $push: { recipes: foundRecipeId } }, { new: true })
                 .then(userUpdated => {
-                  console.log('este es el usuario updated', userUpdated)
-
                   res.json(userUpdated)
                 })
                 .catch(err => console.log(err))
