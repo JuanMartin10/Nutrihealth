@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 
 import ProfileModal from './Modal/ProfileModal'
-import ProfileForm from './Modal/ProfileForm'
 import SendToBack from '../../../services/sendtoback.services'
 
 

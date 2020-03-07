@@ -23,7 +23,7 @@ class ProfileModal extends Component {
 
                 <Modal show={this.state.showmodal} onHide={this.closeModal}>
                     <Modal.Body>
-                        <h3>Nueva montaña rusa</h3>
+                        <h3>Modifica tus preferencias</h3>
                         <hr></hr>
                         <ProfileForm closeModal={this.closeModal} refreshList={this.getAllCoasters} />
                     </Modal.Body>

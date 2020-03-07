@@ -20,7 +20,7 @@ class Navigation extends Component {
     }
 
     logout = () => {
-        this.services.logout()
+        this.authservices.logout()
             .then(response => {
                 this.props.setTheUser(false)
             })

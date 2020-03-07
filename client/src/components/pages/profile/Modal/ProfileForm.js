@@ -56,7 +56,6 @@ class ProfileForm extends Component {
         return (
             <>
                 <Container>
-                    {/* <h1>Soy el perfil de: {this.props.loggedInUser.username}</h1> */}
                     <Form.Row>
                         <Form onSubmit={this.handleSubmit} >
                             <Form.Group>
@@ -86,7 +85,7 @@ class ProfileForm extends Component {
                                 <Form.Label>Tu objetivo</Form.Label>
                                 <Form.Control as="select" name="goal" value={this.state.goal} onChange={this.handleChange} >
                                     <option></option>
-                                    <option>Bajar peso</option>
+                                    <option>Perder peso</option>
                                     <option>Mantener peso</option>
                                     <option>Ganar peso</option>
                                 </Form.Control>

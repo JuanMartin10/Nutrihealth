@@ -14,6 +14,7 @@ export default class Services {
 
         return this.service.post('/', userPref).then(response => response.data)
     }
+
     sendRecipes = (recipe) => this.service.post('/fav', recipe).then(response => response.data)
 
 }
