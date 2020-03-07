@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 // import Row from 'react-bootstrap/Row'
 // import Form from 'react-bootstrap/Form'
@@ -7,14 +7,34 @@ import Container from 'react-bootstrap/Container'
 // import IngredientsCards from '../recipes/ingredients-cards'
 // import Spinner from 'react-bootstrap/Spinner'
 
-const Index = (props) => {
-    return (
-        <Container>
 
-            <h1>Bienvenidos</h1>
+class Index extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {}
 
-        </Container>
+    }
 
-    )
+    // componentDidMount = () => console.log(this.props.loggedInUser.username)
+
+
+    render() {
+        return (
+            <Container>
+                <>
+                    {this.props.loggedInUser ?
+                        (
+                            <h1>Hola, {this.props.loggedInUser.username}</h1>
+                        )
+                        :
+                        (
+                            <h1>Bienvenidos</h1>
+                        )}
+                </>
+            </Container>
+
+        )
+    }
 }
+
 export default Index  

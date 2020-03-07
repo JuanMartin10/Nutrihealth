@@ -20,8 +20,6 @@ export default class Services {
 
     getPreferencesUser = id => this.service.get(`/preferences/${id}`).then(response => response.data)
 
-
-
     sendRecipes = (recipe) => this.service.post('/fav', recipe).then(response => response.data)
 
 }

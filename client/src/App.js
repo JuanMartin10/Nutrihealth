@@ -50,7 +50,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/recipes" render={() => <Recipes />} />
 
-          <Route exact path="/" render={() => <Index />} />
+          <Route exact path="/" render={() => <Index setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />} />
           {/* <Route path="/presignup" render={() => <PreSignup setTheUser={this.setTheUser} />} /> */}
           <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />

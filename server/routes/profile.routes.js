@@ -28,7 +28,6 @@ router.post('/', (req, res, next) => {
 
         const userPreferencesFoundedId = userPreferencesFounded._id
 
-        // ACTUALIZAS EL USER FILE CON LOS CAMPOS, Y ACTUALIZAS EL CAMPO DE PREFERENCIAS DEL MODELO USUARIO
         UserFile.findByIdAndUpdate(userPreferencesFoundedId, { ...newUserFile }, { new: true })
           .then(x => console.log(x, "actualizado"))
           .catch(err => console.log(err))
@@ -45,9 +44,7 @@ router.post('/', (req, res, next) => {
 
 router.get('/preferences/:id', (req, res, next) => {
   UserFile.findById(req.params.id)
-    // console.log('ha entrado en ruta')
     .then(theUserFilePreferences => {
-      console.log('Esta es la respuesta del back:', theUserFilePreferences)
       res.json(theUserFilePreferences)
     })
     .catch(err => console.log(err))
