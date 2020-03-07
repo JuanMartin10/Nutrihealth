@@ -43,8 +43,15 @@ router.post('/', (req, res, next) => {
     .catch(err => console.log(err))
 })
 
-
-// Busca si los userFiles está ya creado por el USUARIO. Si lo está, ACTUALIZAS los campos, sino lo crea!
+router.get('/preferences/:id', (req, res, next) => {
+  UserFile.findById(req.params.id)
+    // console.log('ha entrado en ruta')
+    .then(theUserFilePreferences => {
+      console.log('Esta es la respuesta del back:', theUserFilePreferences)
+      res.json(theUserFilePreferences)
+    })
+    .catch(err => console.log(err))
+})
 
 
 // UserFile.create(newUserFile)
