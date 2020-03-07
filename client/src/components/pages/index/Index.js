@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
+import IndexNotLogged from './IndexNotLogged'
+import IndexLogged from './IndexLogged'
+
 // import Row from 'react-bootstrap/Row'
 // import Form from 'react-bootstrap/Form'
 // import Button from 'react-bootstrap/Button'
@@ -15,7 +18,7 @@ class Index extends Component {
 
     }
 
-    // componentDidMount = () => console.log(this.props.loggedInUser.username)
+    componentDidMount = () => this.render()
 
 
     render() {
@@ -24,14 +27,14 @@ class Index extends Component {
                 <>
                     {this.props.loggedInUser ?
                         (
-                            <h1>Hola, {this.props.loggedInUser.username}</h1>
+                            <IndexLogged loggedInUser={this.props.loggedInUser} />
                         )
                         :
                         (
-                            <h1>Bienvenidos</h1>
+                            <IndexNotLogged />
                         )}
                 </>
-            </Container>
+            </Container >
 
         )
     }

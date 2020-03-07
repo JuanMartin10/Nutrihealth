@@ -5,8 +5,8 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 
 class ProfileModal extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = { showmodal: false }
     }
 
@@ -25,7 +25,7 @@ class ProfileModal extends Component {
                     <Modal.Body>
                         <h3>Modifica tus preferencias</h3>
                         <hr></hr>
-                        <ProfileForm closeModal={this.closeModal} refreshList={this.getAllCoasters} />
+                        <ProfileForm getPreferencesUser={() => this.props.getPreferencesUser()} userPreferences={this.props.userPreferences} closeModal={this.closeModal} refreshList={this.getAllCoasters} />
                     </Modal.Body>
                 </Modal>
             </Container>

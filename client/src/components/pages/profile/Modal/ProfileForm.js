@@ -10,14 +10,7 @@ class ProfileForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            height: '',
-            weight: '',
-            age: '',
-            activitylevel: '',
-            goal: '',
-            city: '',
-            intolerances: '',
-            foodPreferences: '',
+            userPreferences: this.props.userPreferences || {},
         }
         this.sendtobackservices = new SendToBack()
 
@@ -29,11 +22,9 @@ class ProfileForm extends Component {
     }
 
     preferencesUser = (preferences) => {
-        console.log(preferences)
-        // console.log(this.sendtobackservices)
         this.sendtobackservices.preferencesUser(preferences)
             .then(allPreferences => {
-                console.log(allPreferences)
+                this.props.getPreferencesUser();
                 this.setState({ allPreferences })
             })
             .catch(err => console.log(err))
@@ -41,18 +32,25 @@ class ProfileForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        this.preferencesUser(this.state)
+        this.preferencesUser(this.state.userPreferences);
         this.finishAction()
     }
 
     handleChange = e => {
         let { name, value } = e.target
-        this.setState(
-            { ...this.state, [name]: value }
-        )
+
+        this.setState({
+            userPreferences: {
+                ...this.state.userPreferences,
+                [name]: value
+            }
+        })
     }
 
     render() {
+        const { userPreferences } = this.state;
+        const { height, weight, age, activitylevel, goal, city, intolerances, foodPreferences } = userPreferences;
+
         return (
             <>
                 <Container>
@@ -60,19 +58,19 @@ class ProfileForm extends Component {
                         <Form onSubmit={this.handleSubmit} >
                             <Form.Group>
                                 <Form.Label>Tu altura</Form.Label>
-                                <Form.Control type="number" name="height" placeholder="Escribe tu altura en cm" value={this.state.height} onChange={this.handleChange} />
+                                <Form.Control type="number" name="height" placeholder="Escribe tu altura en cm" value={height} onChange={this.handleChange} />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Tu peso</Form.Label>
-                                <Form.Control type="number" name="weight" placeholder="Tu peso" value={this.state.weight} onChange={this.handleChange} />
+                                <Form.Control type="number" name="weight" placeholder="Tu peso" value={weight} onChange={this.handleChange} />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Tu edad</Form.Label>
-                                <Form.Control type="number" name="age" placeholder="Tu edad" value={this.state.age} onChange={this.handleChange} />
+                                <Form.Control type="number" name="age" placeholder="Tu edad" value={age} onChange={this.handleChange} />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Tu nivel de actividad</Form.Label>
-                                <Form.Control as="select" name="activitylevel" value={this.state.activitylevel} onChange={this.handleChange}>
+                                <Form.Control as="select" name="activitylevel" value={activitylevel} onChange={this.handleChange}>
                                     <option></option>
                                     <option>Deportista profesional</option>
                                     <option>Alto</option>
@@ -83,7 +81,7 @@ class ProfileForm extends Component {
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Tu objetivo</Form.Label>
-                                <Form.Control as="select" name="goal" value={this.state.goal} onChange={this.handleChange} >
+                                <Form.Control as="select" name="goal" value={goal} onChange={this.handleChange} >
                                     <option></option>
                                     <option>Perder peso</option>
                                     <option>Mantener peso</option>
@@ -92,15 +90,15 @@ class ProfileForm extends Component {
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Ciudad</Form.Label>
-                                <Form.Control type="text" name="city" placeholder="Tu ciudad" value={this.state.city} onChange={this.handleChange} />
+                                <Form.Control type="text" name="city" placeholder="Tu ciudad" value={city} onChange={this.handleChange} />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Intolerancias alimenticias</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="intolerances" placeholder="Tus intolerancias alimentarias, separadas por comas" value={this.state.intolerances} onChange={this.handleChange} />
+                                <Form.Control as="textarea" rows="3" name="intolerances" placeholder="Tus intolerancias alimentarias, separadas por comas" value={intolerances} onChange={this.handleChange} />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Preferencias alimentarias</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="foodPreferences" placeholder="Tus preferencias alimentarias, separadas por comas" value={this.state.foodPreferences} onChange={this.handleChange} />
+                                <Form.Control as="textarea" rows="3" name="foodPreferences" placeholder="Tus preferencias alimentarias, separadas por comas" value={foodPreferences} onChange={this.handleChange} />
                             </Form.Group>
 
                             <Button variant="dark" type="submit">Guardar preferencias</Button>

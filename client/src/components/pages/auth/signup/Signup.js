@@ -50,9 +50,10 @@ class Signup extends Component {
                     role: false,
 
                 }, this.props.setTheUser(response))
+                this.props.history.push('/')
                 console.log('USUARIO CREADO', response)
             })
-            .then(alert("Usuario creado"))
+            .then(console.log(this.props))
             .catch(err => console.log({ err }))
     }
 
@@ -65,7 +66,7 @@ class Signup extends Component {
 
         return (
             <Container>
-                <h1>Registro de usuarios</h1>
+                <br></br>
 
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group>

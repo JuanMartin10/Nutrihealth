@@ -1,19 +1,20 @@
-a {
-    color: black;
-    padding: 10px 10px 5px 10px
+.navigation {
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
 
-div a:hover{
-    /* background-color: rgb(195, 197, 196); */
+.navigation a{    
+    padding: 10px 10px 5px 10px
+
+}
+
+.navigation a:hover{
     transition-timing-function: linear;
     transition-duration: 0.2s;
-    /* color:white; */
-    color: grey;
+    color: inherit;
     border-radius: 5px;
 
 }    
-
-.navigation {
-    border-bottom: 1px solid black;
-    margin-bottom: 20px
-}

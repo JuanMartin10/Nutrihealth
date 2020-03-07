@@ -14,7 +14,8 @@ import Profile from './components/pages/profile/Profile'
 
 
 import NavBar from './components/ui/NavBar/NavBar'
-import ProfileForm from './components/pages/profile/Modal/ProfileForm'
+
+import SearchNutri from './components/pages/search-nutri/Search-nutri'
 
 import AuthServices from './services/auth.services'
 
@@ -44,19 +45,23 @@ class App extends Component {
 
   render() {
     return (
-      <>
+      <div className="App">
         <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
 
-        <Switch>
-          <Route exact path="/recipes" render={() => <Recipes />} />
+        <main>
+          <Switch>
+            <Route exact path="/recipes" render={() => <Recipes />} />
 
-          <Route exact path="/" render={() => <Index setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />} />
-          {/* <Route path="/presignup" render={() => <PreSignup setTheUser={this.setTheUser} />} /> */}
-          <Route path="/signup" render={() => <Signup setTheUser={this.setTheUser} />} />
-          <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
-          <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
-        </Switch>
-      </>
+            <Route exact path="/" render={() => <Index setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />} />
+            <Route path="/search-nutri" render={props => <SearchNutri setTheUser={this.setTheUser} {...props} />} />
+
+            {/* <Route path="/presignup" render={() => <PreSignup setTheUser={this.setTheUser} />} /> */}
+            <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} />
+            <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
+            <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
+          </Switch>
+        </main>
+      </div>
     );
   }
 }
