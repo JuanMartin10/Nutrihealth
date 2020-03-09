@@ -11,7 +11,9 @@ export default class Services {
 
 
     getAdminUsers = () => {
-        return this.service.post
+        // console.log(response.data)
+        return this.service.get('/').then(response => response.data)
+
     }
 
     // preferencesUser = (userPref) => {

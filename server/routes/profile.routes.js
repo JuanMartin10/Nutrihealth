@@ -20,7 +20,7 @@ router.post('/', (req, res, next) => {
     foodPreferences,
     user: req.user._id
   }
-  console.log(newUserFile)
+  // console.log(newUserFile)
 
   UserFile.findOne({ user: req.user._id })
     .then(userPreferencesFounded => {
@@ -37,7 +37,7 @@ router.post('/', (req, res, next) => {
               .populate("userfile")
               .then(userUpdated => {
                 // console.log('est es el req.user:', req.user)
-                console.log("este es el user updated.....(lo que devuelve al front)", userUpdated)
+                // console.log("este es el user updated.....(lo que devuelve al front)", userUpdated)
                 res.json(userUpdated)
 
               })
