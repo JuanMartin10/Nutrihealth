@@ -14,13 +14,12 @@ class ProfileForm extends Component {
             userPreferences: {
                 height: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.height : "",
                 weight: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.weight : "",
-                // age: '',
-                // activitylevel: '',
-                // goal: '',
-                // city: '',
-                // intolerances: '',
-                // foodPreferences: '',
-
+                age: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.age : '',
+                activitylevel: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.activitylevel : '',
+                goal: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.goal : '',
+                city: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.city : '',
+                intolerances: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.intolerances : '',
+                foodPreferences: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.foodPreferences : '',
             }
 
         }
@@ -30,15 +29,13 @@ class ProfileForm extends Component {
 
     finishAction = () => {
         this.props.closeModal()
-        // this.props.getPreferencesUser(this.state.userPreferences)
     }
 
     preferencesUser = (preferences) => {
         this.sendtobackservices.preferencesUser(preferences)
             .then(userUpdated => {
-                console.log("este es el user updated....", userUpdated)
+                // console.log("este es el user updated....", userUpdated)
                 this.props.setTheUser(userUpdated);
-                // this.setState({ allPreferences })
             })
             .catch(err => console.log(err))
     }
@@ -61,7 +58,7 @@ class ProfileForm extends Component {
     }
 
     render() {
-        // const { userPreferences } = this.state;
+
         const { height, weight, age, activitylevel, goal, city, intolerances, foodPreferences } = this.state.userPreferences;
 
 
@@ -78,7 +75,7 @@ class ProfileForm extends Component {
                                 <Form.Label>Tu peso</Form.Label>
                                 <Form.Control type="number" name="weight" placeholder="Tu peso" value={weight} onChange={this.handleChange} required />
                             </Form.Group>
-                            {/* <Form.Group>
+                            <Form.Group>
                                 <Form.Label>Tu edad</Form.Label>
                                 <Form.Control type="number" name="age" placeholder="Tu edad" value={age} onChange={this.handleChange} required />
                             </Form.Group>
@@ -113,7 +110,7 @@ class ProfileForm extends Component {
                             <Form.Group>
                                 <Form.Label>Preferencias alimentarias</Form.Label>
                                 <Form.Control as="textarea" rows="3" name="foodPreferences" placeholder="Tus preferencias alimentarias, separadas por comas" value={foodPreferences} onChange={this.handleChange} required />
-                            </Form.Group> */}
+                            </Form.Group>
 
                             <Button variant="dark" type="submit">Guardar preferencias</Button>
                             <br></br>

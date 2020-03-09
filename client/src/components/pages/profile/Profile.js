@@ -8,49 +8,20 @@ import Col from 'react-bootstrap/Col'
 
 
 import ProfileModal from './Modal/ProfileModal'
-import SendToBack from '../../../services/sendtoback.services'
+// import SendToBack from '../../../services/sendtoback.services'
 
 
 
 class Profile extends Component {
     constructor(props) {
         super(props)
-        // this.state = {
-        //     userPreferences: {
-        //         height: '',
-        //         weight: '',
-        //         age: '',
-        //         activitylevel: '',
-        //         goal: '',
-        //         city: '',
-        //         intolerances: '',
-        //         foodPreferences: '',
-        //     },
-        //     // showPreferences: null
-        // }
-        // this.sendtobackservices = new SendToBack()
-
     }
 
-
-    // componentDidMount = () => this.getPreferencesUser()
-
-    // getPreferencesUser = () => {
-    //     this.sendtobackservices.getPreferencesUser(this.props.loggedInUser.userfile)
-    //         .then(userPreferences => {
-    //             console.log(userPreferences)
-    //             // userPreferences.intolerances = userPreferences.intolerances.join().replace(',', ", ");
-    //             // userPreferences.foodPreferences = userPreferences.foodPreferences.join().replace(',', ", ");
-    //             userPreferences ? this.setState({ userPreferences, showPreferences: true }) : this.setState({ userPreferences, showPreferences: false })
-    //         })
-    //         .catch(err => console.log(err))
-    // }
 
     render() {
 
 
         console.log(this.props.loggedInUser)
-        // this.props.loggedInUser.userfile ? const { height, weight, age, activitylevel, goal, city, intolerances, foodPreferences } = this.props.loggedInUser.userfile : null
 
         return (
             <>
@@ -61,26 +32,6 @@ class Profile extends Component {
                         </Col>
                         <Col md={5}>
                             <div>
-                                {/* {this.state.showPreferences ? (
-                                    <div>
-                                        <p> Esta es tu altura: {height} cm</p>
-                                        <p> Este es tu peso: {weight} kg</p>
-                                        <p> Este es tu edad: {age} años</p>
-                                        <p> Este es tu nivel de actividad: {activitylevel}</p>
-                                        <p> Tu objetivo: {goal}</p>
-                                        <p> Vives en: {city}</p>
-                                        <p> Intolerancias: {intolerances}</p>
-                                        <p> Preferencias alimenticias: {foodPreferences}</p>
-                                        <ProfileModal getPreferencesUser={this.getPreferencesUser} userPreferences={this.state.userPreferences} showPreferences={this.state.showPreferences} />
-                                    </div>
-                                )
-                                    :
-                                    <div>
-                                        <p>Tus preferencias van aqui, introducelas</p>
-                                        <ProfileModal getPreferencesUser={this.getPreferencesUser} userPreferences={this.state.userPreferences} showPreferences={this.state.showPreferences} />
-                                    </div>
-                                } */}
-
                                 {this.props.loggedInUser.userfile ? (
                                     <div>
                                         <p> Esta es tu altura: {this.props.loggedInUser.userfile.height} cm</p>

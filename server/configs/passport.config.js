@@ -8,6 +8,7 @@ passport.serializeUser((loggedInUser, cb) => cb(null, loggedInUser._id))
 passport.deserializeUser((userIdFromSession, cb) => {
 
     User.findById(userIdFromSession)
+        //se popula userfile aqui para que caiga a toda la app
         .populate("userfile")
         .then(userDocument => {
             cb(null, userDocument);
@@ -23,7 +24,6 @@ passport.deserializeUser((userIdFromSession, cb) => {
 passport.use(new LocalStrategy((username, password, next) => {
 
     User.findOne({ username })
-        // .populate("userfile")
         .then(foundUser => {
 
             if (!foundUser) {
