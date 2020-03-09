@@ -44,6 +44,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.loggedInUser)
     return (
       <div className="App">
         <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
@@ -58,7 +59,7 @@ class App extends Component {
             {/* <Route path="/presignup" render={() => <PreSignup setTheUser={this.setTheUser} />} /> */}
             <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} />
             <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
-            <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
+            <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} /> : <Redirect to="/" />} />
           </Switch>
         </main>
       </div>

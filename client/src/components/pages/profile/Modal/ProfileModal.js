@@ -15,17 +15,28 @@ class ProfileModal extends Component {
 
 
     render() {
+        console.log(this.props.loggedInUser.userfile)
         return (
             <Container>
-                <Button variant="dark" onClick={this.openModal}>
-                    Modifica tus preferencias
-                </Button>
+                {this.props.loggedInUser.userfile ?
+                    (
+                        <Button variant="dark" onClick={this.openModal}>
+                            Modifica tus preferencias
+                        </Button>
+                    )
+                    :
+                    (
+                        <Button variant="dark" onClick={this.openModal}>
+                            Introduce tus preferencias
+                        </Button>
+                    )
+                }
 
                 <Modal show={this.state.showmodal} onHide={this.closeModal}>
                     <Modal.Body>
                         <h3>Modifica tus preferencias</h3>
                         <hr></hr>
-                        <ProfileForm getPreferencesUser={() => this.props.getPreferencesUser()} userPreferences={this.props.userPreferences} closeModal={this.closeModal} />
+                        <ProfileForm loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} closeModal={this.closeModal} />
                     </Modal.Body>
                 </Modal>
             </Container>

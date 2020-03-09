@@ -5,7 +5,7 @@ const UserFileSchema = new Schema({
   height: Number,
   weight: Number,
   age: Number,
-  activityLevel: String,
+  activitylevel: String,
   goal: String,
   city: String,
   intolerances: [String],

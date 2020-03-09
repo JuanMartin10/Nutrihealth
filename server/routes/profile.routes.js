@@ -24,18 +24,26 @@ router.post('/', (req, res, next) => {
 
   UserFile.findOne({ user: req.user._id })
     .then(userPreferencesFounded => {
+      console.log(userPreferencesFounded)
       if (userPreferencesFounded) {
 
         const userPreferencesFoundedId = userPreferencesFounded._id
 
         UserFile.findByIdAndUpdate(userPreferencesFoundedId, { ...newUserFile }, { new: true })
-          .then(x => console.log(x, "actualizado"))
+          .populate("userfile")
+          .then(userUpdated => {
+            console.log("este es el user updated.....", userUpdated)
+            res.json(userUpdated)
+          })
           .catch(err => console.log(err))
 
       } else {
         UserFile.create(newUserFile)
-          .then(theUserFile => User.findByIdAndUpdate(req.user._id, { userfile: theUserFile._id }, { new: true }))
-          .then(userUpdated => res.json(userUpdated))
+          .then(theUserFile => User.findByIdAndUpdate(req.user._id, { userfile: theUserFile._id }, { new: true }).populate("userfile"))
+          .then(userUpdated => {
+
+            res.json(userUpdated)
+          })
           .catch(err => console.log(err))
       }
     })

@@ -10,13 +10,14 @@ export default class Services {
     }
 
 
+
+
     preferencesUser = (userPref) => {
-        userPref.intolerances = userPref.intolerances.split(",")
-        userPref.foodPreferences = userPref.foodPreferences.split(",")
+        // userPref.intolerances = userPref.intolerances.split(",")
+        // userPref.foodPreferences = userPref.foodPreferences.split(",")
 
         return this.service.post('/', userPref).then(response => response.data)
     }
-
 
     getPreferencesUser = id => this.service.get(`/preferences/${id}`).then(response => response.data)
 
