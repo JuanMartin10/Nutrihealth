@@ -25,7 +25,7 @@ class ProfileModal extends Component {
                     <Modal.Body>
                         <h3>Modifica tus preferencias</h3>
                         <hr></hr>
-                        <ProfileForm getPreferencesUser={() => this.props.getPreferencesUser()} userPreferences={this.props.userPreferences} closeModal={this.closeModal} refreshList={this.getAllCoasters} />
+                        <ProfileForm getPreferencesUser={() => this.props.getPreferencesUser()} userPreferences={this.props.userPreferences} closeModal={this.closeModal} />
                     </Modal.Body>
                 </Modal>
             </Container>

@@ -37,8 +37,8 @@ class Profile extends Component {
     getPreferencesUser = () => {
         this.sendtobackservices.getPreferencesUser(this.props.loggedInUser.userfile)
             .then(userPreferences => {
-                userPreferences.intolerances = userPreferences.intolerances.join().replace(',', ", ");
-                userPreferences.foodPreferences = userPreferences.foodPreferences.join().replace(',', ", ");
+                // userPreferences.intolerances = userPreferences.intolerances.join().replace(',', ", ");
+                // userPreferences.foodPreferences = userPreferences.foodPreferences.join().replace(',', ", ");
                 this.setState({ userPreferences })
             })
             .catch(err => console.log(err))

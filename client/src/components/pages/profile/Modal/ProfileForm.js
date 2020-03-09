@@ -18,7 +18,7 @@ class ProfileForm extends Component {
 
     finishAction = () => {
         this.props.closeModal()
-        // this.props.refreshList()
+
     }
 
     preferencesUser = (preferences) => {
@@ -58,19 +58,19 @@ class ProfileForm extends Component {
                         <Form onSubmit={this.handleSubmit} >
                             <Form.Group>
                                 <Form.Label>Tu altura</Form.Label>
-                                <Form.Control type="number" name="height" placeholder="Escribe tu altura en cm" value={height} onChange={this.handleChange} />
+                                <Form.Control type="number" name="height" placeholder="Escribe tu altura en cm" value={height} onChange={this.handleChange} required />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Tu peso</Form.Label>
-                                <Form.Control type="number" name="weight" placeholder="Tu peso" value={weight} onChange={this.handleChange} />
+                                <Form.Control type="number" name="weight" placeholder="Tu peso" value={weight} onChange={this.handleChange} required />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Tu edad</Form.Label>
-                                <Form.Control type="number" name="age" placeholder="Tu edad" value={age} onChange={this.handleChange} />
+                                <Form.Control type="number" name="age" placeholder="Tu edad" value={age} onChange={this.handleChange} required />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Tu nivel de actividad</Form.Label>
-                                <Form.Control as="select" name="activitylevel" value={activitylevel} onChange={this.handleChange}>
+                                <Form.Control as="select" name="activitylevel" value={activitylevel} onChange={this.handleChange} required>
                                     <option></option>
                                     <option>Deportista profesional</option>
                                     <option>Alto</option>
@@ -81,7 +81,7 @@ class ProfileForm extends Component {
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Tu objetivo</Form.Label>
-                                <Form.Control as="select" name="goal" value={goal} onChange={this.handleChange} >
+                                <Form.Control as="select" name="goal" value={goal} onChange={this.handleChange} required>
                                     <option></option>
                                     <option>Perder peso</option>
                                     <option>Mantener peso</option>
@@ -90,15 +90,15 @@ class ProfileForm extends Component {
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Ciudad</Form.Label>
-                                <Form.Control type="text" name="city" placeholder="Tu ciudad" value={city} onChange={this.handleChange} />
+                                <Form.Control type="text" name="city" placeholder="Tu ciudad" value={city} onChange={this.handleChange} required />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Intolerancias alimenticias</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="intolerances" placeholder="Tus intolerancias alimentarias, separadas por comas" value={intolerances} onChange={this.handleChange} />
+                                <Form.Control as="textarea" rows="3" name="intolerances" placeholder="Tus intolerancias alimentarias, separadas por comas" value={intolerances} onChange={this.handleChange} required />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Preferencias alimentarias</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="foodPreferences" placeholder="Tus preferencias alimentarias, separadas por comas" value={foodPreferences} onChange={this.handleChange} />
+                                <Form.Control as="textarea" rows="3" name="foodPreferences" placeholder="Tus preferencias alimentarias, separadas por comas" value={foodPreferences} onChange={this.handleChange} required />
                             </Form.Group>
 
                             <Button variant="dark" type="submit">Guardar preferencias</Button>
