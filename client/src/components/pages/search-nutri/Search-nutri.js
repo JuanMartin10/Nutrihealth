@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
 
+import AdminServices from '../../../services/admin.services'
 // import Row from 'react-bootstrap/Row'
 // import Form from 'react-bootstrap/Form'
 // import Button from 'react-bootstrap/Button'
@@ -14,7 +15,9 @@ class SearchNutri extends Component {
         super()
         this.state = {
 
+
         }
+        this.adminservices = new AdminServices()
 
     }
 
@@ -22,6 +25,7 @@ class SearchNutri extends Component {
         return (
             <Container>
                 Estos son los nutricionistas asociados:
+
             </Container >
         )
     }

@@ -32,11 +32,16 @@ router.post('/', (req, res, next) => {
         UserFile.findByIdAndUpdate(userPreferencesFoundedId, { ...newUserFile }, { new: true })
           // userPreferencesFounded.update({ ...newUserFile }, { new: true })
           // .populate("userfile")
-          .then(userUpdate => {
+          .then(userFileUpdate => {
+            User.findById(req.user._id)
+              .populate("userfile")
+              .then(userUpdated => {
+                // console.log('est es el req.user:', req.user)
+                console.log("este es el user updated.....(lo que devuelve al front)", userUpdated)
+                res.json(userUpdated)
+
+              })
             // console.log(userUpdate)
-            console.log('est es el req.user:', req.user)
-            console.log("este es el file updated.....(lo que devuelve al front)", userUpdate)
-            res.json(userUpdate)
           })
           .catch(err => console.log(err))
 

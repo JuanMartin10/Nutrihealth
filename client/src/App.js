@@ -34,7 +34,10 @@ class App extends Component {
 
   componentDidMount = () => this.fetchUser()
 
-  setTheUser = userObj => this.setState({ loggedInUser: userObj })
+  setTheUser = userObj => {
+    console.log(userObj)
+    this.setState({ loggedInUser: userObj })
+  }
 
   fetchUser = () => {
     this.authservices.loggedin()

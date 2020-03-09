@@ -12,6 +12,7 @@ class IndexNotLogged extends Component {
     constructor(props) {
         super(props)
     }
+
     render() {
 
         return (
