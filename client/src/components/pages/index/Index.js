@@ -27,11 +27,11 @@ class Index extends Component {
                 <>
                     {this.props.loggedInUser ?
                         (
-                            <IndexLogged loggedInUser={this.props.loggedInUser} />
+                            <IndexLogged loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
                         )
                         :
                         (
-                            <IndexNotLogged />
+                            <IndexNotLogged loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
                         )}
                 </>
             </Container >

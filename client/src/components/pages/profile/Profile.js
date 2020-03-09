@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col'
 
 
 import ProfileModal from './Modal/ProfileModal'
-// import SendToBack from '../../../services/sendtoback.services'
+import SendToBack from '../../../services/sendtoback.services'
 
 
 
@@ -19,7 +19,6 @@ class Profile extends Component {
 
 
     render() {
-
 
         console.log(this.props.loggedInUser)
 

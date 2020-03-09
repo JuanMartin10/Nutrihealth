@@ -7,14 +7,13 @@ import Form from 'react-bootstrap/Form'
 import AuthServices from '../../../../services/auth.services'
 
 class Signup extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             user: {
                 username: '',
                 password: '',
                 email: '',
-
             },
             role: false,
         }

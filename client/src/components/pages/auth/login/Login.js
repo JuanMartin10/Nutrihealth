@@ -8,8 +8,8 @@ import AuthServices from '../../../../services/auth.services'
 
 class Login extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             username: '',
             password: ''

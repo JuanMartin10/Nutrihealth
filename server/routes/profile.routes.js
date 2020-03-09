@@ -7,9 +7,8 @@ const Recipes = require('../models/Recipes.model')
 
 
 router.post('/', (req, res, next) => {
-
+  console.log("este es el req bodyyyy", req.body)
   const { height, weight, age, activitylevel, goal, city, intolerances, foodPreferences } = req.body
-
   const newUserFile = {
     height,
     weight,
@@ -21,19 +20,23 @@ router.post('/', (req, res, next) => {
     foodPreferences,
     user: req.user._id
   }
+  console.log(newUserFile)
 
   UserFile.findOne({ user: req.user._id })
     .then(userPreferencesFounded => {
-      console.log(userPreferencesFounded)
+      console.log('Esto es el userPreferencsFounded', userPreferencesFounded)
       if (userPreferencesFounded) {
 
         const userPreferencesFoundedId = userPreferencesFounded._id
 
         UserFile.findByIdAndUpdate(userPreferencesFoundedId, { ...newUserFile }, { new: true })
-          .populate("userfile")
-          .then(userUpdated => {
-            console.log("este es el user updated.....", userUpdated)
-            res.json(userUpdated)
+          // userPreferencesFounded.update({ ...newUserFile }, { new: true })
+          // .populate("userfile")
+          .then(userUpdate => {
+            // console.log(userUpdate)
+            console.log('est es el req.user:', req.user)
+            console.log("este es el file updated.....(lo que devuelve al front)", userUpdate)
+            res.json(userUpdate)
           })
           .catch(err => console.log(err))
 
@@ -50,13 +53,7 @@ router.post('/', (req, res, next) => {
     .catch(err => console.log(err))
 })
 
-router.get('/preferences/:id', (req, res, next) => {
-  UserFile.findById(req.params.id)
-    .then(theUserFilePreferences => {
-      res.json(theUserFilePreferences)
-    })
-    .catch(err => console.log(err))
-})
+
 
 
 // UserFile.create(newUserFile)
@@ -73,7 +70,7 @@ router.get('/preferences/:id', (req, res, next) => {
 //     .catch(err => console.log(err))
 // })
 
-
+// ================================== RECETAS ==================================
 router.post('/fav', (req, res, next) => {
 
   const { label, image, ingredients, url, dietLabels } = req.body

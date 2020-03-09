@@ -13,13 +13,10 @@ export default class Services {
 
 
     preferencesUser = (userPref) => {
-        userPref.intolerances = userPref.intolerances.split(",")
-        userPref.foodPreferences = userPref.foodPreferences.split(",")
-
+        console.log('este es el userPref de sendtoback.servicesuserPref', userPref)
         return this.service.post('/', userPref).then(response => response.data)
     }
 
-    getPreferencesUser = id => this.service.get(`/preferences/${id}`).then(response => response.data)
 
     sendRecipes = (recipe) => this.service.post('/fav', recipe).then(response => response.data)
 

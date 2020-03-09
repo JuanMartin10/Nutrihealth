@@ -8,8 +8,8 @@ const UserFileSchema = new Schema({
   activitylevel: String,
   goal: String,
   city: String,
-  intolerances: [String],
-  foodPreferences: [String],
+  intolerances: String,
+  foodPreferences: String,
   user: { type: Schema.Types.ObjectId, ref: "User" },
 }, {
   timestamps: {

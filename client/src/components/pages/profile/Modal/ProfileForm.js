@@ -34,7 +34,8 @@ class ProfileForm extends Component {
     preferencesUser = (preferences) => {
         this.sendtobackservices.preferencesUser(preferences)
             .then(userUpdated => {
-                // console.log("este es el user updated....", userUpdated)
+                console.log("este es el user updated....", userUpdated)
+                debugger;
                 this.props.setTheUser(userUpdated);
             })
             .catch(err => console.log(err))
