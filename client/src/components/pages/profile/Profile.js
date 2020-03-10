@@ -25,37 +25,49 @@ class Profile extends Component {
         return (
             <>
                 <Container>
-                    <Row>
-                        <Col md={7}>
-                            <h1>Hola, {this.props.loggedInUser.username}</h1>
+                    {this.props.loggedInUser.role === 'user' ? (
+                        <Row>
+                            <Col md={7}>
+                                <h1>Hola, {this.props.loggedInUser.username}</h1>
+                            </Col>
+                            <Col md={5}>
+                                <div>
+                                    {this.props.loggedInUser.userfile ? (
+                                        <div>
+                                            <p> Esta es tu altura: {this.props.loggedInUser.userfile.height} cm</p>
+                                            <p> Este es tu peso: {this.props.loggedInUser.userfile.weight} kg</p>
+                                            <p> Este es tu edad: {this.props.loggedInUser.userfile.age} años</p>
+                                            <p> Este es tu nivel de actividad: {this.props.loggedInUser.userfile.activitylevel}</p>
+                                            <p> Tu objetivo: {this.props.loggedInUser.userfile.goal}</p>
+                                            <p> Vives en: {this.props.loggedInUser.userfile.city}</p>
+                                            <p> Intolerancias: {this.props.loggedInUser.userfile.intolerances}</p>
+                                            <p> Preferencias alimenticias: {this.props.loggedInUser.userfile.foodPreferences}</p>
+                                            <ProfileModal loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
+                                        </div>
+                                    )
+                                        :
+                                        <div>
+                                            <p>Tus preferencias van aqui, introducelas</p>
+                                            <ProfileModal loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
+                                        </div>
+                                    }
+
+                                </div>
+
+
+                            </Col>
+                        </Row>
+                    )
+                        :
+                        <Row>
+                            <Col md={7}>
+                                hola administrador!
                         </Col>
-                        <Col md={5}>
-                            <div>
-                                {this.props.loggedInUser.userfile ? (
-                                    <div>
-                                        <p> Esta es tu altura: {this.props.loggedInUser.userfile.height} cm</p>
-                                        <p> Este es tu peso: {this.props.loggedInUser.userfile.weight} kg</p>
-                                        <p> Este es tu edad: {this.props.loggedInUser.userfile.age} años</p>
-                                        <p> Este es tu nivel de actividad: {this.props.loggedInUser.userfile.activitylevel}</p>
-                                        <p> Tu objetivo: {this.props.loggedInUser.userfile.goal}</p>
-                                        <p> Vives en: {this.props.loggedInUser.userfile.city}</p>
-                                        <p> Intolerancias: {this.props.loggedInUser.userfile.intolerances}</p>
-                                        <p> Preferencias alimenticias: {this.props.loggedInUser.userfile.foodPreferences}</p>
-                                        <ProfileModal loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
-                                    </div>
-                                )
-                                    :
-                                    <div>
-                                        <p>Tus preferencias van aqui, introducelas</p>
-                                        <ProfileModal loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
-                                    </div>
-                                }
-
-                            </div>
-
-
+                            <Col md={5}>
+                                Estos son tus clientes:
                         </Col>
-                    </Row>
+                        </Row>
+                    }
                 </Container>
             </>
         )

@@ -4,18 +4,47 @@ const router = express.Router();
 const User = require('../models/User.model')
 const UserFile = require('../models/UserFile.model')
 const Recipes = require('../models/Recipes.model')
+const Notifications = require('../models/Notifications.model')
 
 
 router.get('/', (req, res, next) => {
-    console.log("eso es el get de admin")
     User.find({ role: "admin" })
         .then(allAdmin => {
-            console.log(allAdmin)
             res.json(allAdmin)
         })
         .catch(err => console.log(err))
 }
 )
 
+
+router.post('/choose', (req, res, next) => {
+    console.log(req.body)
+    const notificationObject = { sender: req.user._id, reciever: req.body.admin, text: `Se ha recibido la notificación de ${req.user.username}` }
+
+    Notifications.findOne({ $and: [{ sender: req.user._id }, { reciever: req.body.admin }] })
+        .then(notificationFounded => {
+            if (notificationFounded) {
+                res.json({ message: `Ya has enviado una notificacion` })
+
+            } else {
+                Notifications.create(notificationObject)
+                    .then(notif => User.findByIdAndUpdate(req.body.admin, { $push: { notifications: notif._id } }, { new: true }))
+                    .then(() => res.json({ message: `Se ha recibido tu notificación` }))
+                    .catch(err => console.log(err))
+            }
+        })
+        .catch(err => console.log(err))
+
+
+
+    // Notifications.create(notificationObject)
+    //     .then(theNotification => User.findByIdAndUpdate(req.body.admin), { $push: { notifications: theNotification._id } }, { new: true })
+    //     .then(() => res.json({ message: `Se ha recibido tu notificación` }))
+    //     .catch(err => console.log(err))
+    // User.find(req.user)
+
+    //User find del nutricionista que elige.
+    // User.find()
+})
 
 module.exports = router

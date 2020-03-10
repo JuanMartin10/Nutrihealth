@@ -13,6 +13,10 @@ const userSchema = new Schema({
   },
   recipes: [{ type: Schema.Types.ObjectId, ref: "Recipes" }],
   userfile: { type: Schema.Types.ObjectId, ref: "UserFile" },
+
+  pacients: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  notifications: [{ type: Schema.Types.ObjectId, ref: 'Notifications' }]
+
 }, {
   timestamps: {
     createdAt: 'created_at',

@@ -11,12 +11,13 @@ import NutriCards from './NutriCards'
 
 
 class SearchNutri extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             adminuser: '',
         }
         this.adminservices = new AdminServices()
+        console.log(this.adminservices)
 
     }
 
@@ -28,11 +29,28 @@ class SearchNutri extends Component {
         this.adminservices.getAdminUsers()
             .then(allAdminUsers => this.setState({ adminuser: allAdminUsers }))
             .catch(err => console.log(err))
+    }
 
+    // onClick(isAdmin){
+    //     this.chooseAdmin(isAdmin)
+    // }
+
+    chooseAdmin = (admin) => {
+        // console.log(this)
+        // console.log(this.adminservices)
+        //Envia al back la información del usuario logeado y el usuario elegido
+        // console.log(admin)
+        this.adminservices.chooseAdmin(admin)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => console.log(err))
+        
+        
     }
 
     render() {
-        console.log(this.state && this.state)
+
         return (
 
             < Container >
@@ -42,7 +60,7 @@ class SearchNutri extends Component {
                     {this.state.adminuser.length ?
                     (
                         <Row>
-                            {this.state.adminuser.map(elm => <NutriCards key={elm._id} {...elm} />)}
+                            {this.state.adminuser.map(elm => <NutriCards key={elm._id} {...elm} chooseAdmin={this.chooseAdmin}/>)}
                         </Row>
                             )
                   :
