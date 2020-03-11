@@ -13,12 +13,13 @@ export default class Services {
     getAdminUsers = () => {
         // console.log(response.data)
         return this.service.get('/').then(response => response.data)
-
     }
 
     chooseAdmin = admin => {
         return this.service.post('/choose', { admin }).then(response => response.data)
     }
 
-
+    getNotifications = () => {
+        return this.service.get('/notifications').then(response => response.data)
+    }
 }

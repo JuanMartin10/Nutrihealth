@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col'
 
 import ProfileModal from './Modal/ProfileModal'
 import SendToBack from '../../../services/sendtoback.services'
-
+import Notifications from './Notifications/Notifications'
 
 
 class Profile extends Component {
@@ -62,7 +62,8 @@ class Profile extends Component {
                         <Row>
                             <Col md={7}>
                                 hola administrador!
-                        </Col>
+                                <Notifications loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
+                            </Col>
                             <Col md={5}>
                                 Estos son tus clientes:
                         </Col>

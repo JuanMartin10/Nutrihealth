@@ -18,14 +18,13 @@ router.get('/', (req, res, next) => {
 
 
 router.post('/choose', (req, res, next) => {
-    console.log(req.body)
+    // console.log(req.body)
     const notificationObject = { sender: req.user._id, reciever: req.body.admin, text: `Se ha recibido la notificación de ${req.user.username}` }
 
     Notifications.findOne({ $and: [{ sender: req.user._id }, { reciever: req.body.admin }] })
         .then(notificationFounded => {
             if (notificationFounded) {
                 res.json({ message: `Ya has enviado una notificacion` })
-
             } else {
                 Notifications.create(notificationObject)
                     .then(notif => User.findByIdAndUpdate(req.body.admin, { $push: { notifications: notif._id } }, { new: true }))
@@ -35,17 +34,14 @@ router.post('/choose', (req, res, next) => {
             }
         })
         .catch(err => console.log(err))
+})
 
-
-
-    // Notifications.create(notificationObject)
-    //     .then(theNotification => User.findByIdAndUpdate(req.body.admin), { $push: { notifications: theNotification._id } }, { new: true })
-    //     .then(() => res.json({ message: `Se ha recibido tu notificación` }))
-    //     .catch(err => console.log(err))
-    // User.find(req.user)
-
-    //User find del nutricionista que elige.
-    // User.find()
+router.get('/notifications', (req, res, next) => {
+    console.log(req.user)
+    Notifications.find({ reciever: req.user._id })
+        // .then(theNotificationsUser => console.log(theNotificationsUser))
+        .then(theNotificationsUser => res.json(theNotificationsUser))
+        .catch(err => console.log(err))
 })
 
 module.exports = router

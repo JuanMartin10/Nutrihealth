@@ -36,10 +36,7 @@ class SearchNutri extends Component {
     // }
 
     chooseAdmin = (admin) => {
-        // console.log(this)
-        // console.log(this.adminservices)
         //Envia al back la información del usuario logeado y el usuario elegido
-        // console.log(admin)
         this.adminservices.chooseAdmin(admin)
         .then(res => {
             console.log(res)
