@@ -66,9 +66,9 @@ class Profile extends Component {
                             </Col>
                             <Col md={5}>
                                 Estos son tus clientes:
+{/* <Clients /> */}
 
-
-                        </Col>
+                            </Col>
                         </Row>
                     }
                 </Container>

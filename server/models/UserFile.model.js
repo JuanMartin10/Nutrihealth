@@ -11,7 +11,6 @@ const UserFileSchema = new Schema({
   intolerances: String,
   foodPreferences: String,
   user: { type: Schema.Types.ObjectId, ref: "User" },
-
   nutricionist: { type: Schema.Types.ObjectId, ref: "User" }
 
 }, {
