@@ -15,7 +15,7 @@ class Notifications extends Component {
         }
         this.adminservices = new AdminServices()
     }
-    
+
     componentDidMount() {
         this.getNotifications()
     }
@@ -24,40 +24,37 @@ class Notifications extends Component {
     getNotifications() {
         // recibir del back las notificaciones que estén creadas en el usuario
         this.adminservices.getNotifications()
-        .then(allNotifications => {
-            console.log(allNotifications)
-            this.setState({notifications: allNotifications})})
-        .catch(err => console.log(err))
+            .then(allNotifications => {
+                console.log(allNotifications)
+                this.setState({ notifications: allNotifications })
+            })
+            .catch(err => console.log(err))
     }
 
 
     confirmNutri = (notifId) => {
         console.log(notifId)
         this.adminservices.confirmNutri(notifId)
-        .then(() => this.getNotifications())
-        .catch(err => console.log(err))
+            .then(() => this.getNotifications())
+            .catch(err => console.log(err))
     }
 
     render() {
         // console.log(this.props.loggedInUser.userfile)
         return (
             <Container>
-
-                <h1>Hola {this.props.loggedInUser.username}</h1>
-
-                    Estos son los notificaciones que tienes:
-    
-
+                <>
                     {this.state.notifications.length ?
-                    (
-                        <Row>
-                            {this.state.notifications.map(elm => <NotificationsCard key={elm._id} {...elm} confirmNutri={this.confirmNutri}/>)}
-                        </Row>
-                            )
-                  :
-                <p>CARGANDO Notificaciones</p>
-                }
-
+                        (
+                            <Row>
+                                <p> Estos son los notificaciones que tienes:</p>
+                                {this.state.notifications.map(elm => <NotificationsCard key={elm._id} {...elm} confirmNutri={this.confirmNutri} />)}
+                            </Row>
+                        )
+                        :
+                        <p>No tienes ninguna notificación por ahora</p>
+                    }
+                </>
             </Container>
         )
     }

@@ -86,7 +86,21 @@ router.post('/confirm', (req, res, next) => {
 })
 
 
-
+router.get('/clients', (req, res, next) => {
+    User.findById(req.user._id)
+        // .populate('pacients')
+        .populate({
+            path: 'pacients',
+            populate: {
+                path: 'userfile'
+            }
+        })
+        .then(theNotificationsUser => {
+            console.log('thenotificationuser:', theNotificationsUser)
+            res.json(theNotificationsUser)
+        })
+        .catch(err => console.log(err))
+})
 
 
 // Eliminar la notificación para que no aparezca en el front.

@@ -10,6 +10,8 @@ import Col from 'react-bootstrap/Col'
 import ProfileModal from './Modal/ProfileModal'
 import SendToBack from '../../../services/sendtoback.services'
 import Notifications from './Notifications/Notifications'
+import Clients from './Clients/Clients'
+
 
 
 class Profile extends Component {
@@ -59,17 +61,19 @@ class Profile extends Component {
                         </Row>
                     )
                         :
-                        <Row>
-                            <Col md={7}>
-                                hola administrador!
-                                <Notifications loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
-                            </Col>
-                            <Col md={5}>
-                                Estos son tus clientes:
-{/* <Clients /> */}
+                        <><h1>Hola {this.props.loggedInUser.username}</h1>
+                            <Row>
 
-                            </Col>
-                        </Row>
+                                <Col md={6}>
+                                    <Notifications loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
+                                </Col>
+                                <Col md={6}>
+
+                                    <Clients loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
+
+                                </Col>
+                            </Row>
+                        </>
                     }
                 </Container>
             </>

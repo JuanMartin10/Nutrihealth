@@ -5,7 +5,10 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 
 import AdminServices from '../../../../services/admin.services'
-import NotificationsCard from './NotificationsCard'
+import ClientsCards from './ClientsCards'
+import Spinner from 'react-bootstrap/Spinner'
+
+
 
 class Clients extends Component {
     constructor(props) {
@@ -15,50 +18,52 @@ class Clients extends Component {
         }
         this.adminservices = new AdminServices()
     }
-    
+
     componentDidMount() {
-        this.getNotifications()
+        this.getClients()
     }
 
 
-    getNotifications() {
+    getClients() {
         // recibir del back las notificaciones que estén creadas en el usuario
-        this.adminservices.getNotifications()
-        .then(allNotifications => {
-            console.log(allNotifications)
-            this.setState({notifications: allNotifications})})
-        .catch(err => console.log(err))
+        this.adminservices.getClients()
+            .then(allClients => {
+                console.log(allClients.pacients)
+                this.setState({ clients: allClients.pacients })
+            })
+            .catch(err => console.log(err))
     }
 
 
-    confirmNutri = (notifId) => {
-        console.log(notifId)
-        this.adminservices.confirmNutri(notifId)
-        // segun venga la info del back:
-            // eliminar del state de notifications 
-            // incorporar en clients
-        .then(x => console.log(x))
-        .catch(err => console.log(err))
-    }
+    // confirmNutri = (notifId) => {
+    //     console.log(notifId)
+    //     this.adminservices.confirmNutri(notifId)
+    //         // segun venga la info del back:
+    //         // eliminar del state de notifications 
+    //         // incorporar en clients
+    //         .then(x => console.log(x))
+    //         .catch(err => console.log(err))
+    // }
 
     render() {
         // console.log(this.props.loggedInUser.userfile)
         return (
             <Container>
 
-                <h1>Hola {this.props.loggedInUser.username}</h1>
+                {/* <h1>Hola {this.props.loggedInUser.username}</h1> */}
 
-                    Estos son los notificaciones que tienes:
-    
+                Estos son los clientes que tienes:
 
-                    {this.state.notifications.length ?
+
+                    {this.state.clients.length ?
                     (
                         <Row>
-                            {this.state.notifications.map(elm => <ClientsCards key={elm._id} {...elm} confirmNutri={this.confirmNutri}/>)}
+                            {this.state.clients.map(elm => <ClientsCards key={elm._id} {...elm} getClients={this.getClients} />)}
                         </Row>
-                            )
-                  :
-                <p>CARGANDO Notificaciones</p>
+                    )
+                    :
+                    <Spinner animation="border" />
+
                 }
 
             </Container>

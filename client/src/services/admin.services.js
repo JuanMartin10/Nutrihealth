@@ -27,4 +27,7 @@ export default class Services {
         console.log('Estos son los servicios:', notifId)
         return this.service.post('/confirm', { notifId }).then(response => response.data)
     }
+    getClients = () => {
+        return this.service.get('/clients').then(response => response.data)
+    }
 }
