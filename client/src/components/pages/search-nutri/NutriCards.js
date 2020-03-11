@@ -1,6 +1,5 @@
 import React from 'react'
 
-// import './CoasterCard.css'
 
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'

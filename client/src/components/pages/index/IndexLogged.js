@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
-import { Link } from 'react-router-dom'
+
 
 
 class IndexLogged extends Component {
@@ -13,12 +13,10 @@ class IndexLogged extends Component {
     }
 
     onClick() {
-        console.log(this.props.history)
         this.props.history.push('/search-nutri')
     }
 
     render() {
-        console.log(this.props.history)
         return (
             <Container>
                 <h1>Hola, {this.props.loggedInUser.username}</h1>
@@ -28,9 +26,7 @@ class IndexLogged extends Component {
 
                         <Button as="div" variant="dark" size="sm" onClick={() => this.onClick()}>
                             Encuentra tu nutricionista
-                    </Button>
-                        {/* <Link to="/search-nutri">Encuentra tu nutricionista</Link> */}
-
+                        </Button>
 
                     </Col>
                     <Col>
