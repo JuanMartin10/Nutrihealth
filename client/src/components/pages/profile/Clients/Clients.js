@@ -7,11 +7,10 @@ import Row from 'react-bootstrap/Row'
 import AdminServices from '../../../../services/admin.services'
 import NotificationsCard from './NotificationsCard'
 
-class Notifications extends Component {
+class Clients extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            notifications: '',
             clients: '',
         }
         this.adminservices = new AdminServices()
@@ -55,7 +54,7 @@ class Notifications extends Component {
                     {this.state.notifications.length ?
                     (
                         <Row>
-                            {this.state.notifications.map(elm => <NotificationsCard key={elm._id} {...elm} confirmNutri={this.confirmNutri}/>)}
+                            {this.state.notifications.map(elm => <ClientsCards key={elm._id} {...elm} confirmNutri={this.confirmNutri}/>)}
                         </Row>
                             )
                   :
@@ -67,4 +66,4 @@ class Notifications extends Component {
     }
 }
 
-export default Notifications
+export default Clients

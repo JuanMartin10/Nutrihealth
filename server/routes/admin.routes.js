@@ -18,7 +18,6 @@ router.get('/', (req, res, next) => {
 
 
 router.post('/choose', (req, res, next) => {
-    // console.log(req.body)
     const notificationObject = { sender: req.user._id, reciever: req.body.admin, text: `Se ha recibido la notificación de ${req.user.username}` }
 
     Notifications.findOne({ $and: [{ sender: req.user._id }, { reciever: req.body.admin }] })
@@ -36,23 +35,33 @@ router.post('/choose', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
+
 router.get('/notifications', (req, res, next) => {
-    // console.log(req.user)
     Notifications.find({ reciever: req.user._id })
-        // popular el nombre del usuario y q no aparezca el ID:
+
         .populate("sender")
-        // .then(theNotificationsUser => console.log(theNotificationsUser))
         .then(theNotificationsUser => {
-            // console.log(theNotificationsUser)
             res.json(theNotificationsUser)
         })
         .catch(err => console.log(err))
 })
 
+
 router.post('/confirm', (req, res, next) => {
-    console.log(req.body.notifId)
+    console.log(req.body)
     Notifications.findByIdAndUpdate(req.body.notifId, { accepted: true }, { new: true })
-        .then(() => res.json({ message: `Se ha aceptado tu notificación` }))
+        // .then(userUpdated => console.log(userUpdated.reciever, userUpdated.sender, userUpdated._id, `este es el userupdated:`, userUpdated))
+        .then(userUpdated => {
+            console.log(userUpdated)
+            return User.findByIdAndUpdate(userUpdated.reciever, { $push: { pacients: userUpdated.sender }, $pull: { notifications: userUpdated._id } }, { new: true })
+        })
+        .then(x => console.log(x))
+        // si es falso no se muestra en el
+        // Esto tiene que mandar al front de usuario que se ha confirmado la notificacion
+
+
+        // .then(() => res.json({ message: `Se ha aceptado tu notificación` }))
+        // Userfile.nutricionist pushearle el ID del nutricionista
         .catch(err => console.log(err))
 })
 
