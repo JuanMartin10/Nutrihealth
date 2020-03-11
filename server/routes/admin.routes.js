@@ -29,6 +29,7 @@ router.post('/choose', (req, res, next) => {
             } else {
                 Notifications.create(notificationObject)
                     .then(notif => User.findByIdAndUpdate(req.body.admin, { $push: { notifications: notif._id } }, { new: true }))
+                    .then(user1 => User.findByIdAndUpdate(req.user._id, { $push: { notifications: user1.notifications[0] } }, { new: true }))
                     .then(() => res.json({ message: `Se ha recibido tu notificación` }))
                     .catch(err => console.log(err))
             }
