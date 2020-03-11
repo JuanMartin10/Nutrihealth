@@ -8,21 +8,25 @@ import Card from 'react-bootstrap/Card'
 
 import { Link } from 'react-router-dom'
 
-const NotificationsCard = ({ sender, _id, text }) => {
+const NotificationsCard = (props) => {
+    console.log(props)
+    console.log(props._id)
+
     return (
-        <Col md={4}>
+        <Col md={4} >
             <Card className="card-rusa">
                 {/* <Card.Img variant="top" src={imageUrl} /> */}
                 <Card.Body>
-                    <Card.Title>{sender}</Card.Title>
-                    <Card.Title>{_id}</Card.Title>
-                    <Card.Title>{text}</Card.Title>
+                    <Card.Title>{props.sender.username}</Card.Title>
+                    <Card.Title>{props.text}</Card.Title>
+
+
 
 
                     <hr></hr>
-                    {/* <Button as="div" variant="dark" size="sm" onClick={() => chooseAdmin(_id)}>
+                    <Button as="div" variant="dark" size="sm" onClick={() => props.confirmNutri(props._id)}>
                         yo
-                    </Button> */}
+                    </Button>
                 </Card.Body>
             </Card>
         </Col >

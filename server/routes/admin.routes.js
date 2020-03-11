@@ -37,10 +37,22 @@ router.post('/choose', (req, res, next) => {
 })
 
 router.get('/notifications', (req, res, next) => {
-    console.log(req.user)
+    // console.log(req.user)
     Notifications.find({ reciever: req.user._id })
+        // popular el nombre del usuario y q no aparezca el ID:
+        .populate("sender")
         // .then(theNotificationsUser => console.log(theNotificationsUser))
-        .then(theNotificationsUser => res.json(theNotificationsUser))
+        .then(theNotificationsUser => {
+            // console.log(theNotificationsUser)
+            res.json(theNotificationsUser)
+        })
+        .catch(err => console.log(err))
+})
+
+router.post('/confirm', (req, res, next) => {
+    console.log(req.body.notifId)
+    Notifications.findByIdAndUpdate(req.body.notifId, { accepted: true }, { new: true })
+        .then(() => res.json({ message: `Se ha aceptado tu notificación` }))
         .catch(err => console.log(err))
 })
 

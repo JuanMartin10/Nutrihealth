@@ -15,6 +15,7 @@ class Notifications extends Component {
         }
         this.adminservices = new AdminServices()
     }
+    
     componentDidMount() {
         this.getNotifications()
     }
@@ -30,6 +31,13 @@ class Notifications extends Component {
     }
 
 
+    confirmNutri = (notifId) => {
+        console.log(notifId)
+        this.adminservices.confirmNutri(notifId)
+        .then(x => console.log(x))
+        .catch(err => console.log(err))
+    }
+
     render() {
         // console.log(this.props.loggedInUser.userfile)
         return (
@@ -43,7 +51,7 @@ class Notifications extends Component {
                     {this.state.notifications.length ?
                     (
                         <Row>
-                            {this.state.notifications.map(elm => <NotificationsCard key={elm._id} {...elm} />)}
+                            {this.state.notifications.map(elm => <NotificationsCard key={elm._id} {...elm} confirmNutri={this.confirmNutri}/>)}
                         </Row>
                             )
                   :

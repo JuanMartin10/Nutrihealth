@@ -22,4 +22,9 @@ export default class Services {
     getNotifications = () => {
         return this.service.get('/notifications').then(response => response.data)
     }
+
+    confirmNutri = notifId => {
+        console.log('Estos son los servicios:', notifId)
+        return this.service.post('/confirm', { notifId }).then(response => response.data)
+    }
 }
