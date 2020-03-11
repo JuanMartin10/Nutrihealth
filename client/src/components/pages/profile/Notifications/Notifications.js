@@ -12,7 +12,6 @@ class Notifications extends Component {
         super(props)
         this.state = {
             notifications: '',
-            clients: '',
         }
         this.adminservices = new AdminServices()
     }
@@ -35,10 +34,7 @@ class Notifications extends Component {
     confirmNutri = (notifId) => {
         console.log(notifId)
         this.adminservices.confirmNutri(notifId)
-        // segun venga la info del back:
-            // eliminar del state de notifications 
-            // incorporar en clients
-        .then(x => console.log(x))
+        .then(() => this.getNotifications())
         .catch(err => console.log(err))
     }
 

@@ -53,18 +53,34 @@ router.post('/confirm', (req, res, next) => {
     //findbyidanddelete
     Notifications.findByIdAndUpdate(req.body.notifId, { accepted: true }, { new: true })
         .then(userUpdated => {
-            // userfindbyandupdate
-            //userfilefindbyidandupdate
-            //promise all
             console.log(`Este es el userUpdated:` + userUpdated)
             // ahora al admin se le pushea el paciente y se le quita de notificaciones
             const promise1 = User.findByIdAndUpdate(userUpdated.reciever, { $push: { pacients: userUpdated.sender }, $pull: { notifications: userUpdated._id } }, { new: true })
-            const promise3 = User.findByIdAndUpdate(userUpdated.sender, { $pull: { notifications: userUpdated._id } }, { new: true })
-            const promise2 = UserFile.findByIdAndUpdate(userUpdated.sender, { $push: { nutricionist: userUpdated.reciever } }, { new: true })
-            return Promise.all([promise1, promise2])
+            const promise2 = User.findByIdAndUpdate(userUpdated.sender, { $pull: { notifications: userUpdated._id } }, { new: true })
+            const promise3 = UserFile.find({ user: userUpdated.sender })
+                .then(userFileFound => {
+                    console.log('este es el userFileFound:', userFileFound)
+                    console.log('este es el userFileFound[0]._id:', userFileFound[0]._id)
+
+                    console.log('este es el userUpdated.reciever:', userUpdated.reciever)
+
+                    return UserFile.findByIdAndUpdate(userFileFound[0]._id, { nutricionist: userUpdated.reciever }, { new: true })
+                })
+
+            return Promise.all([promise1, promise2, promise3])
         })
 
-        .then(() => Notifications.findByIdAndDelete(req.body.notifId))
+
+        .then(array => {
+            console.log('retorno de promesa', array)
+            console.log(req.body.notifId)
+
+            if (array.length) {
+                return Notifications.findByIdAndRemove(req.body.notifId)
+            }
+        })
+        .then(() => res.json({ message: `Se ha aceptado tu notificación` }))
+
         .catch(err => console.log(err))
 
 })
