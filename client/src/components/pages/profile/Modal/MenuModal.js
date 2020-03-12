@@ -28,7 +28,7 @@ class MenuModal extends Component {
                     <Modal.Body>
                         <h3>Introduce su menú</h3>
                         <hr></hr>
-                        <MenuForm loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} closeModal={this.closeModal} />
+                        <MenuForm loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} clientId={this.props.clientId} closeModal={this.closeModal} />
                     </Modal.Body>
                 </Modal>
             </Container>

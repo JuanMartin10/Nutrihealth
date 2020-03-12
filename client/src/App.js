@@ -62,7 +62,7 @@ class App extends Component {
             <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
             <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} /> : <Redirect to="/" />} />
 
-            <Route path="/my-menu" render={props => <Menu loggedInUser={this.loggedInUser} setTheUser={this.setTheUser} {...props} />} />
+            <Route path="/my-menu" render={props => this.state.loggedInUser ? <Menu loggedInUser={this.state.loggedInUser} setTheUser={this.state.setTheUser} {...props} /> : <Redirect to='/' />} />
           </Switch>
         </main>
       </div>

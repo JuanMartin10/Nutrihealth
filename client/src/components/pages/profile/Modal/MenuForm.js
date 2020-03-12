@@ -29,15 +29,19 @@ class ProfileForm extends Component {
     finishAction = () => this.props.closeModal()
 
 
-    sendMenu = (menu) => {
-        this.sendtobackservices.preferencesUser(menu)
-            .then(userUpdated => this.props.setTheUser(userUpdated))
+    sendMenu = (deilyMeals, clientId) => {
+        this.sendtobackservices.sendMenu(deilyMeals, clientId)
+            .then(res => {
+                console.log(res)
+            })
+            // .then(userUpdated => this.props.setTheUser(userUpdated))
+            .then(() => alert('Se ha enviado tu menú'))
             .catch(err => console.log(err))
     }
 
     handleSubmit = e => {
         e.preventDefault()
-        this.preferencesUser(this.state.userPreferences);
+        this.sendMenu(this.state.deilyMenu, this.props.clientId);
         this.finishAction()
     }
 
@@ -45,8 +49,8 @@ class ProfileForm extends Component {
         let { name, value } = e.target
 
         this.setState({
-            userPreferences: {
-                ...this.state.userPreferences,
+            deilyMenu: {
+                ...this.state.deilyMenu,
                 [name]: value
             }
         })
@@ -55,7 +59,7 @@ class ProfileForm extends Component {
     render() {
 
         const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = this.state.deilyMenu;
-
+        console.log(this.props.clientId)
 
         return (
             <>

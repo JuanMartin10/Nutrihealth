@@ -108,20 +108,43 @@ router.post('/fav', (req, res, next) => {
 
 router.post('/menu', (req, res, next) => {
 
+  console.log(req.body)
 
-
-  const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body;
+  const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body.deilyMeals;
 
 
   const newMenu = {
-    monday,
-    tuesday,
-    wednesday,
-    thursday,
-    friday,
-    saturday,
-    sunday
+    menu: {
+      monday,
+      tuesday,
+      wednesday,
+      thursday,
+      friday,
+      saturday,
+      sunday
+    },
+    user: req.body.clientId,
+    nutricionist: req.user._id
+
   }
+
+  Menu.create(newMenu)
+    .then(newMenu => User.findByIdAndUpdate(req.body.clientId, { menu: newMenu._id }, { new: true }).populate('menu'))
+    .then(theNewMenu => {
+      console.log(theNewMenu)
+      res.json(theNewMenu)
+    })
+    .catch(err => console.log(err))
+
 })
 
+router.get('/my-menu', (req, res, next) => {
+
+  console.log(req.user)
+  User.findById(req.user._id).populate('menu')
+    .then(res => res.json(res))
+    .catch(err => console.log(err))
+  //   .then()
+}
+)
 module.exports = router

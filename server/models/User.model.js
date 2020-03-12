@@ -15,7 +15,8 @@ const userSchema = new Schema({
   userfile: { type: Schema.Types.ObjectId, ref: "UserFile" },
 
   pacients: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  notifications: [{ type: Schema.Types.ObjectId, ref: 'Notifications' }]
+  notifications: [{ type: Schema.Types.ObjectId, ref: 'Notifications' }],
+  menu: { type: Schema.Types.ObjectId, ref: 'Menu' }
 
 }, {
   timestamps: {

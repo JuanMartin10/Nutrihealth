@@ -26,7 +26,6 @@ class Profile extends Component {
                         <Row>
                             <Col md={7}>
                                 <h1>Hola, {this.props.loggedInUser.username}</h1>
-                                <p>Este es tu menú semanal</p>
                             </Col>
                             <Col md={5}>
                                 <div>

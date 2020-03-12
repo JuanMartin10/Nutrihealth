@@ -21,6 +21,7 @@ export default class Services {
 
     confirmNutri = notifId => this.service.post('/confirm', { notifId }).then(response => response.data)
 
+
     getClients = () => this.service.get('/clients').then(response => response.data)
 
 }
