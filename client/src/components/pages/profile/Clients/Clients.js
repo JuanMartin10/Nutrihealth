@@ -52,10 +52,10 @@ class Clients extends Component {
 
                 {/* <h1>Hola {this.props.loggedInUser.username}</h1> */}
 
-                Estos son los clientes que tienes:
+                <p> Estos son los clientes que tienes:</p>
 
 
-                    {this.state.clients.length ?
+                {this.state.clients.length ?
                     (
                         <Row>
                             {this.state.clients.map(elm => <ClientsCards key={elm._id} {...elm} getClients={this.getClients} />)}

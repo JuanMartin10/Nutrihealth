@@ -49,8 +49,8 @@ class Signup extends Component {
                     role: false,
 
                 }, this.props.setTheUser(response))
-                this.props.history.push('/')
-                console.log('USUARIO CREADO', response)
+                this.props.history.push('/profile')
+                // console.log('USUARIO CREADO', response)
             })
             .then(console.log(this.props))
             .catch(err => console.log({ err }))

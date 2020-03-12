@@ -53,12 +53,12 @@ class Navigation extends Component {
                     (
                         <Navbar className="navigation" bg="light" expand="lg" variant="light">
                             <Navbar.Brand as="div"> <Link to="/">NutriHealth</Link></Navbar.Brand>
-                            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                            <Nav className="justify-content-center" activeKey="/recipes">
+                            <Nav activeKey="/recipes">
                                 <Nav.Item>
                                     <Nav.Link as="div"><Link to="/recipes">Buscador de recetas</Link></Nav.Link>
                                 </Nav.Item>
                             </Nav>
+                            <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="ml-auto">
                                     <Nav.Link as="div"> <Link to="/profile">Perfil</Link></Nav.Link>

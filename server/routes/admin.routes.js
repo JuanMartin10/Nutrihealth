@@ -47,22 +47,19 @@ router.get('/notifications', (req, res, next) => {
 
 
 router.post('/confirm', (req, res, next) => {
-    console.log(req.body)
-    // Busca en las notificaciones en la que el admin da al boton y cambias el accepted a true.
 
-    //findbyidanddelete
     Notifications.findByIdAndUpdate(req.body.notifId, { accepted: true }, { new: true })
         .then(userUpdated => {
-            console.log(`Este es el userUpdated:` + userUpdated)
+            // console.log(`Este es el userUpdated:` + userUpdated)
             // ahora al admin se le pushea el paciente y se le quita de notificaciones
             const promise1 = User.findByIdAndUpdate(userUpdated.reciever, { $push: { pacients: userUpdated.sender }, $pull: { notifications: userUpdated._id } }, { new: true })
             const promise2 = User.findByIdAndUpdate(userUpdated.sender, { $pull: { notifications: userUpdated._id } }, { new: true })
             const promise3 = UserFile.find({ user: userUpdated.sender })
                 .then(userFileFound => {
-                    console.log('este es el userFileFound:', userFileFound)
-                    console.log('este es el userFileFound[0]._id:', userFileFound[0]._id)
+                    // console.log('este es el userFileFound:', userFileFound)
+                    // console.log('este es el userFileFound[0]._id:', userFileFound[0]._id)
 
-                    console.log('este es el userUpdated.reciever:', userUpdated.reciever)
+                    // console.log('este es el userUpdated.reciever:', userUpdated.reciever)
 
                     return UserFile.findByIdAndUpdate(userFileFound[0]._id, { nutricionist: userUpdated.reciever }, { new: true })
                 })
@@ -72,8 +69,8 @@ router.post('/confirm', (req, res, next) => {
 
 
         .then(array => {
-            console.log('retorno de promesa', array)
-            console.log(req.body.notifId)
+            // console.log('retorno de promesa', array)
+            // console.log(req.body.notifId)
 
             if (array.length) {
                 return Notifications.findByIdAndRemove(req.body.notifId)
@@ -88,7 +85,6 @@ router.post('/confirm', (req, res, next) => {
 
 router.get('/clients', (req, res, next) => {
     User.findById(req.user._id)
-        // .populate('pacients')
         .populate({
             path: 'pacients',
             populate: {
@@ -96,26 +92,11 @@ router.get('/clients', (req, res, next) => {
             }
         })
         .then(theNotificationsUser => {
-            console.log('thenotificationuser:', theNotificationsUser)
+            // console.log('thenotificationuser:', theNotificationsUser)
             res.json(theNotificationsUser)
         })
         .catch(err => console.log(err))
 })
-
-
-// Eliminar la notificación para que no aparezca en el front.
-
-
-
-
-// Esto tiene que mandar al front de usuario que se ha confirmado la notificacion
-// .then(() => res.json({ message: `Se ha aceptado tu notificación` }))
-
-
-// Userfile.nutricionist pushearle el ID del nutricionista
-
-
-
 
 
 module.exports = router

@@ -22,10 +22,8 @@ class Notifications extends Component {
 
 
     getNotifications() {
-        // recibir del back las notificaciones que estén creadas en el usuario
         this.adminservices.getNotifications()
             .then(allNotifications => {
-                console.log(allNotifications)
                 this.setState({ notifications: allNotifications })
             })
             .catch(err => console.log(err))
@@ -33,7 +31,7 @@ class Notifications extends Component {
 
 
     confirmNutri = (notifId) => {
-        console.log(notifId)
+        // console.log(notifId)
         this.adminservices.confirmNutri(notifId)
             .then(() => this.getNotifications())
             .catch(err => console.log(err))

@@ -24,7 +24,6 @@ export default class Services {
     }
 
     confirmNutri = notifId => {
-        console.log('Estos son los servicios:', notifId)
         return this.service.post('/confirm', { notifId }).then(response => response.data)
     }
     getClients = () => {

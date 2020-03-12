@@ -17,21 +17,35 @@ class IndexLogged extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <Container>
                 <h1>Hola, {this.props.loggedInUser.username}</h1>
                 <Row>
-                    <Col>
-                        <p>Puedes acceder a los nutricionistas disponibles desde aquí:</p>
 
-                        <Button as="div" variant="dark" size="sm" onClick={() => this.onClick()}>
-                            Encuentra tu nutricionista
+                    {this.props.loggedInUser.role == 'user' ?
+                        (
+                            <>
+                                <Col>
+                                    <p>Puedes acceder a los nutricionistas disponibles desde aquí:</p>
+
+                                    <Button as="div" variant="dark" size="sm" onClick={() => this.onClick()}>
+                                        Encuentra tu nutricionista
                         </Button>
 
-                    </Col>
-                    <Col>
-                        <p>Puedes ver tu menú semanal desde aquí</p>
-                    </Col>
+                                </Col>
+                                <Col>
+                                    <p>Puedes ver tu menú semanal desde aquí</p>
+                                </Col>
+                            </>
+                        )
+                        :
+                        (
+                            <p>Revisa en tu perfil si tienes nuevas notificaciones</p>
+                        )
+                    }
+
+
                 </Row>
             </Container>
         )

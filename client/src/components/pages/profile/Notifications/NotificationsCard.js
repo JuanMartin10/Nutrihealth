@@ -8,8 +8,7 @@ import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 
 const NotificationsCard = (props) => {
-    console.log(props)
-    console.log(props._id)
+
 
     return (
         <Col md={4} >
@@ -24,12 +23,12 @@ const NotificationsCard = (props) => {
 
                     <hr></hr>
                     <Button as="div" variant="dark" size="sm" onClick={() => props.confirmNutri(props._id)}>
-                        yo
-                    </Button>
+                        Confirmalo como cliente
+                        </Button>
                 </Card.Body>
             </Card>
         </Col >
     )
-}
 
+}
 export default NotificationsCard
