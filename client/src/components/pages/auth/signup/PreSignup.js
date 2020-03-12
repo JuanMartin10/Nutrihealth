@@ -24,12 +24,7 @@ class PreSignup extends Component {
         }
         this.services = new AuthServices()
     }
-    finishAction = () => {
-        console.log("ENTRA EN FINISHACTION")
-        this.props.closeModal()
-        console.log(`Este es el rol en finishAction:`, this.state)
-
-    }
+    finishAction = () => this.props.closeModal()
 
     handleChange = e => {
         let { name, value } = e.target

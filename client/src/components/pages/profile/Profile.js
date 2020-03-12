@@ -6,12 +6,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 
-
 import ProfileModal from './Modal/ProfileModal'
-import SendToBack from '../../../services/sendtoback.services'
 import Notifications from './Notifications/Notifications'
 import Clients from './Clients/Clients'
-
 
 
 class Profile extends Component {
@@ -21,9 +18,7 @@ class Profile extends Component {
 
 
     render() {
-
-        console.log(this.props.loggedInUser)
-
+        console.log(this.props)
         return (
             <>
                 <Container>
@@ -31,6 +26,7 @@ class Profile extends Component {
                         <Row>
                             <Col md={7}>
                                 <h1>Hola, {this.props.loggedInUser.username}</h1>
+                                <p>Este es tu menú semanal</p>
                             </Col>
                             <Col md={5}>
                                 <div>

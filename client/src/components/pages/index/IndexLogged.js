@@ -12,12 +12,13 @@ class IndexLogged extends Component {
         super(props)
     }
 
-    onClick() {
-        this.props.history.push('/search-nutri')
-    }
+    onClick = () => this.props.history.push('/search-nutri')
+    onClick2 = () => this.props.history.push('/my-menu')
+
+
 
     render() {
-        console.log(this.props)
+
         return (
             <Container>
                 <h1>Hola, {this.props.loggedInUser.username}</h1>
@@ -27,15 +28,20 @@ class IndexLogged extends Component {
                         (
                             <>
                                 <Col>
+                                    {/*  AQUI TENDRIA QUE HABER UN IF DE SI YA TIENES NUTRICIONISTA MUESTRAS EL Menu */}
+
                                     <p>Puedes acceder a los nutricionistas disponibles desde aquí:</p>
 
                                     <Button as="div" variant="dark" size="sm" onClick={() => this.onClick()}>
                                         Encuentra tu nutricionista
-                        </Button>
+                                    </Button>
 
                                 </Col>
                                 <Col>
                                     <p>Puedes ver tu menú semanal desde aquí</p>
+                                    <Button as="div" variant="dark" size="sm" onClick={() => this.onClick2()}>
+                                        Consulta tu menú semanal
+                                    </Button>
                                 </Col>
                             </>
                         )

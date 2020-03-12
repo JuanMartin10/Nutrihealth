@@ -27,18 +27,12 @@ class ProfileForm extends Component {
 
     }
 
-    finishAction = () => {
-        this.props.closeModal()
-    }
+    finishAction = () => this.props.closeModal()
+
 
     preferencesUser = (preferences) => {
         this.sendtobackservices.preferencesUser(preferences)
-            .then(userUpdated => {
-                console.log("este es el user updated....", userUpdated)
-                console.log(this.props)
-                // debugger;
-                this.props.setTheUser(userUpdated);
-            })
+            .then(userUpdated => this.props.setTheUser(userUpdated))
             .catch(err => console.log(err))
     }
 

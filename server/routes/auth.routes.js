@@ -12,7 +12,6 @@ const User = require("../models/User.model");
 
 router.post("/signup", (req, res, next) => {
 
-  console.log("------ PAYLOAD EN DESTINO -----", req.body)
 
   // // PRUEBAS EN POSTMAN BACK
 

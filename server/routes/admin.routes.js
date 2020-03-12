@@ -3,18 +3,14 @@ const router = express.Router();
 
 const User = require('../models/User.model')
 const UserFile = require('../models/UserFile.model')
-const Recipes = require('../models/Recipes.model')
 const Notifications = require('../models/Notifications.model')
 
 
 router.get('/', (req, res, next) => {
     User.find({ role: "admin" })
-        .then(allAdmin => {
-            res.json(allAdmin)
-        })
+        .then(allAdmin => res.json(allAdmin))
         .catch(err => console.log(err))
-}
-)
+})
 
 
 router.post('/choose', (req, res, next) => {
@@ -39,9 +35,7 @@ router.post('/choose', (req, res, next) => {
 router.get('/notifications', (req, res, next) => {
     Notifications.find({ reciever: req.user._id })
         .populate("sender")
-        .then(theNotificationsUser => {
-            res.json(theNotificationsUser)
-        })
+        .then(theNotificationsUser => res.json(theNotificationsUser))
         .catch(err => console.log(err))
 })
 
@@ -50,7 +44,6 @@ router.post('/confirm', (req, res, next) => {
 
     Notifications.findByIdAndRemove(req.body.notifId)
         .then(userUpdated => {
-            // console.log(`Este es el userUpdated:` + userUpdated)
 
             const promise1 = User.findByIdAndUpdate(userUpdated.reciever, { $push: { pacients: userUpdated.sender }, $pull: { notifications: userUpdated._id } }, { new: true })
                 .populate({
@@ -69,27 +62,10 @@ router.post('/confirm', (req, res, next) => {
             const promise2 = User.findByIdAndUpdate(userUpdated.sender, { $pull: { notifications: userUpdated._id } }, { new: true })
             const promise3 = UserFile.findOneAndUpdate({ user: userUpdated.sender }, { nutricionist: userUpdated.reciever }, { new: true })
 
-            // const promise4 = UserFile.findByIdAndUpdate(userFileFound[0]._id
-            // .then(userFileFound => {
-            //     console.log('este es el userFileFound:', userFileFound)
-            //     // console.log('este es el userFileFound[0]._id:', userFileFound[0]._id)
-
-            //     // console.log('este es el userUpdated.reciever:', userUpdated.reciever)
-
-            //     return UserFile.findByIdAndUpdate(userFileFound[0]._id, { nutricionist: userUpdated.reciever }, { new: true })
-            // })
-
             return Promise.all([promise1, promise2, promise3])
         })
 
-
-        .then(array => {
-            console.log('retorno de promesa', array)
-            res.json(array[0])
-
-        })
-
-
+        .then(array => res.json(array[0]))
         .catch(err => console.log(err))
 
 })
@@ -103,10 +79,7 @@ router.get('/clients', (req, res, next) => {
                 path: 'userfile'
             }
         })
-        .then(theNotificationsUser => {
-            // console.log('thenotificationuser:', theNotificationsUser)
-            res.json(theNotificationsUser)
-        })
+        .then(theNotificationsUser => res.json(theNotificationsUser))
         .catch(err => console.log(err))
 })
 

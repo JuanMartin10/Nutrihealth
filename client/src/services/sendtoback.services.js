@@ -12,11 +12,7 @@ export default class Services {
 
 
 
-    preferencesUser = (userPref) => {
-        console.log('este es el userPref de sendtoback.servicesuserPref', userPref)
-        return this.service.post('/', userPref).then(response => response.data)
-    }
-
+    preferencesUser = (userPref) => this.service.post('/', userPref).then(response => response.data)
 
     sendRecipes = (recipe) => this.service.post('/fav', recipe).then(response => response.data)
 

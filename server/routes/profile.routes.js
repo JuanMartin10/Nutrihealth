@@ -4,10 +4,11 @@ const router = express.Router();
 const User = require('../models/User.model')
 const UserFile = require('../models/UserFile.model')
 const Recipes = require('../models/Recipes.model')
+const Menu = require('../models/Menu.model')
 
 
 router.post('/', (req, res, next) => {
-  console.log("este es el req bodyyyy", req.body)
+
   const { height, weight, age, activitylevel, goal, city, intolerances, foodPreferences } = req.body
   const newUserFile = {
     height,
@@ -20,45 +21,34 @@ router.post('/', (req, res, next) => {
     foodPreferences,
     user: req.user._id
   }
-  // console.log(newUserFile)
+
 
   UserFile.findOne({ user: req.user._id })
     .then(userPreferencesFounded => {
-      console.log('Esto es el userPreferencsFounded', userPreferencesFounded)
+
       if (userPreferencesFounded) {
 
         const userPreferencesFoundedId = userPreferencesFounded._id
 
         UserFile.findByIdAndUpdate(userPreferencesFoundedId, { ...newUserFile }, { new: true })
-          // userPreferencesFounded.update({ ...newUserFile }, { new: true })
-          // .populate("userfile")
+
           .then(userFileUpdate => {
             User.findById(req.user._id)
               .populate("userfile")
-              .then(userUpdated => {
-                // console.log('est es el req.user:', req.user)
-                // console.log("este es el user updated.....(lo que devuelve al front)", userUpdated)
-                res.json(userUpdated)
+              .then(userUpdated => res.json(userUpdated))
 
-              })
-            // console.log(userUpdate)
           })
           .catch(err => console.log(err))
 
       } else {
         UserFile.create(newUserFile)
           .then(theUserFile => User.findByIdAndUpdate(req.user._id, { userfile: theUserFile._id }, { new: true }).populate("userfile"))
-          .then(userUpdated => {
-
-            res.json(userUpdated)
-          })
+          .then(userUpdated => res.json(userUpdated))
           .catch(err => console.log(err))
       }
     })
     .catch(err => console.log(err))
 })
-
-
 
 
 // UserFile.create(newUserFile)
@@ -115,5 +105,23 @@ router.post('/fav', (req, res, next) => {
     .catch(err => console.log(err))
 }
 )
+
+router.post('/menu', (req, res, next) => {
+
+
+
+  const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body;
+
+
+  const newMenu = {
+    monday,
+    tuesday,
+    wednesday,
+    thursday,
+    friday,
+    saturday,
+    sunday
+  }
+})
 
 module.exports = router

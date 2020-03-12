@@ -5,10 +5,27 @@ const MenuSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: "User" },
     nutricionist: { type: Schema.Types.ObjectId, ref: "User" },
     menu: {
-        lunes: {
+        monday: {
             type: String,
-        }
-        martes: 
+        },
+        tuesday: {
+            type: String,
+        },
+        wednesday: {
+            type: String,
+        },
+        thursday: {
+            type: String,
+        },
+        friday: {
+            type: String,
+        },
+        saturday: {
+            type: String,
+        },
+        sunday: {
+            type: String,
+        },
     },
 
 },

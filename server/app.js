@@ -17,6 +17,7 @@ app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/admin', require('./routes/admin.routes'));
 
 
+
 app.use((req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 

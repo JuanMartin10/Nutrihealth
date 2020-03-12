@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Modal from 'react-bootstrap/Modal'
+
 import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 
 import AdminServices from '../../../../services/admin.services'
@@ -18,29 +17,23 @@ class Notifications extends Component {
 
 
     confirmNutri = (notifId) => {
-        console.log(notifId)
         this.adminservices.confirmNutri(notifId)
-            .then(respuesta => {
-                console.log(respuesta)
-                this.props.setTheUser(respuesta)
-                // this.getNotifications()
-            })
+            .then(respuesta => this.props.setTheUser(respuesta))
             .catch(err => console.log(err))
     }
 
     render() {
-        // console.log(this.props.loggedInUser.userfile)
         return (
             <Container>
                 <>
+                    <h2>Tus notificaciones</h2>
+
                     {this.props.loggedInUser.notifications.length != 0 ?
                         (
                             <Row>
                                 <p> Estos son los notificaciones que tienes:</p>
-                                {this.props.loggedInUser.notifications.map(elm => {
-                                    console.log(elm)
-                                    return <NotificationsCard key={elm._id} {...elm} confirmNutri={this.confirmNutri} />
-                                })}
+                                {this.props.loggedInUser.notifications.map(elm => <NotificationsCard key={elm._id} {...elm} confirmNutri={this.confirmNutri} />
+                                )}
                             </Row>
                         )
                         :

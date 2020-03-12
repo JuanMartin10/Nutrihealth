@@ -10,23 +10,17 @@ export default class Services {
     }
 
 
-    getAdminUsers = () => {
-        // console.log(response.data)
-        return this.service.get('/').then(response => response.data)
-    }
+    getAdminUsers = () => this.service.get('/').then(response => response.data)
 
-    chooseAdmin = admin => {
-        return this.service.post('/choose', { admin }).then(response => response.data)
-    }
 
-    getNotifications = () => {
-        return this.service.get('/notifications').then(response => response.data)
-    }
+    chooseAdmin = admin => this.service.post('/choose', { admin }).then(response => response.data)
 
-    confirmNutri = notifId => {
-        return this.service.post('/confirm', { notifId }).then(response => response.data)
-    }
-    getClients = () => {
-        return this.service.get('/clients').then(response => response.data)
-    }
+
+    getNotifications = () => this.service.get('/notifications').then(response => response.data)
+
+
+    confirmNutri = notifId => this.service.post('/confirm', { notifId }).then(response => response.data)
+
+    getClients = () => this.service.get('/clients').then(response => response.data)
+
 }

@@ -16,6 +16,7 @@ import Profile from './components/pages/profile/Profile'
 import NavBar from './components/ui/NavBar/NavBar'
 
 import SearchNutri from './components/pages/search-nutri/Search-nutri'
+import Menu from './components/pages/profile/Menu/Menu'
 
 import AuthServices from './services/auth.services'
 
@@ -30,14 +31,11 @@ class App extends Component {
   }
 
 
-  // componentDidUpdate = (prevProps, prevState) => console.log("El estado de App se ha actualizado:", this.state)
 
   componentDidMount = () => this.fetchUser()
 
-  setTheUser = userObj => {
-    console.log(userObj)
-    this.setState({ loggedInUser: userObj })
-  }
+  setTheUser = userObj => this.setState({ loggedInUser: userObj })
+
 
   fetchUser = () => {
     this.authservices.loggedin()
@@ -47,7 +45,7 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.loggedInUser)
+
     return (
       <div className="App">
         <NavBar setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
@@ -63,6 +61,8 @@ class App extends Component {
             <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} />
             <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
             <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} /> : <Redirect to="/" />} />
+
+            <Route path="/my-menu" render={props => <Menu loggedInUser={this.loggedInUser} setTheUser={this.setTheUser} {...props} />} />
           </Switch>
         </main>
       </div>

@@ -17,7 +17,6 @@ class SearchNutri extends Component {
             adminuser: '',
         }
         this.adminservices = new AdminServices()
-        console.log(this.adminservices)
 
     }
 

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
 import Col from 'react-bootstrap/Col'
-// import Button from 'react-bootstrap/Button'
+
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
-// import { Link } from 'react-router-dom'
-
+import MenuModal from '../Modal/MenuModal'
 class ClientsCards extends Component {
     constructor(props) {
         super(props)
@@ -14,6 +14,7 @@ class ClientsCards extends Component {
 
     }
 
+    onClick = () => { }
 
     render() {
         console.log(this.props)
@@ -41,10 +42,8 @@ class ClientsCards extends Component {
                             <p>El usuario aun no ha registrado sus preferencias</p>
                         }
 
+                        <MenuModal loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} clientId={this.props._id} />
 
-                        {/* <Button as="div" variant="dark" size="sm" onClick={() => chooseAdmin(_id)}>
-                        yo
-                    </Button> */}
                     </Card.Body>
                 </Card>
                 <br></br>

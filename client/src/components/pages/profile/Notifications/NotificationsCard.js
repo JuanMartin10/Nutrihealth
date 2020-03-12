@@ -5,11 +5,11 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 
-import { Link } from 'react-router-dom'
+
 
 const NotificationsCard = (props) => {
 
-    console.log(props.sender.username)
+
     return (
         <Col md={4} >
             <Card className="card-rusa">
@@ -17,8 +17,6 @@ const NotificationsCard = (props) => {
                 <Card.Body>
                     <Card.Title>{props.sender.username}</Card.Title>
                     <Card.Title>{props.text}</Card.Title>
-
-
 
 
                     <hr></hr>

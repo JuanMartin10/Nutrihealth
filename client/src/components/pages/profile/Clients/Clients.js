@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 
-import AdminServices from '../../../../services/admin.services'
 import ClientsCards from './ClientsCards'
 import Spinner from 'react-bootstrap/Spinner'
 
@@ -17,24 +16,18 @@ class Clients extends Component {
         }
     }
 
-    // props de logedinuser
-
-
 
     render() {
-        console.log(this.props.loggedInUser)
+        console.log(this.props)
 
         return (
             <Container>
-
-                <h1>Hola {this.props.loggedInUser.username}</h1>
-
-                <p> Estos son los clientes que tienes:</p>
+                <h2>Tus clientes</h2>
 
                 {this.props.loggedInUser.pacients.length != 0 ?
                     (
                         <Row>
-                            {this.props.loggedInUser.pacients.map(elm => <ClientsCards key={elm._id} {...elm} />)}
+                            {this.props.loggedInUser.pacients.map(elm => <ClientsCards key={elm._id} {...elm} loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />)}
                         </Row>
                     )
                     :

@@ -22,10 +22,7 @@ class Signup extends Component {
 
     handleChange = e => {
         let { name, value } = e.target
-        // console.log(e.target.checked)
 
-        // if (name === 'role') value = checked
-        // console.log(e.target.checked)
         this.setState({
             ...this.state,
             user: {
@@ -50,9 +47,7 @@ class Signup extends Component {
 
                 }, this.props.setTheUser(response))
                 this.props.history.push('/profile')
-                // console.log('USUARIO CREADO', response)
             })
-            .then(console.log(this.props))
             .catch(err => console.log({ err }))
     }
 
