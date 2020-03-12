@@ -17,7 +17,7 @@ const NutriCards = ({ username, _id, chooseAdmin }) => {
                     <Card.Title>{_id}</Card.Title>
 
                     <hr></hr>
-                    <Button as="div" variant="dark" size="sm" onClick={() => chooseAdmin(_id)}>
+                    <Button className="greenButton" as="div" variant="light" size="sm" onClick={() => chooseAdmin(_id)}>
                         yo
                     </Button>
                 </Card.Body>

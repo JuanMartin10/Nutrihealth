@@ -79,7 +79,7 @@ class Signup extends Component {
                         <Form.Check type="checkbox" label="Soy nutricionista" onChange={this.handleChange} />
                     </Form.Group>
 
-                    <Button variant="dark" type="submit">Registrarse</Button>
+                    <Button className="greenButton" variant="light" type="submit">Registrarse</Button>
                 </Form>
             </Container>
         )

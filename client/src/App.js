@@ -55,7 +55,7 @@ class App extends Component {
             <Route exact path="/recipes" render={() => <Recipes />} />
 
             <Route exact path="/" render={props => <Index setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
-            <Route path="/search-nutri" render={props => <SearchNutri setTheUser={this.setTheUser} {...props} />} />
+            <Route path="/search-nutri" render={props => this.state.loggedInUser ? <SearchNutri loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} {...props} /> : <Redirect to="/" />} />
 
             {/* <Route path="/presignup" render={() => <PreSignup setTheUser={this.setTheUser} />} /> */}
             <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} />
@@ -64,6 +64,7 @@ class App extends Component {
 
             <Route path="/my-menu" render={props => this.state.loggedInUser ? <Menu loggedInUser={this.state.loggedInUser} setTheUser={this.state.setTheUser} {...props} /> : <Redirect to='/' />} />
           </Switch>
+          <link href="https://fonts.googleapis.com/css?family=Sen&display=swap" rel="stylesheet"></link>
         </main>
       </div>
     );

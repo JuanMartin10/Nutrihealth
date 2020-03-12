@@ -108,7 +108,7 @@ class ProfileForm extends Component {
                                 <Form.Control as="textarea" rows="3" name="foodPreferences" placeholder="Tus preferencias alimentarias, separadas por comas" value={foodPreferences} onChange={this.handleChange} required />
                             </Form.Group>
 
-                            <Button variant="dark" type="submit">Guardar preferencias</Button>
+                            <Button className="greenButton" variant="light" type="submit">Guardar preferencias</Button>
                             <br></br>
                         </Form >
                     </Form.Row>

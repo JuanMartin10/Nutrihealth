@@ -19,7 +19,7 @@ class MenuModal extends Component {
         return (
             <Container>
 
-                <Button variant="dark" onClick={this.openModal}>
+                <Button className="greenButton" variant="light" onClick={this.openModal}>
                     Introduce su menú
                         </Button>
 

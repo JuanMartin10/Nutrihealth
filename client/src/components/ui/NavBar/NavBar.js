@@ -52,7 +52,7 @@ class Navigation extends Component {
                 {this.props.loggedInUser ?
                     (
                         <Navbar className="navigation" bg="light" expand="lg" variant="light">
-                            <Navbar.Brand as="div"> <Link to="/">NutriHealth</Link></Navbar.Brand>
+                            <Navbar.Brand as="div"> <Link to="/"><img className="logo" src='https://res.cloudinary.com/dkbpijai0/image/upload/v1584048189/Nutrihealth2_mnfafx.png' alt="logo"></img></Link></Navbar.Brand>
                             <Nav activeKey="/recipes">
                                 <Nav.Item>
                                     <Nav.Link as="div"><Link to="/recipes">Buscador de recetas</Link></Nav.Link>

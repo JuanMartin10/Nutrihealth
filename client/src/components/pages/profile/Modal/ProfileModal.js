@@ -20,13 +20,13 @@ class ProfileModal extends Component {
             <Container>
                 {this.props.loggedInUser.userfile ?
                     (
-                        <Button variant="dark" onClick={this.openModal}>
+                        <Button className="greenButton" variant="light" onClick={this.openModal}>
                             Modifica tus preferencias
                         </Button>
                     )
                     :
                     (
-                        <Button variant="dark" onClick={this.openModal}>
+                        <Button className="greenButton" variant="light" onClick={this.openModal}>
                             Introduce tus preferencias
                         </Button>
                     )

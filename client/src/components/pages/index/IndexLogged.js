@@ -20,7 +20,7 @@ class IndexLogged extends Component {
     render() {
 
         return (
-            <Container>
+            <Container className="bgImage">
                 <h1>Hola, {this.props.loggedInUser.username}</h1>
                 <Row>
 
@@ -32,14 +32,14 @@ class IndexLogged extends Component {
 
                                     <p>Puedes acceder a los nutricionistas disponibles desde aquí:</p>
 
-                                    <Button as="div" variant="dark" size="sm" onClick={() => this.onClick()}>
+                                    <Button className="greenButton" as="div" variant="light" size="sm" onClick={() => this.onClick()}>
                                         Encuentra tu nutricionista
                                     </Button>
 
                                 </Col>
                                 <Col>
                                     <p>Puedes ver tu menú semanal desde aquí</p>
-                                    <Button as="div" variant="dark" size="sm" onClick={() => this.onClick2()}>
+                                    <Button className="greenButton" as="div" variant="light" size="sm" onClick={() => this.onClick2()}>
                                         Consulta tu menú semanal
                                     </Button>
                                 </Col>

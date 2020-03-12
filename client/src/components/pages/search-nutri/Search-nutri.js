@@ -37,31 +37,47 @@ class SearchNutri extends Component {
     chooseAdmin = (admin) => {
         //Envia al back la información del usuario logeado y el usuario elegido
         this.adminservices.chooseAdmin(admin)
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => console.log(err))
-        
-        
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err))
+
+
     }
 
     render() {
 
+        console.log(this.props.loggedInUser.userfile.nutricionist.username)
         return (
-
             < Container >
-                    Estos son los nutricionistas asociados:
-    
 
-                    {this.state.adminuser.length ?
+                {this.props.loggedInUser.userfile.nutricionist ?
                     (
-                        <Row>
-                            {this.state.adminuser.map(elm => <NutriCards key={elm._id} {...elm} chooseAdmin={this.chooseAdmin}/>)}
-                        </Row>
-                            )
-                  :
-                <p>CARGANDO</p>
+                        <>
+                            <h3>Este es tu nutricionista</h3>
+                            <p>{this.props.loggedInUser.userfile.nutricionist.username}</p>
+                        </>
+                    )
+                    :
+                    (
+                        <>
+                            <p> Estos son los nutricionistas asociados:</p>
+
+
+                            {
+                                this.state.adminuser.length ?
+                                    (
+                                        <Row>
+                                            {this.state.adminuser.map(elm => <NutriCards key={elm._id} {...elm} chooseAdmin={this.chooseAdmin} />)}
+                                        </Row>
+                                    )
+                                    :
+                                    <p>CARGANDO</p>
+                            }
+                        </>
+                    )
                 }
+
 
             </Container >
 

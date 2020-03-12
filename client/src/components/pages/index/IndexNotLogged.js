@@ -16,12 +16,12 @@ class IndexNotLogged extends Component {
     render() {
 
         return (
-            <Container>
-                <h1> Bienvenid@ a NutriHealth </h1>
+            <Container className="bgImage">
+                <h1 className="text-center">NutriHealth </h1>
                 <Row>
                     <Col>
-                        Fotazo
-                </Col>
+                        <img src="https://res.cloudinary.com/dkbpijai0/image/upload/v1584045702/heart_uymq6e.jpg" alt="heart"></img>
+                    </Col>
                     <Col>
                         <Tabs defaultActiveKey="home" id="noanim-tab-example">
                             <Tab eventKey="home" title="Inicia sesión">

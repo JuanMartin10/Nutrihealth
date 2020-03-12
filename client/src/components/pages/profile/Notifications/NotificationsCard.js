@@ -20,7 +20,7 @@ const NotificationsCard = (props) => {
 
 
                     <hr></hr>
-                    <Button as="div" variant="dark" size="sm" onClick={() => props.confirmNutri(props._id)}>
+                    <Button className="greenButton" as="div" variant="light" size="sm" onClick={() => props.confirmNutri(props._id)}>
                         Confirmalo como cliente
                         </Button>
                 </Card.Body>

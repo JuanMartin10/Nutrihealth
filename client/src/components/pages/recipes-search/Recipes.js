@@ -20,10 +20,7 @@ class Recipes extends Component {
 
     getIngredients = (id) => {
         this.recipeservices.getIngredients(id)
-            .then(allIngredients => {
-                console.log(allIngredients)
-                this.setState({ recipes: allIngredients.hits })
-            })
+            .then(allIngredients => this.setState({ recipes: allIngredients.hits }))
             .catch(err => console.log(err))
     }
 
@@ -50,27 +47,26 @@ class Recipes extends Component {
     render() {
         return (
             <Container>
-                <h1>NutriHealth</h1>
-
+                <h1>Buscador de recetas</h1>
                 < Form onSubmit={this.handleSubmit} >
                     <Form.Group>
-                        <Form.Label>Write your ingredients and look it for a recipe</Form.Label>
-                        <Form.Control type="text" name="ingredients" placeholder="Write some ingredients separated with comas" value={this.state.ingredients} onChange={this.handleChange} />
+                        <Form.Label>Escribe los ingredientes que tengas en la nevera</Form.Label>
+                        <Form.Control type="text" name="ingredients" placeholder="Escribe los ingredientes separados por comas" value={this.state.ingredients} onChange={this.handleChange} />
                     </Form.Group>
 
-                    <Button variant="dark" type="submit" onClick={this.sendInfo}>A cocinar!</Button>
+                    <Button className="greenButton" variant="light" type="submit" onClick={this.sendInfo}>A cocinar!</Button>
                     <br></br>
                 </Form >
 
                 <div>
                     {this.state.showIng ? (
                         this.state.recipes.length ? (
-                            <Row>
+                            <Row className="m-5">
                                 {this.state.recipes.map(elm => <IngredientsCards key={elm.recipe.label} {...elm} />)}
                             </Row>
                         )
                             :
-                            <Spinner animation="border" />
+                            <Spinner className="spiner" animation="border" />
                     ) : null}
 
                 </div>

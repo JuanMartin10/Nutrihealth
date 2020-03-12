@@ -1,5 +1,5 @@
 .navigation {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #90bc9a;
     margin-bottom: 20px;
     /* position: fixed;
     width: 100%;
@@ -13,8 +13,12 @@
 
 .navigation a:hover{
     transition-timing-function: linear;
-    transition-duration: 0.2s;
-    color: inherit;
+    transition-duration: 0.1s;
+    color: #90bc9a;
     border-radius: 5px;
 
 }    
+
+.logo {
+    width: 150px;
+}

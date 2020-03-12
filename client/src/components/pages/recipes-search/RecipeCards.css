@@ -1,7 +1,13 @@
-.card img{
-width: 20%
+ .card a{
+    color: inherit
 }
 
-.card a{
-    color: inherit
+.cardImg{
+    width:100px;
+}
+
+.spiner{
+    position: absolute;
+    top:50%;
+    left:50%
 }

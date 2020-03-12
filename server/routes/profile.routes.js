@@ -139,12 +139,9 @@ router.post('/menu', (req, res, next) => {
 })
 
 router.get('/my-menu', (req, res, next) => {
-
-  console.log(req.user)
   User.findById(req.user._id).populate('menu')
     .then(res => res.json(res))
     .catch(err => console.log(err))
-  //   .then()
 }
 )
 module.exports = router

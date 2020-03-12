@@ -56,7 +56,7 @@ class Login extends Component {
                         <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
                     </Form.Group>
 
-                    <Button variant="dark" type="submit">Iniciar sesión</Button>
+                    <Button className="greenButton" variant="light" type="submit">Iniciar sesión</Button>
                 </Form>
             </Container>
 

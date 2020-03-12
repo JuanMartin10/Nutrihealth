@@ -31,10 +31,6 @@ class ProfileForm extends Component {
 
     sendMenu = (deilyMeals, clientId) => {
         this.sendtobackservices.sendMenu(deilyMeals, clientId)
-            .then(res => {
-                console.log(res)
-            })
-            // .then(userUpdated => this.props.setTheUser(userUpdated))
             .then(() => alert('Se ha enviado tu menú'))
             .catch(err => console.log(err))
     }
@@ -64,40 +60,40 @@ class ProfileForm extends Component {
         return (
             <>
                 <Container>
-                    <Form.Row>
-                        <Form onSubmit={this.handleSubmit} >
-                            <Form.Group>
-                                <Form.Label>Lunes</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="monday" placeholder="Introduce el menú del lunes" value={monday} onChange={this.handleChange} required />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Martes</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="tuesday" placeholder="Introduce el menú del tuesday" value={tuesday} onChange={this.handleChange} required />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Miercoles</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="wednesday" placeholder="Introduce el menú del miercoles" value={wednesday} onChange={this.handleChange} required />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Jueves</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="thursday" placeholder="Introduce el menú del jueves" value={thursday} onChange={this.handleChange} required />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Viernes</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="friday" placeholder="Introduce el menú del viernes" value={friday} onChange={this.handleChange} required />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Sabado</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="saturday" placeholder="Introduce el menú del sabado" value={saturday} onChange={this.handleChange} required />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Domingo</Form.Label>
-                                <Form.Control as="textarea" rows="3" name="sunday" placeholder="Introduce el menú del domingo" value={sunday} onChange={this.handleChange} required />
-                            </Form.Group>
-                            <Button variant="dark" type="submit">Enviar preferencias</Button>
-                            <br></br>
-                        </Form >
-                    </Form.Row>
+
+                    <Form onSubmit={this.handleSubmit} >
+                        <Form.Group>
+                            <Form.Label>Lunes</Form.Label>
+                            <Form.Control as="textarea" rows="3" name="monday" placeholder="Introduce el menú del lunes" value={monday} onChange={this.handleChange} required />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Martes</Form.Label>
+                            <Form.Control as="textarea" rows="3" name="tuesday" placeholder="Introduce el menú del tuesday" value={tuesday} onChange={this.handleChange} required />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Miercoles</Form.Label>
+                            <Form.Control as="textarea" rows="3" name="wednesday" placeholder="Introduce el menú del miercoles" value={wednesday} onChange={this.handleChange} required />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Jueves</Form.Label>
+                            <Form.Control as="textarea" rows="3" name="thursday" placeholder="Introduce el menú del jueves" value={thursday} onChange={this.handleChange} required />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Viernes</Form.Label>
+                            <Form.Control as="textarea" rows="3" name="friday" placeholder="Introduce el menú del viernes" value={friday} onChange={this.handleChange} required />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Sabado</Form.Label>
+                            <Form.Control as="textarea" rows="3" name="saturday" placeholder="Introduce el menú del sabado" value={saturday} onChange={this.handleChange} required />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Domingo</Form.Label>
+                            <Form.Control as="textarea" rows="3" name="sunday" placeholder="Introduce el menú del domingo" value={sunday} onChange={this.handleChange} required />
+                        </Form.Group>
+                        <Button className="greenButton" variant="light" type="submit">Enviar preferencias</Button>
+                        <br></br>
+                    </Form >
+
                 </Container>
             </>
         )
