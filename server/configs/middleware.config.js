@@ -34,7 +34,7 @@ module.exports = app => {
         sourceMap: true
     }));
 
-    const whitelist = ['http://localhost:3000']
+    const whitelist = ['http://localhost:3000', 'http://localhost:5000', '*']
     const corsOptions = {
         origin: (origin, cb) => {
             const originWhitelisted = whitelist.includes(origin)

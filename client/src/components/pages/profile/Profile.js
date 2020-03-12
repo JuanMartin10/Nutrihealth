@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -16,6 +16,8 @@ class Profile extends Component {
         super(props)
     }
 
+    onClick = () => this.props.history.push('/search-nutri')
+
 
     render() {
         console.log(this.props)
@@ -24,10 +26,15 @@ class Profile extends Component {
                 <Container>
                     {this.props.loggedInUser.role === 'user' ? (
                         <Row>
-                            <Col md={7}>
+                            <Col className="d-flex align-items-start" md={7}>
                                 <h1>Hola, {this.props.loggedInUser.username}</h1>
+
+                                <p>Puedes ver tu menú semanal desde aquí</p>
+                                <Button className="greenButton" as="div" variant="light" size="sm" onClick={() => this.onClick2()}>
+                                    Consulta tu menú semanal
+                                    </Button>
                             </Col>
-                            <Col md={5}>
+                            <Col className="d-flex align-items-center" md={5}>
                                 <div>
                                     {this.props.loggedInUser.userfile ? (
                                         <div>
