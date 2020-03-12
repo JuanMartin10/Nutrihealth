@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const NotificationSchema = new Schema({
+const NotificationsSchema = new Schema({
   sender: { type: Schema.Types.ObjectId, ref: "User" },
   reciever: { type: Schema.Types.ObjectId, ref: "User" },
   text: String,
@@ -17,5 +17,5 @@ const NotificationSchema = new Schema({
     }
   });
 
-const Notifications = mongoose.model('Notification', NotificationSchema);
+const Notifications = mongoose.model('Notifications', NotificationsSchema);
 module.exports = Notifications

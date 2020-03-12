@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 const NotificationsCard = (props) => {
 
-
+    console.log(props.sender.username)
     return (
         <Col md={4} >
             <Card className="card-rusa">

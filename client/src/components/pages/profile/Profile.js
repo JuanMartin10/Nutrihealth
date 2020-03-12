@@ -67,6 +67,8 @@ class Profile extends Component {
                                 <Col md={6}>
                                     <Notifications loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
                                 </Col>
+
+
                                 <Col md={6}>
 
                                     <Clients loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />

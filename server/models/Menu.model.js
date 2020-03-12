@@ -2,9 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const MenuSchema = new Schema({
-    user: { type: Schema.Types.ObjectId, ref: "Userfile" },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
     nutricionist: { type: Schema.Types.ObjectId, ref: "User" },
-    menu: String,
+    menu: {
+        lunes: {
+            type: String,
+        }
+        martes: 
+    },
+
 },
     {
         timestamps: {

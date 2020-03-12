@@ -16,24 +16,15 @@ class Notifications extends Component {
         this.adminservices = new AdminServices()
     }
 
-    componentDidMount() {
-        this.getNotifications()
-    }
-
-
-    getNotifications() {
-        this.adminservices.getNotifications()
-            .then(allNotifications => {
-                this.setState({ notifications: allNotifications })
-            })
-            .catch(err => console.log(err))
-    }
-
 
     confirmNutri = (notifId) => {
-        // console.log(notifId)
+        console.log(notifId)
         this.adminservices.confirmNutri(notifId)
-            .then(() => this.getNotifications())
+            .then(respuesta => {
+                console.log(respuesta)
+                this.props.setTheUser(respuesta)
+                // this.getNotifications()
+            })
             .catch(err => console.log(err))
     }
 
@@ -42,18 +33,21 @@ class Notifications extends Component {
         return (
             <Container>
                 <>
-                    {this.state.notifications.length ?
+                    {this.props.loggedInUser.notifications.length != 0 ?
                         (
                             <Row>
                                 <p> Estos son los notificaciones que tienes:</p>
-                                {this.state.notifications.map(elm => <NotificationsCard key={elm._id} {...elm} confirmNutri={this.confirmNutri} />)}
+                                {this.props.loggedInUser.notifications.map(elm => {
+                                    console.log(elm)
+                                    return <NotificationsCard key={elm._id} {...elm} confirmNutri={this.confirmNutri} />
+                                })}
                             </Row>
                         )
                         :
                         <p>No tienes ninguna notificación por ahora</p>
                     }
                 </>
-            </Container>
+            </Container >
         )
     }
 }

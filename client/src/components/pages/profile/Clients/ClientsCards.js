@@ -10,16 +10,13 @@ class ClientsCards extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            clients: '',
         }
 
     }
 
-    componentDidMount() {
-        console.log(this.props)
-    }
 
     render() {
+        console.log(this.props)
         return (
             < Col md={6}>
                 <Card className="card-rusa">

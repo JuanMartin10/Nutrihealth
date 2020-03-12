@@ -10,6 +10,19 @@ passport.deserializeUser((userIdFromSession, cb) => {
     User.findById(userIdFromSession)
         //se popula userfile aqui para que caiga a toda la app
         .populate("userfile")
+
+        .populate({
+            path: 'pacients',
+            populate: {
+                path: 'userfile'
+            }
+        })
+        .populate({
+            path: 'notifications',
+            populate: {
+                path: 'sender'
+            }
+        })
         .then(userDocument => {
             cb(null, userDocument);
 

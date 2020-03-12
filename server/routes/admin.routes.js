@@ -48,35 +48,47 @@ router.get('/notifications', (req, res, next) => {
 
 router.post('/confirm', (req, res, next) => {
 
-    Notifications.findByIdAndUpdate(req.body.notifId, { accepted: true }, { new: true })
+    Notifications.findByIdAndRemove(req.body.notifId)
         .then(userUpdated => {
             // console.log(`Este es el userUpdated:` + userUpdated)
-            // ahora al admin se le pushea el paciente y se le quita de notificaciones
+
             const promise1 = User.findByIdAndUpdate(userUpdated.reciever, { $push: { pacients: userUpdated.sender }, $pull: { notifications: userUpdated._id } }, { new: true })
-            const promise2 = User.findByIdAndUpdate(userUpdated.sender, { $pull: { notifications: userUpdated._id } }, { new: true })
-            const promise3 = UserFile.find({ user: userUpdated.sender })
-                .then(userFileFound => {
-                    // console.log('este es el userFileFound:', userFileFound)
-                    // console.log('este es el userFileFound[0]._id:', userFileFound[0]._id)
-
-                    // console.log('este es el userUpdated.reciever:', userUpdated.reciever)
-
-                    return UserFile.findByIdAndUpdate(userFileFound[0]._id, { nutricionist: userUpdated.reciever }, { new: true })
+                .populate({
+                    path: 'pacients',
+                    populate: {
+                        path: 'userfile'
+                    }
                 })
+                .populate({
+                    path: 'notifications',
+                    populate: {
+                        path: 'sender'
+                    }
+                })
+
+            const promise2 = User.findByIdAndUpdate(userUpdated.sender, { $pull: { notifications: userUpdated._id } }, { new: true })
+            const promise3 = UserFile.findOneAndUpdate({ user: userUpdated.sender }, { nutricionist: userUpdated.reciever }, { new: true })
+
+            // const promise4 = UserFile.findByIdAndUpdate(userFileFound[0]._id
+            // .then(userFileFound => {
+            //     console.log('este es el userFileFound:', userFileFound)
+            //     // console.log('este es el userFileFound[0]._id:', userFileFound[0]._id)
+
+            //     // console.log('este es el userUpdated.reciever:', userUpdated.reciever)
+
+            //     return UserFile.findByIdAndUpdate(userFileFound[0]._id, { nutricionist: userUpdated.reciever }, { new: true })
+            // })
 
             return Promise.all([promise1, promise2, promise3])
         })
 
 
         .then(array => {
-            // console.log('retorno de promesa', array)
-            // console.log(req.body.notifId)
+            console.log('retorno de promesa', array)
+            res.json(array[0])
 
-            if (array.length) {
-                return Notifications.findByIdAndRemove(req.body.notifId)
-            }
         })
-        .then(() => res.json({ message: `Se ha aceptado tu notificación` }))
+
 
         .catch(err => console.log(err))
 
