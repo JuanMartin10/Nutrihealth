@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Sen', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Raleway','Quicksand', 'Sen', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -52,6 +52,7 @@ height: 100vh;
 background-size: cover;
 background-repeat: no-repeat;
 background-position-x: right;
-background-position-y: -15%;
+background-position-y: -20%;
 opacity: 0.9;
+z-index: -1000;
 }

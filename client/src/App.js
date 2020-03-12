@@ -64,7 +64,7 @@ class App extends Component {
 
             <Route path="/my-menu" render={props => this.state.loggedInUser ? <Menu loggedInUser={this.state.loggedInUser} setTheUser={this.state.setTheUser} {...props} /> : <Redirect to='/' />} />
           </Switch>
-          <link href="https://fonts.googleapis.com/css?family=Sen&display=swap" rel="stylesheet"></link>
+          <link href="https://fonts.googleapis.com/css?family=Quicksand|Raleway|Sen&display=swap" rel="stylesheet"></link>
         </main>
       </div>
     );
