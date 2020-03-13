@@ -52,7 +52,7 @@ class App extends Component {
 
         <main>
           <Switch>
-            <Route exact path="/recipes" render={() => <Recipes />} />
+            <Route exact path="/recipes" render={() => <Recipes setTheUser={this.setTheUser} />} />
 
             <Route exact path="/" render={props => <Index setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} {...props} />} />
             <Route path="/search-nutri" render={props => this.state.loggedInUser ? <SearchNutri loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} {...props} /> : <Redirect to="/" />} />

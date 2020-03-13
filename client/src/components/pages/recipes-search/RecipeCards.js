@@ -18,14 +18,21 @@ class IngredientsCards extends Component {
     sendRecipes = () => {
         this.sendservices.sendRecipes(this.state.recipe)
             .then(theRecipe => {
-                console.log(this.props)
-                console.log(theRecipe)
-            })
+                if (theRecipe.message) {
+                    console.log(theRecipe)
+                } else {
+                    console.log(theRecipe)
+                    this.props.setTheUser(theRecipe)
+                }
+
+            }
+            )
             .catch(err => console.log(err))
     }
 
 
     render() {
+        console.log(this.props)
         return (
 
             <Col>

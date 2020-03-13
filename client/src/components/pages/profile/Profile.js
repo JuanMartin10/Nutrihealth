@@ -35,19 +35,17 @@ class Profile extends Component {
                                 <h1>Hola, {this.props.loggedInUser.username}</h1>
 
                                 <h4>Puedes ver tu menú semanal desde aquí</h4>
-                                {/* <Button loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} className="greenButton mb-5 p-2 d-flex justify-content-center" as="div" variant="light" size="sm" onClick={() => this.onClick()}>
-                                    Consulta tu menú semanal
-                                </Button> */}
 
-                                <Link to="/my-menu">Consulta tu menu semanal</Link>
+
+                                <Link className="greenButton mb-5 p-2 d-flex justify-content-center" to="/my-menu">Consulta tu menu semanal</Link>
                                 {this.props.loggedInUser.recipes.length !== 0 ?
                                     (
                                         <div className="bgGrey">
                                             <h4 className="mt-5">Estas son tus recetas favoritas:</h4>
-                                            {/* <Row>
-                                                {this.props.loggedInUser.recipes.map(elm => <FavRecipesCard key={elm} {...elm} />
+                                            <Row>
+                                                {this.props.loggedInUser.recipes.map(elm => <FavRecipesCard key={elm} {...elm} setTheUser={this.props.setTheUser} />
                                                 )}
-                                            </Row> */}
+                                            </Row>
                                         </div>
                                     )
                                     :

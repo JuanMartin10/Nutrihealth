@@ -84,10 +84,10 @@ router.post('/fav', (req, res, next) => {
           .then(theUser => {
 
             if (theUser.recipes.includes(foundRecipeId)) {
-              res.status(400).json({ message: "Your already have this recipe as favorites" })
+              res.json({ message: "Your already have this recipe as favorites" })
 
             } else {
-              theUser.update({ $push: { recipes: foundRecipeId } }, { new: true })
+              theUser.update({ $push: { recipes: foundRecipeId } }, { new: true }).populate('recipes').populate('userfile').populate('menu')
                 .then(userUpdated => res.json(userUpdated))
                 .catch(err => console.log(err))
             }
@@ -97,7 +97,7 @@ router.post('/fav', (req, res, next) => {
       } else {
 
         Recipes.create(newRecipe)
-          .then(newRecipe => User.findByIdAndUpdate(req.user._id, { $push: { recipes: newRecipe._id } }, { new: true }))
+          .then(newRecipe => User.findByIdAndUpdate(req.user._id, { $push: { recipes: newRecipe._id } }, { new: true }).populate('recipes').populate('userfile').populate('menu'))
           .then(userUpdated => res.json(userUpdated))
           .catch(err => res.json(err))
       }

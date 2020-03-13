@@ -5,11 +5,11 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
 import RecipeServices from '../../../services/recipes.services'
-import IngredientsCards from './RecipeCards'
+import RecipeCards from './RecipeCards'
 
 class Recipes extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             ingredients: '',
             recipes: [],
@@ -62,7 +62,7 @@ class Recipes extends Component {
                     {this.state.showIng ? (
                         this.state.recipes.length ? (
                             <Row className="m-5">
-                                {this.state.recipes.map(elm => <IngredientsCards key={elm.recipe.label} {...elm} />)}
+                                {this.state.recipes.map(elm => <RecipeCards key={elm.recipe.label} {...elm} setTheUser={this.props.setTheUser} />)}
                             </Row>
                         )
                             :
