@@ -45,7 +45,7 @@ class SearchNutri extends Component {
 
     render() {
 
-        console.log(this.props.loggedInUser.userfile.nutricionist.username)
+
         return (
             < Container >
 

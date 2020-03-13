@@ -10,7 +10,6 @@ passport.deserializeUser((userIdFromSession, cb) => {
     User.findById(userIdFromSession)
         //se popula userfile aqui para que caiga a toda la app
         .populate('recipes')
-        .populate("userfile")
         .populate({
             path: 'userfile',
             populate: {

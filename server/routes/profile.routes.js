@@ -110,7 +110,8 @@ router.post('/menu', (req, res, next) => {
 
   console.log(req.body)
 
-  const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body.deilyMeals;
+
+  const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body.menu;
 
 
   const newMenu = {
