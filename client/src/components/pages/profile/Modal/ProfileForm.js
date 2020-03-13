@@ -36,9 +36,9 @@ class ProfileForm extends Component {
             .catch(err => console.log(err))
     }
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault()
-        this.preferencesUser(this.state.userPreferences);
+        await this.preferencesUser(this.state.userPreferences);
         this.finishAction()
     }
 
