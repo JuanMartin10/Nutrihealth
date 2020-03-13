@@ -9,14 +9,14 @@ import Col from 'react-bootstrap/Col'
 import ProfileModal from './Modal/ProfileModal'
 import Notifications from './Notifications/Notifications'
 import Clients from './Clients/Clients'
-
+import FavRecipesCard from './FavRecipesCard'
 
 class Profile extends Component {
     constructor(props) {
         super(props)
     }
 
-    onClick = () => this.props.history.push('/search-nutri')
+    onClick = () => this.props.history.push('/my-menu')
 
 
     render() {
@@ -26,16 +26,31 @@ class Profile extends Component {
                 <Container>
                     {this.props.loggedInUser.role === 'user' ? (
                         <Row>
-                            <Col className="d-flex align-items-start" md={7}>
+                            <Col md={7}>
                                 <h1>Hola, {this.props.loggedInUser.username}</h1>
 
-                                <p>Puedes ver tu menú semanal desde aquí</p>
-                                <Button className="greenButton" as="div" variant="light" size="sm" onClick={() => this.onClick2()}>
+                                <h4>Puedes ver tu menú semanal desde aquí</h4>
+                                <Button className="greenButton mb-5" as="div" variant="light" size="sm" onClick={() => this.onClick()}>
                                     Consulta tu menú semanal
-                                    </Button>
+                                </Button>
+
+                                {this.props.loggedInUser.recipes.length != 0 ?
+                                    (
+                                        <>
+                                            <h4 className="mt-5">Estas son tus recetas favoritas:</h4>
+                                            <Row>
+                                                {this.props.loggedInUser.recipes.map(elm => <FavRecipesCard key={elm} {...elm} />
+                                                )}
+                                            </Row>
+                                        </>
+                                    )
+                                    :
+                                    <p>No tienes ninguna notificación por ahora</p>
+                                }
                             </Col>
-                            <Col className="d-flex align-items-center" md={5}>
-                                <div>
+
+                            <Col md={5}>
+                                <div className="ml-5 pt-5">
                                     {this.props.loggedInUser.userfile ? (
                                         <div>
                                             <p> Esta es tu altura: {this.props.loggedInUser.userfile.height} cm</p>

@@ -17,7 +17,10 @@ class IngredientsCards extends Component {
 
     sendRecipes = () => {
         this.sendservices.sendRecipes(this.state.recipe)
-            .then(theRecipe => console.log(theRecipe))
+            .then(theRecipe => {
+                console.log(this.props)
+                console.log(theRecipe)
+            })
             .catch(err => console.log(err))
     }
 
