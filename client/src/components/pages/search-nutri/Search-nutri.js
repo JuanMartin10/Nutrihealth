@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
-import { Link } from 'react-router-dom'
+
 
 import AdminServices from '../../../services/admin.services'
 import Row from 'react-bootstrap/Row'
-// import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button'
-// import Spinner from 'react-bootstrap/Spinner'
+
 import NutriCards from './NutriCards'
 
 
@@ -54,7 +52,11 @@ class SearchNutri extends Component {
                 {this.props.loggedInUser.userfile.nutricionist ?
                     (
                         <>
-                            <h3>Este es tu nutricionista</h3>
+                            <h2>Este es tu nutricionista</h2>
+
+
+
+
                             <p>{this.props.loggedInUser.userfile.nutricionist.username}</p>
                         </>
                     )

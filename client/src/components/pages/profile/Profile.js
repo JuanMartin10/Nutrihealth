@@ -10,10 +10,14 @@ import ProfileModal from './Modal/ProfileModal'
 import Notifications from './Notifications/Notifications'
 import Clients from './Clients/Clients'
 import FavRecipesCard from './FavRecipesCard'
+import TablePreferences from './TablePreferences'
 
 class Profile extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+
+        }
     }
 
     onClick = () => this.props.history.push('/my-menu')
@@ -34,7 +38,7 @@ class Profile extends Component {
                                     Consulta tu menú semanal
                                 </Button>
 
-                                {this.props.loggedInUser.recipes.length != 0 ?
+                                {this.props.loggedInUser.recipes.length !== 0 ?
                                     (
                                         <>
                                             <h4 className="mt-5">Estas son tus recetas favoritas:</h4>
@@ -53,14 +57,7 @@ class Profile extends Component {
                                 <div className="ml-5 pt-5">
                                     {this.props.loggedInUser.userfile ? (
                                         <div>
-                                            <p> Esta es tu altura: {this.props.loggedInUser.userfile.height} cm</p>
-                                            <p> Este es tu peso: {this.props.loggedInUser.userfile.weight} kg</p>
-                                            <p> Este es tu edad: {this.props.loggedInUser.userfile.age} años</p>
-                                            <p> Este es tu nivel de actividad: {this.props.loggedInUser.userfile.activitylevel}</p>
-                                            <p> Tu objetivo: {this.props.loggedInUser.userfile.goal}</p>
-                                            <p> Vives en: {this.props.loggedInUser.userfile.city}</p>
-                                            <p> Intolerancias: {this.props.loggedInUser.userfile.intolerances}</p>
-                                            <p> Preferencias alimenticias: {this.props.loggedInUser.userfile.foodPreferences}</p>
+                                            <TablePreferences loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
                                             <ProfileModal loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
                                         </div>
                                     )

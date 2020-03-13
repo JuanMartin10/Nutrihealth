@@ -11,12 +11,15 @@ import Tabs from 'react-bootstrap/Tabs'
 class IndexNotLogged extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+
+        }
     }
 
     render() {
 
         return (
-            <Container className="bgImage">
+            <Container>
                 <h1 className="text-center">NutriHealth </h1>
                 <Row>
                     <Col>

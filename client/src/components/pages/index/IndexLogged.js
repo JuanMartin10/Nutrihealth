@@ -10,6 +10,9 @@ import Button from 'react-bootstrap/Button'
 class IndexLogged extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+
+        }
     }
 
     onClick = () => this.props.history.push('/search-nutri')
@@ -24,7 +27,7 @@ class IndexLogged extends Component {
                 <h1>Hola, {this.props.loggedInUser.username}</h1>
                 <Row>
 
-                    {this.props.loggedInUser.role == 'user' ?
+                    {this.props.loggedInUser.role === 'user' ?
                         (
                             <>
                                 <Col>

@@ -2,7 +2,7 @@ import React from 'react'
 
 
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
+
 import Card from 'react-bootstrap/Card'
 
 
@@ -19,7 +19,7 @@ const FavRecipesCard = (props) => {
                         <Card.Img className="cardImg" src={props.image} />
                         <Card.Title className="ml-3">{props.label}</Card.Title>
                     </div>
-                    <Card.Text className="mt-3">
+                    <Card.Text as="div" className="mt-3">
                         <ul>
                             {props.ingredients.map(elm => <li>{elm.text}</li>)}
                         </ul>

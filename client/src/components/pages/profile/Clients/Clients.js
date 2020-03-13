@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Modal from 'react-bootstrap/Modal'
+// import Modal from 'react-bootstrap/Modal'
 import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
+// import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 
 import ClientsCards from './ClientsCards'
@@ -24,7 +24,7 @@ class Clients extends Component {
             <Container>
                 <h2>Tus clientes</h2>
 
-                {this.props.loggedInUser.pacients.length != 0 ?
+                {this.props.loggedInUser.pacients.length !== 0 ?
                     (
                         <Row>
                             {this.props.loggedInUser.pacients.map(elm => <ClientsCards key={elm._id} {...elm} loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />)}

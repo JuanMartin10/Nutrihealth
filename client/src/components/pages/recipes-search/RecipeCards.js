@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
-import CardDeck from 'react-bootstrap/CardDeck'
+
 import SendToBack from '../../../services/sendtoback.services'
 import './RecipeCards.css';
 
@@ -36,7 +36,7 @@ class IngredientsCards extends Component {
                             <Card.Img className="cardImg" src={this.props.recipe.image} />
                             <Card.Title className="ml-3">{this.props.recipe.label}</Card.Title>
                         </div>
-                        <Card.Text className="mt-3">
+                        <Card.Text as="div" className="mt-3">
                             <ul>
                                 {this.props.recipe.ingredientLines.map(elm => <li>{elm}</li>)}
                             </ul>

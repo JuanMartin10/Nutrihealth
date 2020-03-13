@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ProfileForm from './ProfileForm'
 import Modal from 'react-bootstrap/Modal'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
