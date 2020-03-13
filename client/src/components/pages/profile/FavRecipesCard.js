@@ -20,9 +20,9 @@ const FavRecipesCard = (props) => {
                         <Card.Title className="ml-3">{props.label}</Card.Title>
                     </div>
                     <Card.Text as="div" className="mt-3">
-                        <ul>
+                        {/* <ul>
                             {props.ingredients.map(elm => <li>{elm.text}</li>)}
-                        </ul>
+                        </ul> */}
                     </Card.Text>
                     <div className="d-flex justify-content-around">
                     </div>
