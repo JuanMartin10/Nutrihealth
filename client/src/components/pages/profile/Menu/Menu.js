@@ -18,13 +18,13 @@ class Menu extends Component {
 
 
     render() {
-
+        console.log(this.props)
 
         return (
             <Container>
                 <h1>Este es tu menú de ésta semana</h1>
                 <h4>Aprobado por: {this.props.loggedInUser.userfile.nutricionist.username}</h4>
-                <TableMenu loggedInUser={this.props.loggedInUser} />
+                <TableMenu loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
 
             </Container >
         )
