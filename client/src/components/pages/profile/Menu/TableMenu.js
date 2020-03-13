@@ -14,7 +14,7 @@ class TableMenu extends Component {
     render() {
         console.log(this.props)
         console.log(this.props.loggedInUser.userfile.nutricionist.username)
-        console.log(this.props.loggedInUser.menu.menu)
+        console.log(this.props.loggedInUser.menu)
         const menu = this.props.loggedInUser.menu.menu
 
         return (

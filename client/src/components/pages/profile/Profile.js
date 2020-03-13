@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { Link } from 'react-router-dom'
 
 
 import ProfileModal from './Modal/ProfileModal'
@@ -34,10 +35,11 @@ class Profile extends Component {
                                 <h1>Hola, {this.props.loggedInUser.username}</h1>
 
                                 <h4>Puedes ver tu menú semanal desde aquí</h4>
-                                <Button loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} className="greenButton mb-5 p-2 d-flex justify-content-center" as="div" variant="light" size="sm" onClick={() => this.onClick()}>
+                                {/* <Button loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} className="greenButton mb-5 p-2 d-flex justify-content-center" as="div" variant="light" size="sm" onClick={() => this.onClick()}>
                                     Consulta tu menú semanal
-                                </Button>
+                                </Button> */}
 
+                                <Link to="/my-menu">Consulta tu menu semanal</Link>
                                 {this.props.loggedInUser.recipes.length !== 0 ?
                                     (
                                         <div className="bgGrey">

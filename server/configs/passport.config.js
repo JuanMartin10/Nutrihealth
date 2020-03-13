@@ -16,6 +16,12 @@ passport.deserializeUser((userIdFromSession, cb) => {
                 path: 'nutricionist'
             }
         })
+        .populate({
+            path: 'user',
+            populate: {
+                path: 'menu'
+            }
+        })
         .populate('menu')
         .populate({
             path: 'pacients',

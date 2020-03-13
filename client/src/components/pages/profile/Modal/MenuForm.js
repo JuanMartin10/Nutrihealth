@@ -67,7 +67,6 @@ class ProfileForm extends Component {
     }
 
     handleChange = e => {
-        console.dir(e.target)
         let { name, value, dataset } = e.target
         let time = dataset.subname
         this.setState({
@@ -84,7 +83,6 @@ class ProfileForm extends Component {
     render() {
 
         const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = this.state.menu;
-        console.log(this.props.clientId)
 
         return (
             <>

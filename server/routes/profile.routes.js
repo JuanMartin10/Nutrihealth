@@ -34,7 +34,7 @@ router.post('/', (req, res, next) => {
 
           .then(userFileUpdate => {
             User.findById(req.user._id)
-              .populate("userfile")
+              .populate("userfile").populate('menu')
               .then(userUpdated => res.json(userUpdated))
 
           })
@@ -42,7 +42,7 @@ router.post('/', (req, res, next) => {
 
       } else {
         UserFile.create(newUserFile)
-          .then(theUserFile => User.findByIdAndUpdate(req.user._id, { userfile: theUserFile._id }, { new: true }).populate("userfile"))
+          .then(theUserFile => User.findByIdAndUpdate(req.user._id, { userfile: theUserFile._id }, { new: true }).populate("userfile").populate('menu'))
           .then(userUpdated => res.json(userUpdated))
           .catch(err => console.log(err))
       }
@@ -139,10 +139,10 @@ router.post('/menu', (req, res, next) => {
 
 })
 
-router.get('/my-menu', (req, res, next) => {
-  User.findById(req.user._id).populate('menu')
-    .then(res => res.json(res))
-    .catch(err => console.log(err))
-}
-)
+// router.get('/my-menu', (req, res, next) => {
+//   User.findById(req.user._id).populate('menu')
+//     .then(res => res.json(res))
+//     .catch(err => console.log(err))
+// }
+// )
 module.exports = router
