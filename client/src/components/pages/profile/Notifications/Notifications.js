@@ -28,10 +28,12 @@ class Notifications extends Component {
                 <>
                     <h2>Tus notificaciones</h2>
 
+
                     {this.props.loggedInUser.notifications.length !== 0 ?
                         (
                             <Row>
-                                <p> Estos son los notificaciones que tienes:</p>
+
+                                <br></br>
                                 {this.props.loggedInUser.notifications.map(elm => <NotificationsCard key={elm._id} {...elm} confirmNutri={this.confirmNutri} />
                                 )}
                             </Row>

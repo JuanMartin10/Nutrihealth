@@ -11,14 +11,12 @@ const NutriCards = ({ username, _id, chooseAdmin }) => {
     return (
         <Col md={4}>
             <Card className="card-rusa">
-                {/* <Card.Img variant="top" src={imageUrl} /> */}
                 <Card.Body>
-                    <Card.Title>{username}</Card.Title>
-                    <Card.Title>{_id}</Card.Title>
-
+                    <p>Nutricionista:</p><Card.Title>{username}</Card.Title>
                     <hr></hr>
+
                     <Button className="greenButton" as="div" variant="light" size="sm" onClick={() => chooseAdmin(_id)}>
-                        yo
+                        Seleccionar como nutricionista
                     </Button>
                 </Card.Body>
             </Card>

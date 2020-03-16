@@ -1,65 +1,72 @@
 # Nutrihealth
 
-## Endpoints del projecto (base)
+<p align="center"><img src="https://ibb.co/Jx9kPny" /></a></p>
 
-### Servidor
-id | Method | Path  | Description
--- | ------ | ------ | ----------
-1 | get | / | Pagina principal 
-2 | get | /profile | Pagina del usuario 
-3 | post | /signup	| Te regsitra en la pagina (base de datos)
-4 | post | /login | Te hacer log-in en la pagina
-5 | post | /logout | Te hacer log-out de la pagina
-6 | get | /loggedin | Estás logueado?
+<h2 align="center">
+Plataforma single-page application con el fin de facilitar la comunicación entre nutricionistas y clientes
+</h2>
 
+## Sobre el proyecto ⚡️
 
-### Cliente
-id | Method | Path  | Description
--- | ------ | ------ | ----------
-1 | get | /signup	| Te muestra el form de sing-up
-2 | get | /login | Te muestra el log-in de la pagina
-3 | get | /choose-plan | Te muestra free o premium
-4 | get | /free | Te muestra los checkbox de free
-5 | post | /free | Te envia los datos de los checkbox a la api
-6 | get | /free/results | Te recibe los datos del menú semanal
-7 | get | /premium | Te muestra los datos de los nutricionistas asociados
-8 | post | /premium | Te envia las preferencias del usuario al nutricionista
-9 | get | /premium/results | Recibe los datos enviados por el nutricionista
-10 | get | /premium/nutri | Muestra la recepcion de informacion en la vista del nutricionista
-11 | post | /premium/nutri | Envia los datos del nutricionista al usuario  
+NutriHealth es el tercer proyecto que realicé en [Ironhack](https://www.ironhack.com/) Full Stack Web Dev Bootcamp de 9 semanas.
+
+El proyecto consiste en una plataforma social donde los nutricionistas puedan ver los clientes asociados y poder gestionar su menú semanal y los usuarios puedan ver su menú semanal.
+
+### Construido con 🛠
+
+El proyecto se ha realizado en dos semanas con React.JS para el cliente y Node.JS para el servidor. 
+Haciendo uso de: Edamam API como API externa para la consulta de recetas, Bootstrap-React para el grid y MongoDB como base de datos.
 
 
+## Mas información
 
-## Modelos
+NutriHealth tiene diferentes vistas dependiendo del usuario. En caso de que sea nutricionista o sea cliente.
 
-### Modelo de usuario
 
+#### Nutricionista
+
+## Perfil
+Desde el rol de nutricionista, el usuario puede ver si tiene notificaciones (Si el usuario le ha seleccionado como nutricionista) y puede introducir el menú semanal de los clientes que haya aceptado.
+
+<p align="center"><img src="https://ibb.co/zNmcTZB" /></p>
+
+#### Cliente
+## Index
+En la página de inicio, el cliente puede acceder a dos opciones: Encontrar nutricionista o bien consultar el menú semanal.
+
+## Buscador de recetas
+En ésta pagina, gracias a la API de Edamam se pueden recibir distintas recetas según lo que el usuario introduzca.
+
+## Buscador de nutricionista
+En ésta pagina, le apareceran los nutricionistas dados de alta en la aplicación. El usuario puede seleccionar al que desee. 
+
+## Menú semanal
+En ésta pagina, una vez el nutricionista haya introducido el menú semanal, podrá ver en una tabla su menú.
+<p align="center"><img src="https://ibb.co/QPft616" /></p>
+
+## Perfil
+Desde el rol de cliente, el usuario en su perfil puede introducir sus preferencias personales y editarlas como desee. Así como ver el menú semanal una vez el administrador haya introducido su menú.
+<p align="center"><img src="https://ibb.co/V9LGP54" /></p>
+
+### Instalación
+
+Si desea ver el proyecto en detalle o incluso trabajar en él, no dude en clonar el repositorio:
+
+```sh
+git clone https://github.com/JuanMrtt/Nutrihealth
 ```
-const userSchema = new Schema({
-  username: String,
-  password: String,
-  email: String,
-  photo: String,
-  recipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }]
-  role: String,
-}, {
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
-  }
-});
-```
 
-### Modelo de recetas
+## Enlace 🚀
 
-```
-const recipeSchema = new Schema({
-    recipe: String,
-    ingredients: Array,
-}, {
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
-  }
-});
+hhtps://https://nutrihealth.herokuapp.com/
+
+## Thanks! 💖
+
+¡A mis compañeros y a todo el equipo IronHack por su apoyo y su dedicación!
+
+## Contacto 💻
+
+📩 Juan Antonio Martin Bermejo - [juanantoniomartinb@gmail.com](juanantoniomartinb@gmail.com)
+<url src="http://https://www.linkedin.com/in/juanamartinb/" alt='linkedin' Perfil de linkedin>
+
 

@@ -31,7 +31,8 @@ class Clients extends Component {
                         </Row>
                     )
                     :
-                    <Spinner animation="border" />
+                    <p>No tienes ningún cliente por ahora</p>
+
 
                 }
 

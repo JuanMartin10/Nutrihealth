@@ -17,7 +17,7 @@ class IndexNotLogged extends Component {
     }
 
     render() {
-
+        console.log(this.props)
         return (
             <Container>
                 <h1 className="text-center">NutriHealth </h1>

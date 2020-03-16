@@ -35,16 +35,15 @@ class SearchNutri extends Component {
     chooseAdmin = (admin) => {
         //Envia al back la información del usuario logeado y el usuario elegido
         this.adminservices.chooseAdmin(admin)
-            .then(res => {
-                console.log(res)
-            })
+            .then(res => alert('Se ha seleccionado el nutricionista.'))
             .catch(err => console.log(err))
-
-
     }
+
+
 
     render() {
 
+        console.log(this.props)
 
         return (
             < Container >
