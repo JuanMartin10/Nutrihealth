@@ -18,19 +18,19 @@ El proyecto se ha realizado en dos semanas con React.JS para el cliente y Node.J
 Haciendo uso de: Edamam API como API externa para la consulta de recetas, Bootstrap-React para el grid y MongoDB como base de datos.
 
 
-## Mas información
+### Mas información
 
 NutriHealth tiene diferentes vistas dependiendo del usuario. En caso de que sea nutricionista o sea cliente.
 
 
 #### Nutricionista
 
-## Perfil
+##### Perfil
 Desde el rol de nutricionista, el usuario puede ver si tiene notificaciones (Si el usuario le ha seleccionado como nutricionista) y puede introducir el menú semanal de los clientes que haya aceptado.
 
-<p align="center"><img src="https://ibb.co/zNmcTZB" /></p>
+<p align="center"><img src="https://i.ibb.co/PtrpvgP/Profile-Admin.png" /></p>
 
-#### Cliente
+##### Cliente
 ## Index
 En la página de inicio, el cliente puede acceder a dos opciones: Encontrar nutricionista o bien consultar el menú semanal.
 
@@ -42,13 +42,14 @@ En ésta pagina, le apareceran los nutricionistas dados de alta en la aplicació
 
 ## Menú semanal
 En ésta pagina, una vez el nutricionista haya introducido el menú semanal, podrá ver en una tabla su menú.
-<p align="center"><img src="https://ibb.co/QPft616" /></p>
+<p align="center"><img src="https://i.ibb.co/tq4FbWb/Menu-User.png" /></p>
+
 
 ## Perfil
 Desde el rol de cliente, el usuario en su perfil puede introducir sus preferencias personales y editarlas como desee. Así como ver el menú semanal una vez el administrador haya introducido su menú.
-<p align="center"><img src="https://ibb.co/V9LGP54" /></p>
+<p align="center"><img src="https://i.ibb.co/Kh5g3Sv/Profile-User.png" /></p>
 
-### Instalación
+## Instalación
 
 Si desea ver el proyecto en detalle o incluso trabajar en él, no dude en clonar el repositorio:
 
