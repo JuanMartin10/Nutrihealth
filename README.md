@@ -1,6 +1,6 @@
 # Nutrihealth
 
-<p align="center"><img src="https://ibb.co/Jx9kPny" /></a></p>
+<p align="center"><img src="https://i.ibb.co/wJf61yw/Captura-de-pantalla-2020-03-16-a-las-19-14-38.png" /></a></p>
 
 <h2 align="center">
 Plataforma single-page application con el fin de facilitar la comunicación entre nutricionistas y clientes
@@ -58,7 +58,7 @@ git clone https://github.com/JuanMrtt/Nutrihealth
 
 ## Enlace 🚀
 
-hhtps://https://nutrihealth.herokuapp.com/
+https://nutrihealth.herokuapp.com/
 
 ## Thanks! 💖
 
