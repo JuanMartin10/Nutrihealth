@@ -10,7 +10,6 @@ class ProfileForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
             userPreferences: {
                 height: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.height : "",
                 weight: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.weight : "",
@@ -21,10 +20,8 @@ class ProfileForm extends Component {
                 intolerances: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.intolerances : '',
                 foodPreferences: this.props.loggedInUser.userfile ? this.props.loggedInUser.userfile.foodPreferences : '',
             }
-
         }
         this.sendtobackservices = new SendToBack()
-
     }
 
     finishAction = () => this.props.closeModal()
@@ -33,7 +30,7 @@ class ProfileForm extends Component {
     preferencesUser = (preferences) => {
         this.sendtobackservices.preferencesUser(preferences)
             .then(userUpdated => this.props.setTheUser(userUpdated))
-            .catch(err => console.log(err))
+            .catch(err => next(err))
     }
 
     handleSubmit = async e => {

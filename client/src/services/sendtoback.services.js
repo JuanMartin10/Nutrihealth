@@ -9,14 +9,8 @@ export default class Services {
         })
     }
 
-
-
-
     preferencesUser = (userPref) => this.service.post('/', userPref).then(response => response.data)
-
     sendRecipes = (recipe) => this.service.post('/fav', recipe).then(response => response.data)
-
     sendMenu = (menu, clientId) => this.service.post('/menu', { menu, clientId }).then(response => response.data)
-
     getMenu = () => this.service.get('/my-menu').then(response => response.data)
 }

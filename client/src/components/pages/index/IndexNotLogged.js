@@ -12,12 +12,11 @@ class IndexNotLogged extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
         }
     }
 
+
     render() {
-        console.log(this.props)
         return (
             <Container>
                 <h1 className="text-center">NutriHealth </h1>

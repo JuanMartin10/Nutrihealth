@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-
 import AuthServices from '../../../../services/auth.services'
 
 class Signup extends Component {
@@ -44,7 +42,6 @@ class Signup extends Component {
                         email: '',
                     },
                     role: false,
-
                 }, this.props.setTheUser(response))
                 this.props.history.push('/profile')
             })

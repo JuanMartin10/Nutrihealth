@@ -36,18 +36,17 @@ router.post('/', (req, res, next) => {
             User.findById(req.user._id)
               .populate("userfile").populate('menu')
               .then(userUpdated => res.json(userUpdated))
-
           })
-          .catch(err => console.log(err))
+          .catch(err => next(err))
 
       } else {
         UserFile.create(newUserFile)
           .then(theUserFile => User.findByIdAndUpdate(req.user._id, { userfile: theUserFile._id }, { new: true }).populate("userfile").populate('menu'))
           .then(userUpdated => res.json(userUpdated))
-          .catch(err => console.log(err))
+          .catch(err => next(err))
       }
     })
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 })
 
 
@@ -55,14 +54,17 @@ router.post('/', (req, res, next) => {
 //   .then(theUserFile => {
 //     User.findByIdAndUpdate(req.user._id, { userfile: theUserFile._id }, { new: true })
 //       .then(theUserUpdated => res.json(theUserUpdated))
-//       .catch(err => console.log(err))
+// .catch(err => next(err))
+
 //   })
-//   .catch(err => console.log(err))
+// .catch(err => next(err))
+
 
 // UserFile.create(newUserFile)
 //     .then(theUserFile => User.findByIdAndUpdate(req.user._id, { userfile: theUserFile._id }, { new: true }))
 //     .then(userUpdated => res.json(userUpdated))
-//     .catch(err => console.log(err))
+// .catch(err => next(err))
+
 // })
 
 // ================================== RECETAS ==================================
@@ -89,7 +91,7 @@ router.post('/fav', (req, res, next) => {
             } else {
               theUser.update({ $push: { recipes: foundRecipeId } }, { new: true }).populate('recipes').populate('userfile').populate('menu')
                 .then(userUpdated => res.json(userUpdated))
-                .catch(err => console.log(err))
+                .catch(err => next(err))
             }
           })
           .catch(err => res.json(err))
@@ -102,7 +104,7 @@ router.post('/fav', (req, res, next) => {
           .catch(err => res.json(err))
       }
     })
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 }
 )
 
@@ -135,14 +137,9 @@ router.post('/menu', (req, res, next) => {
       console.log(theNewMenu)
       res.json(theNewMenu)
     })
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 
 })
 
-// router.get('/my-menu', (req, res, next) => {
-//   User.findById(req.user._id).populate('menu')
-//     .then(res => res.json(res))
-//     .catch(err => console.log(err))
-// }
-// )
+
 module.exports = router

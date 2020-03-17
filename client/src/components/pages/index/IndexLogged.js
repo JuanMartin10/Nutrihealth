@@ -6,18 +6,16 @@ import Button from 'react-bootstrap/Button'
 
 
 
-
 class IndexLogged extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
         }
     }
 
+
     onClick = () => this.props.history.push('/search-nutri')
     onClick2 = () => this.props.history.push('/my-menu')
-
 
 
     render() {
@@ -31,7 +29,6 @@ class IndexLogged extends Component {
                         (
                             <>
                                 <Col>
-                                    {/*  AQUI TENDRIA QUE HABER UN IF DE SI YA TIENES NUTRICIONISTA MUESTRAS EL Menu */}
 
                                     <p>Puedes acceder a los nutricionistas disponibles desde aquí:</p>
 
@@ -53,8 +50,6 @@ class IndexLogged extends Component {
                             <p>Revisa en tu perfil si tienes nuevas notificaciones</p>
                         )
                     }
-
-
                 </Row>
             </Container>
         )

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -7,10 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Card from 'react-bootstrap/Card'
 
-
-
 import AuthServices from '../../../../services/auth.services'
-
 import { Link } from 'react-router-dom'
 
 class PreSignup extends Component {
@@ -35,7 +31,6 @@ class PreSignup extends Component {
         this.services.signup(this.state)
             .then(response => {
                 this.setState({ username: '', password: '' })
-                console.log('USUARIO CREADO', response)
             })
             .catch(err => console.log({ err }))
     }

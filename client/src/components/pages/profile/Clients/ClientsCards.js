@@ -14,10 +14,9 @@ class ClientsCards extends Component {
 
     }
 
-    onClick = () => { }
 
     render() {
-        console.log(this.props)
+
         return (
             < Col md={6}>
                 <Card className="card-rusa">

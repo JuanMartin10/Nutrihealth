@@ -15,7 +15,6 @@ class ProfileModal extends Component {
 
 
     render() {
-        // console.log(this.props.loggedInUser.userfile)
         return (
             <Container>
                 {this.props.loggedInUser.userfile ?

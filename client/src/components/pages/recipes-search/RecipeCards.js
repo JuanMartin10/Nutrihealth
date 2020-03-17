@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
-
 import SendToBack from '../../../services/sendtoback.services'
 import './RecipeCards.css';
 
@@ -15,31 +13,28 @@ class IngredientsCards extends Component {
         this.sendservices = new SendToBack()
     }
 
+
     sendRecipes = () => {
         this.sendservices.sendRecipes(this.state.recipe)
             .then(theRecipe => {
                 if (theRecipe.message) {
                     console.log(theRecipe)
                 } else {
-                    console.log(theRecipe)
                     this.props.setTheUser(theRecipe)
                 }
-
-            }
-            )
-            .catch(err => console.log(err))
+            })
+            .catch(err => next(err))
     }
 
 
     render() {
-        console.log(this.props)
+
         return (
 
             <Col>
                 <Card className="mb-3" style={{ width: '28rem' }}>
                     <Card.Body>
                         <div className="d-flex align-items-center">
-
                             <Card.Img className="cardImg" src={this.props.recipe.image} />
                             <Card.Title className="ml-3">{this.props.recipe.label}</Card.Title>
                         </div>
@@ -49,11 +44,9 @@ class IngredientsCards extends Component {
                             </ul>
                         </Card.Text>
                         <div className="d-flex justify-content-around">
-
                             <Button className="greenButton" as="div" variant="light"><a target="_blank" rel="noopener noreferrer" href={this.props.recipe.url}>Más detalles</a></Button>
                             <Button className="greenButton" variant="light" type="submit" onClick={this.sendRecipes}>Guarda en favoritos</Button>
                         </div>
-
                     </Card.Body>
                     <Card.Footer>
                         <small className="text-muted">{this.props.recipe.dietLabels}</small>

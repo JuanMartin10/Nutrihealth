@@ -14,14 +14,13 @@ class MenuModal extends Component {
 
 
     render() {
-        console.log(this.props)
+
         return (
             <Container>
 
                 <Button className="greenButton" variant="light" onClick={this.openModal}>
                     Introduce su menú
-                        </Button>
-
+                </Button>
 
                 <Modal show={this.state.showmodal} onHide={this.closeModal}>
                     <Modal.Body>

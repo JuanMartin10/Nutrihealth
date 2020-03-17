@@ -9,7 +9,7 @@ const Notifications = require('../models/Notifications.model')
 router.get('/', (req, res, next) => {
     User.find({ role: "admin" })
         .then(allAdmin => res.json(allAdmin))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
@@ -25,10 +25,10 @@ router.post('/choose', (req, res, next) => {
                     .then(notif => User.findByIdAndUpdate(req.body.admin, { $push: { notifications: notif._id } }, { new: true }))
                     .then(user1 => User.findByIdAndUpdate(req.user._id, { $push: { notifications: user1.notifications[0] } }, { new: true }))
                     .then(() => res.json({ message: `Se ha recibido tu notificación` }))
-                    .catch(err => console.log(err))
+                    .catch(err => next(err))
             }
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
@@ -36,7 +36,7 @@ router.get('/notifications', (req, res, next) => {
     Notifications.find({ reciever: req.user._id })
         .populate("sender")
         .then(theNotificationsUser => res.json(theNotificationsUser))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
@@ -66,7 +66,7 @@ router.post('/confirm', (req, res, next) => {
         })
 
         .then(array => res.json(array[0]))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 
 })
 
@@ -80,7 +80,8 @@ router.get('/clients', (req, res, next) => {
             }
         })
         .then(theNotificationsUser => res.json(theNotificationsUser))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
+
 })
 
 

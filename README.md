@@ -1,6 +1,6 @@
-# Nutrihealth
+# NutriHealth
 
-<p align="center"><img src="https://i.ibb.co/wJf61yw/Captura-de-pantalla-2020-03-16-a-las-19-14-38.png" /></a></p>
+<p align="center"><img src="https://i.ibb.co/TYJXvVS/Captura-de-pantalla-2020-03-16-a-las-19-14-38.png" /></a></p>
 
 <h2 align="center">
 Plataforma single-page application con el fin de facilitar la comunicación entre nutricionistas y clientes
@@ -28,24 +28,24 @@ NutriHealth tiene diferentes vistas dependiendo del usuario. En caso de que sea 
 ##### Perfil
 Desde el rol de nutricionista, el usuario puede ver si tiene notificaciones (Si el usuario le ha seleccionado como nutricionista) y puede introducir el menú semanal de los clientes que haya aceptado.
 
-<p align="center"><img src="https://i.ibb.co/PtrpvgP/Profile-Admin.png" /></p>
+<p align="center"><img src="https://i.ibb.co/DgmzYNh/Profile-Admin.png" /></p>
 
-##### Cliente
-## Index
+
+#### Cliente
+##### Index
 En la página de inicio, el cliente puede acceder a dos opciones: Encontrar nutricionista o bien consultar el menú semanal.
 
-## Buscador de recetas
+##### Buscador de recetas
 En ésta pagina, gracias a la API de Edamam se pueden recibir distintas recetas según lo que el usuario introduzca.
 
-## Buscador de nutricionista
+##### Buscador de nutricionista
 En ésta pagina, le apareceran los nutricionistas dados de alta en la aplicación. El usuario puede seleccionar al que desee. 
 
-## Menú semanal
+##### Menú semanal
 En ésta pagina, una vez el nutricionista haya introducido el menú semanal, podrá ver en una tabla su menú.
 <p align="center"><img src="https://i.ibb.co/tq4FbWb/Menu-User.png" /></p>
 
-
-## Perfil
+##### Perfil
 Desde el rol de cliente, el usuario en su perfil puede introducir sus preferencias personales y editarlas como desee. Así como ver el menú semanal una vez el administrador haya introducido su menú.
 <p align="center"><img src="https://i.ibb.co/Kh5g3Sv/Profile-User.png" /></p>
 
@@ -68,6 +68,6 @@ https://nutrihealth.herokuapp.com/
 ## Contacto 💻
 
 📩 Juan Antonio Martin Bermejo - [juanantoniomartinb@gmail.com](juanantoniomartinb@gmail.com)
-<url src="http://https://www.linkedin.com/in/juanamartinb/" alt='linkedin' Perfil de linkedin>
 
+[![linkedin](https://cdn.icon-icons.com/icons2/2037/PNG/128/in_linked_linkedin_media_social_icon_124259.png)](http://https://www.linkedin.com/in/juanamartinb/)
 

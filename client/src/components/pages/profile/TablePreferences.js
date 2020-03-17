@@ -6,11 +6,10 @@ class TablePreferences extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
         }
-
-
     }
+
+
     render() {
 
         const userfile = this.props.loggedInUser.userfile
@@ -33,7 +32,6 @@ class TablePreferences extends Component {
                     <tr>
                         <td>Peso</td>
                         <td>{userfile.weight}</td>
-
                     </tr>
                     <tr>
                         <td>Edad</td>
@@ -62,7 +60,6 @@ class TablePreferences extends Component {
                         <td>Comida preferida</td>
                         <td>{userfile.foodPreferences}</td>
                     </tr>
-
                 </tbody>
             </Table>
         )

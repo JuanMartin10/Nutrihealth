@@ -14,7 +14,6 @@ router.post("/signup", (req, res, next) => {
 
 
   // // PRUEBAS EN POSTMAN BACK
-
   // const username = req.body.username;
   // const password = req.body.password;
   // const email = req.body.email;
@@ -31,11 +30,6 @@ router.post("/signup", (req, res, next) => {
     res.status(400).json({ message: "Provide username and password" });
     return;
   }
-
-  // if (password.length < 7) {
-  //   res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' });
-  //   return;
-  // }
 
   User.findOne({ username }, (err, foundUser) => {
     if (err) {

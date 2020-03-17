@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-// import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
-
-
 import ProfileModal from './Modal/ProfileModal'
 import Notifications from './Notifications/Notifications'
 import Clients from './Clients/Clients'
@@ -17,7 +14,6 @@ class Profile extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
         }
     }
 
@@ -25,7 +21,6 @@ class Profile extends Component {
 
 
     render() {
-        console.log(this.props)
         return (
             <>
                 <Container>
@@ -36,8 +31,8 @@ class Profile extends Component {
 
                                 <h4>Puedes ver tu menú semanal desde aquí</h4>
 
-
                                 <Link className="greenButton mb-5 p-2 d-flex justify-content-center" to="/my-menu">Consulta tu menu semanal</Link>
+
                                 {this.props.loggedInUser.recipes.length !== 0 ?
                                     (
                                         <div className="bgGrey">
@@ -51,6 +46,7 @@ class Profile extends Component {
                                     :
                                     <p>No tienes ninguna notificación por ahora</p>
                                 }
+
                             </Col>
 
                             <Col md={5}>
@@ -67,10 +63,7 @@ class Profile extends Component {
                                             <ProfileModal loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
                                         </div>
                                     }
-
                                 </div>
-
-
                             </Col>
                         </Row>
                     )
@@ -79,9 +72,10 @@ class Profile extends Component {
                             <Row>
 
                                 <Col md={6}>
-                                    <Notifications loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
-                                </Col>
 
+                                    <Notifications loggedInUser={this.props.loggedInUser} setTheUser={this.props.setTheUser} />
+
+                                </Col>
 
                                 <Col md={6}>
 

@@ -18,8 +18,6 @@ class Clients extends Component {
 
 
     render() {
-        console.log(this.props)
-
         return (
             <Container>
                 <h2>Tus clientes</h2>

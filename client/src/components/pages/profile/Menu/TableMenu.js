@@ -6,15 +6,11 @@ class TableMenu extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
         }
-
-
     }
+
     render() {
-        console.log(this.props)
-        console.log(this.props.loggedInUser.userfile.nutricionist.username)
-        console.log(this.props.loggedInUser.menu)
+
         const menu = this.props.loggedInUser.menu.menu
 
         return (
@@ -70,9 +66,6 @@ class TableMenu extends Component {
                         <td>{menu.sunday.launch}</td>
                         <td>{menu.sunday.dinner}</td>
                     </tr>
-
-
-
                 </tbody>
             </Table>
         )

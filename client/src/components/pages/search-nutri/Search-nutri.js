@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
-
-
 import AdminServices from '../../../services/admin.services'
 import Row from 'react-bootstrap/Row'
-
 import NutriCards from './NutriCards'
-
 
 class SearchNutri extends Component {
     constructor(props) {
@@ -15,46 +11,36 @@ class SearchNutri extends Component {
             adminuser: '',
         }
         this.adminservices = new AdminServices()
-
     }
+
 
     componentDidMount() {
         this.getAdminUsers()
     }
 
+
     getAdminUsers() {
         this.adminservices.getAdminUsers()
             .then(allAdminUsers => this.setState({ adminuser: allAdminUsers }))
-            .catch(err => console.log(err))
+            .catch(err => next(err))
     }
 
-    // onClick(isAdmin){
-    //     this.chooseAdmin(isAdmin)
-    // }
 
     chooseAdmin = (admin) => {
-        //Envia al back la información del usuario logeado y el usuario elegido
         this.adminservices.chooseAdmin(admin)
             .then(res => alert('Se ha seleccionado el nutricionista.'))
-            .catch(err => console.log(err))
+            .catch(err => next(err))
     }
-
 
 
     render() {
 
-        console.log(this.props)
-
         return (
             < Container >
-
-                {this.props.loggedInUser.userfile.nutricionist ?
+                {this.props.loggedInUser.userfile ?
                     (
                         <>
                             <h2>Este es tu nutricionista</h2>
-
-
-
 
                             <p>{this.props.loggedInUser.userfile.nutricionist.username}</p>
                         </>
@@ -63,7 +49,6 @@ class SearchNutri extends Component {
                     (
                         <>
                             <p> Estos son los nutricionistas asociados:</p>
-
 
                             {
                                 this.state.adminuser.length ?
@@ -78,8 +63,6 @@ class SearchNutri extends Component {
                         </>
                     )
                 }
-
-
             </Container >
 
         )

@@ -18,16 +18,19 @@ class Recipes extends Component {
         this.recipeservices = new RecipeServices()
     }
 
+
     getIngredients = (id) => {
         this.recipeservices.getIngredients(id)
             .then(allIngredients => this.setState({ recipes: allIngredients.hits }))
-            .catch(err => console.log(err))
+            .catch(err => next(err))
     }
+
 
     componentDidUpdate = (prevState) => {
         if (this.state !== prevState) {
         }
     }
+
 
     handleChange = e => {
         let { value } = e.target
@@ -36,10 +39,12 @@ class Recipes extends Component {
         )
     }
 
+
     handleSubmit = e => {
         e.preventDefault()
         this.getIngredients(this.state.ingredients)
     }
+
 
     sendInfo = () => this.setState({ showIng: true })
 
@@ -53,7 +58,6 @@ class Recipes extends Component {
                         <Form.Label>Escribe los ingredientes que tengas en la nevera</Form.Label>
                         <Form.Control type="text" name="ingredients" placeholder="Escribe los ingredientes separados por comas" value={this.state.ingredients} onChange={this.handleChange} />
                     </Form.Group>
-
                     <Button className="greenButton" variant="light" type="submit" onClick={this.sendInfo}>A cocinar!</Button>
                     <br></br>
                 </Form >
@@ -68,7 +72,6 @@ class Recipes extends Component {
                             :
                             <Spinner className="spiner" animation="border" />
                     ) : null}
-
                 </div>
             </Container >
         )

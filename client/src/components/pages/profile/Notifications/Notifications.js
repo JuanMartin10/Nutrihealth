@@ -19,7 +19,7 @@ class Notifications extends Component {
     confirmNutri = (notifId) => {
         this.adminservices.confirmNutri(notifId)
             .then(respuesta => this.props.setTheUser(respuesta))
-            .catch(err => console.log(err))
+            .catch(err => next(err))
     }
 
     render() {
@@ -27,12 +27,9 @@ class Notifications extends Component {
             <Container>
                 <>
                     <h2>Tus notificaciones</h2>
-
-
                     {this.props.loggedInUser.notifications.length !== 0 ?
                         (
                             <Row>
-
                                 <br></br>
                                 {this.props.loggedInUser.notifications.map(elm => <NotificationsCard key={elm._id} {...elm} confirmNutri={this.confirmNutri} />
                                 )}
