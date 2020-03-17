@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-// import Modal from 'react-bootstrap/Modal'
 import Container from 'react-bootstrap/Container'
-// import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
-
 import ClientsCards from './ClientsCards'
-import Spinner from 'react-bootstrap/Spinner'
-
 
 
 class Clients extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-        }
+        this.state = {}
     }
 
 

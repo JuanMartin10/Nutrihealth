@@ -42,7 +42,7 @@ class ProfileForm extends Component {
     sendMenu = (menu, clientId) => {
         this.sendtobackservices.sendMenu(menu, clientId)
             .then(() => alert('Se ha enviado tu menú'))
-            .catch(err => next(err))
+            .catch(err => console.log(err))
     }
 
 

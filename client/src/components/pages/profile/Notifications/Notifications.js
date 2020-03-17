@@ -19,7 +19,7 @@ class Notifications extends Component {
     confirmNutri = (notifId) => {
         this.adminservices.confirmNutri(notifId)
             .then(respuesta => this.props.setTheUser(respuesta))
-            .catch(err => next(err))
+            .catch(err => console.log(err))
     }
 
     render() {

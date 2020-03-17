@@ -30,7 +30,7 @@ class ProfileForm extends Component {
     preferencesUser = (preferences) => {
         this.sendtobackservices.preferencesUser(preferences)
             .then(userUpdated => this.props.setTheUser(userUpdated))
-            .catch(err => next(err))
+            .catch(err => console.log(err))
     }
 
     handleSubmit = async e => {

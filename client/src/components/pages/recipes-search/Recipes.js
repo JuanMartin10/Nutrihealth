@@ -22,7 +22,7 @@ class Recipes extends Component {
     getIngredients = (id) => {
         this.recipeservices.getIngredients(id)
             .then(allIngredients => this.setState({ recipes: allIngredients.hits }))
-            .catch(err => next(err))
+            .catch(err => console.log(err))
     }
 
 

@@ -23,7 +23,7 @@ class IngredientsCards extends Component {
                     this.props.setTheUser(theRecipe)
                 }
             })
-            .catch(err => next(err))
+            .catch(err => console.log(err))
     }
 
 

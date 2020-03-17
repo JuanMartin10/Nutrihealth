@@ -22,14 +22,14 @@ class SearchNutri extends Component {
     getAdminUsers() {
         this.adminservices.getAdminUsers()
             .then(allAdminUsers => this.setState({ adminuser: allAdminUsers }))
-            .catch(err => next(err))
+            .catch(err => console.log(err))
     }
 
 
     chooseAdmin = (admin) => {
         this.adminservices.chooseAdmin(admin)
             .then(res => alert('Se ha seleccionado el nutricionista.'))
-            .catch(err => next(err))
+            .catch(err => console.log(err))
     }
 
 

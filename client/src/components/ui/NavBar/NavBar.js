@@ -19,7 +19,7 @@ class Navigation extends Component {
     logout = () => {
         this.authservices.logout()
             .then(response => this.props.setTheUser(false))
-            .catch(err => next(err))
+            .catch(err => console.log(err))
     }
 
     render() {
