@@ -69,5 +69,5 @@ https://nutrihealth.herokuapp.com/
 
 📩 Juan Antonio Martin Bermejo - [juanantoniomartinb@gmail.com](juanantoniomartinb@gmail.com)
 
-Linkedin - http://https://www.linkedin.com/in/juanamartinb/
+Linkedin - https://www.linkedin.com/in/juanamartinb/
 
